@@ -1,412 +1,216 @@
 {
-  "session": "9fb7f2da-6c91-4c3d-9e3d-3cafbe12c1f1",
-  "agent": "Adele",
+  "session": "abc6ca7b-65a2-4095-adc9-bcc92f7abb71",
+  "agent": "Dexter",
   "human": "balazs",
-  "started": "2026-02-27T21:06:13.125778Z",
-  "git_head": "291cc0b",
+  "started": "2026-02-27T21:55:39.630512Z",
+  "git_head": "89bfeca",
   "events": [
     {
-      "ts": "2026-02-27T21:06:13.124113Z",
+      "ts": "2026-02-27T21:55:39.628638Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/index.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:16.365163Z",
+      "ts": "2026-02-27T21:55:42.714423Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/workflow.md",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/workflow.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:25.170185Z",
-      "event": "Claim",
-      "agent": "Adele"
+      "ts": "2026-02-27T21:55:45.312366Z",
+      "event": "Blocked",
+      "tool": "glob",
+      "reason": "No agent identity"
     },
     {
-      "ts": "2026-02-27T21:06:33.994531Z",
+      "ts": "2026-02-27T21:55:48.508008Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls dydo/agents/"
+    },
+    {
+      "ts": "2026-02-27T21:55:54.466773Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/workflow.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:55:57.247087Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls -la dydo/agents/Dexter/"
+    },
+    {
+      "ts": "2026-02-27T21:56:00.413591Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls -la dydo/agents/Dexter/inbox/"
+    },
+    {
+      "ts": "2026-02-27T21:56:00.596133Z",
+      "event": "Blocked",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/state.md",
+      "tool": "read",
+      "reason": "No agent identity"
+    },
+    {
+      "ts": "2026-02-27T21:56:05.321894Z",
+      "event": "Claim",
+      "agent": "Dexter"
+    },
+    {
+      "ts": "2026-02-27T21:56:08.971527Z",
+      "event": "Blocked",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/state.md",
+      "tool": "read",
+      "reason": "No role set"
+    },
+    {
+      "ts": "2026-02-27T21:56:09.510313Z",
+      "event": "Blocked",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/inbox/8532b005-cicd-pipeline.md",
+      "tool": "read",
+      "reason": "No role set"
+    },
+    {
+      "ts": "2026-02-27T21:56:13.810159Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls dydo/agents/Dexter/modes/ 2\u003E/dev/null || echo \u0022No modes directory\u0022; find dydo/agents/Dexter -name..."
+    },
+    {
+      "ts": "2026-02-27T21:56:17.099418Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/workflow.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:56:26.067382Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/modes/reviewer.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:56:29.283229Z",
       "event": "Role",
       "role": "reviewer",
       "task": "cicd-pipeline"
     },
     {
-      "ts": "2026-02-27T21:06:37.685034Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/modes/reviewer.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:06:41.620929Z",
+      "ts": "2026-02-27T21:56:32.593251Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/about.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:42.082311Z",
+      "ts": "2026-02-27T21:56:33.056864Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/architecture.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:42.509613Z",
+      "ts": "2026-02-27T21:56:33.636679Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/guides/coding-standards.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:49.723493Z",
+      "ts": "2026-02-27T21:56:42.16074Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/inbox/8532b005-cicd-pipeline.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:56:42.679459Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/project/tasks/cicd-pipeline.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:06:59.626114Z",
+      "ts": "2026-02-27T21:56:49.459956Z",
       "event": "Bash",
       "tool": "bash",
-      "cmd": "ls -R /Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/"
+      "cmd": "find dydo/agents/Adele -type f -name \u0022*.yml\u0022 -o -name \u0022*.sh\u0022 -o -name \u0022*.md\u0022 | head -20"
     },
     {
-      "ts": "2026-02-27T21:07:00.909619Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "git diff HEAD -- src/backend/Hackathon.AppHost/AppHost.cs src/backend/Hackathon.AppHost/Hackathon.Ap..."
-    },
-    {
-      "ts": "2026-02-27T21:07:10.005062Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "find /Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/ -maxdepth 1 -type f -o -typ..."
-    },
-    {
-      "ts": "2026-02-27T21:07:10.414343Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "git diff HEAD -- dydo/agents/Charlie/"
-    },
-    {
-      "ts": "2026-02-27T21:07:19.733191Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "git status -u"
-    },
-    {
-      "ts": "2026-02-27T21:07:44.135986Z",
+      "ts": "2026-02-27T21:56:52.482465Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.AppHost/AppHost.cs",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/deploy.yml",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:07:44.723553Z",
+      "ts": "2026-02-27T21:56:52.934702Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.AppHost/Hackathon.AppHost.csproj",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/deploy.sh",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:07:45.081636Z",
+      "ts": "2026-02-27T21:56:56.609216Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/nginx.conf",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/.github/workflows/deploy.yml",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:07:45.6581Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/deploy.sh",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:50.285006Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/docker/api.Dockerfile",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:50.492353Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/docker/frontend.Dockerfile",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:51.052653Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/docker/microservice.Dockerfile",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:51.647921Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/docker/worker.Dockerfile",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:55.536953Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/infra/main.tf",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:56.117168Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/infra/variables.tf",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:56.772922Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/infra/providers.tf",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:07:57.249573Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/infra/outputs.tf",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:08:05.389066Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/inbox/b49bd672-cicd-pipeline.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:08:06.12651Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/inbox/1ceab65c-cicd-pipeline.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:08:18.310425Z",
+      "ts": "2026-02-27T21:56:56.761862Z",
       "event": "Read",
       "tool": "glob"
     },
     {
-      "ts": "2026-02-27T21:08:18.400626Z",
+      "ts": "2026-02-27T21:57:01.44805Z",
       "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:08:18.688713Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:08:18.977186Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:08:24.153241Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/.github/workflows/deploy.yml",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/deploy.sh",
       "tool": "read"
     },
     {
-      "ts": "2026-02-27T21:08:24.643975Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/.dockerignore",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:08:25.229317Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123/infra/.gitignore",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:10:06.480332Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet build src/backend/Hackathon.AppHost/Hackathon.AppHost.csproj 2\u003E\u00261 | tail -20"
-    },
-    {
-      "ts": "2026-02-27T21:10:18.471768Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:10:18.70645Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:10:23.926077Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-27T21:10:28.975187Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/archive/20260227-205045/review-cicd-pipeline.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:11:08.294502Z",
+      "ts": "2026-02-27T21:57:38.98823Z",
       "event": "Release",
-      "agent": "Adele"
-    },
-    {
-      "ts": "2026-02-27T21:15:46.935499Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "SRC=\u0022/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/archive/20260227-205123\u0022 \u0026\u0026 ..."
-    },
-    {
-      "ts": "2026-02-27T21:23:02.265948Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "which az 2\u003E/dev/null \u0026\u0026 az version --output table 2\u003E/dev/null | head -5 || echo \u0022Azure CLI: NOT INST..."
-    },
-    {
-      "ts": "2026-02-27T21:23:06.526374Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "which terraform 2\u003E/dev/null \u0026\u0026 terraform version 2\u003E/dev/null | head -1 || echo \u0022Terraform: NOT INSTA..."
-    },
-    {
-      "ts": "2026-02-27T21:23:08.28117Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "which docker 2\u003E/dev/null \u0026\u0026 docker --version 2\u003E/dev/null || echo \u0022Docker: NOT INSTALLED\u0022"
-    },
-    {
-      "ts": "2026-02-27T21:23:09.529809Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "which gh 2\u003E/dev/null \u0026\u0026 gh auth status 2\u003E\u00261 | head -3 || echo \u0022GitHub CLI: NOT INSTALLED\u0022"
-    },
-    {
-      "ts": "2026-02-27T21:23:14.64685Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "az account show --query \u0022{name:name, id:id, state:state}\u0022 --output table 2\u003E\u00261 || echo \u0022Not logged in..."
-    },
-    {
-      "ts": "2026-02-27T21:23:17.438631Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "gh repo view --json nameWithOwner,url --jq \u0027\u0022\\(.nameWithOwner) \u2014 \\(.url)\u0022\u0027 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-27T21:23:23.870913Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "az account show --query \u0022id\u0022 --output tsv 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-27T21:23:58.1175Z",
-      "event": "Blocked",
-      "path": "/Users/balazsbodnar/.claude/plans/zippy-forging-stream.md",
-      "tool": "write",
-      "reason": "No agent identity"
-    },
-    {
-      "ts": "2026-02-27T21:40:44.03867Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "gh secret list 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-27T21:41:03.606571Z",
-      "event": "Claim",
-      "agent": "Adele"
-    },
-    {
-      "ts": "2026-02-27T21:41:08.207089Z",
-      "event": "Role",
-      "role": "planner",
-      "task": "cicd-pipeline"
-    },
-    {
-      "ts": "2026-02-27T21:41:22.596982Z",
-      "event": "Blocked",
-      "path": "/Users/balazsbodnar/.claude/plans/zippy-forging-stream.md",
-      "tool": "write",
-      "reason": "Must-read files not yet read"
-    },
-    {
-      "ts": "2026-02-27T21:41:26.143824Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/modes/planner.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-27T21:41:34.275638Z",
-      "event": "Blocked",
-      "path": "/Users/balazsbodnar/.claude/plans/zippy-forging-stream.md",
-      "tool": "write",
-      "reason": "Agent Adele (planner) cannot write ../../.claude/plans/zippy-forging-stream.md. Planner role can only edit own workspace and tasks."
-    },
-    {
-      "ts": "2026-02-27T21:41:39.969628Z",
-      "event": "Release",
-      "agent": "Adele"
-    },
-    {
-      "ts": "2026-02-27T21:41:52.431035Z",
-      "event": "Blocked",
-      "path": "/Users/balazsbodnar/.claude/plans/zippy-forging-stream.md",
-      "tool": "write",
-      "reason": "No agent identity"
-    },
-    {
-      "ts": "2026-02-27T21:42:02.90544Z",
-      "event": "Blocked",
-      "tool": "bash",
-      "cmd": "mkdir -p /Users/balazsbodnar/.claude/plans \u0026\u0026 cat \u003E /Users/balazsbodnar/.claude/plans/zippy-forging-...",
-      "reason": "Dangerous pattern: Download and execute pattern (curl | sh)"
-    },
-    {
-      "ts": "2026-02-27T21:42:14.394692Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "mkdir -p /Users/balazsbodnar/.claude/plans \u0026\u0026 python3 -c \u0022\ncontent = \u0027\u0027\u0027# Plan: Adapt CI/CD Workflow..."
-    },
-    {
-      "ts": "2026-02-27T21:44:03.590264Z",
-      "event": "Claim",
-      "agent": "Adele"
-    },
-    {
-      "ts": "2026-02-27T21:44:07.917204Z",
-      "event": "Role",
-      "role": "planner",
-      "task": "cicd-pipeline"
-    },
-    {
-      "ts": "2026-02-27T21:44:23.466986Z",
-      "event": "Write",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Adele/plan-cicd-pipeline.md",
-      "tool": "write"
-    },
-    {
-      "ts": "2026-02-27T21:44:39.177183Z",
-      "event": "Release",
-      "agent": "Adele"
+      "agent": "Dexter"
     }
   ],
   "snapshot": {
-    "git_commit": "291cc0b4bab3c897527b4ac6e0a9f7faf15b333d",
+    "git_commit": "89bfeca654e784fc04fd14e6b36cb99769ec93d8",
     "files": [
       ".claude/settings.local.json",
+      ".dockerignore",
+      ".github/workflows/deploy.yml",
       ".gitignore",
       ".mcp.json",
       "AGENTS.md",
       "CLAUDE.md",
+      "deploy.sh",
+      "docker/api.Dockerfile",
+      "docker/frontend.Dockerfile",
+      "docker/microservice.Dockerfile",
+      "docker/worker.Dockerfile",
       "dydo.json",
       "dydo/_assets/dydo-diagram.svg",
       "dydo/_system/audit/_audit.md",
       "dydo/_system/audit/2026/2026-02-27-1a9916dd-980f-4d14-a2bd-53de8a4c350d.json",
+      "dydo/_system/audit/2026/2026-02-27-20584a0c-6439-498b-9f80-43e1231f3d20.json",
+      "dydo/_system/audit/2026/2026-02-27-2a40daf4-ac7e-4827-bb5c-b57264ed5232.json",
       "dydo/_system/audit/2026/2026-02-27-3e29e9b6-71ca-4970-ad01-84b375f85af8.json",
+      "dydo/_system/audit/2026/2026-02-27-521acb61-5a1e-4134-b0ba-7fb998b10e50.json",
       "dydo/_system/audit/2026/2026-02-27-5632a856-c988-498e-b518-7be9bdda5a4c.json",
+      "dydo/_system/audit/2026/2026-02-27-5a800051-f70e-4473-ac8f-be98158f4f24.json",
       "dydo/_system/audit/2026/2026-02-27-63e4786f-a549-4c22-88c0-6346efe43453.json",
       "dydo/_system/audit/2026/2026-02-27-640143f3-13b2-4e6b-98d9-a435781bcac7.json",
       "dydo/_system/audit/2026/2026-02-27-820b7e62-2f3c-4edc-879e-4d3d8748c2f0.json",
       "dydo/_system/audit/2026/2026-02-27-865af7c8-f382-45a0-967a-245ef8d50a60.json",
       "dydo/_system/audit/2026/2026-02-27-87ee989e-0f0c-4d75-8dc4-1882211ea1a3.json",
       "dydo/_system/audit/2026/2026-02-27-88ebdbeb-9a79-4a8e-98f7-4cf4fac2cd98.json",
+      "dydo/_system/audit/2026/2026-02-27-8919a78e-0107-4edc-acab-973e1d462a0c.json",
       "dydo/_system/audit/2026/2026-02-27-8b4b872f-9812-4381-a619-cff847c1bd78.json",
       "dydo/_system/audit/2026/2026-02-27-8c55dccb-daa1-49a5-9811-35606b3a218b.json",
+      "dydo/_system/audit/2026/2026-02-27-9fb7f2da-6c91-4c3d-9e3d-3cafbe12c1f1.json",
+      "dydo/_system/audit/2026/2026-02-27-a02d8584-ef79-4ae1-9a4e-4ce8507edba6.json",
+      "dydo/_system/audit/2026/2026-02-27-aabe315b-5da6-402d-beba-528a2c92d356.json",
+      "dydo/_system/audit/2026/2026-02-27-c867ecf9-c6e1-44dc-a8fa-fef6f1e5fcdc.json",
       "dydo/_system/audit/2026/2026-02-27-d596002c-6e97-4534-942e-ac7ebaac4d8b.json",
       "dydo/_system/audit/2026/2026-02-27-e0000572-3bdb-46f0-a289-76fbbf5ac0bf.json",
       "dydo/_system/audit/2026/2026-02-27-eb789a02-5fc1-4dd0-91e1-866ea7e2af0d.json",
+      "dydo/_system/audit/2026/2026-02-27-f534f9c8-ad75-4c8c-905e-df01ce735fdf.json",
+      "dydo/_system/audit/reports/replay.html",
       "dydo/_system/templates/agent-workflow.template.md",
       "dydo/_system/templates/mode-co-thinker.template.md",
       "dydo/_system/templates/mode-code-writer.template.md",
@@ -438,6 +242,7 @@
       "dydo/project/changelog/2026/2026-02-27/engagement-levels-update.md",
       "dydo/project/changelog/2026/2026-02-27/facial-emotion-detection.md",
       "dydo/project/changelog/2026/2026-02-27/fix-apphost-ports.md",
+      "dydo/project/changelog/2026/2026-02-27/implement-rabbitmq-workers.md",
       "dydo/project/changelog/2026/2026-02-27/setup-troubleshooting.md",
       "dydo/project/decisions/_decisions.md",
       "dydo/project/decisions/_index.md",
@@ -455,6 +260,8 @@
       "dydo/project/tasks/facial-emotion-detection.md",
       "dydo/project/tasks/fix-apphost-ports.md",
       "dydo/project/tasks/fix-docker-arm64.md",
+      "dydo/project/tasks/fix-microservice-startup.md",
+      "dydo/project/tasks/fix-snapshot-upload-500.md",
       "dydo/project/tasks/inspect-aspire-logs.md",
       "dydo/project/tasks/run-app.md",
       "dydo/reference/_index.md",
@@ -470,6 +277,11 @@
       "dydo/understand/architecture.md",
       "dydo/welcome.md",
       "Hackathon.slnx",
+      "infra/.gitignore",
+      "infra/main.tf",
+      "infra/outputs.tf",
+      "infra/providers.tf",
+      "infra/variables.tf",
       "readme.md",
       "src/backend/Directory.Build.props",
       "src/backend/Hackathon.Api/appsettings.Development.json",
@@ -516,8 +328,13 @@
       "src/backend/Hackathon.Domain/Interfaces/.gitkeep",
       "src/backend/Hackathon.Domain/Messages/AddNumbersCommand.cs",
       "src/backend/Hackathon.Domain/Messages/AddNumbersResult.cs",
+      "src/backend/Hackathon.Domain/Messages/AnalyzeSnapshotCommand.cs",
+      "src/backend/Hackathon.Domain/Messages/AnalyzeSnapshotResult.cs",
+      "src/backend/Hackathon.Domain/Messages/BboxDto.cs",
+      "src/backend/Hackathon.Domain/Messages/FaceResultDto.cs",
       "src/backend/Hackathon.Domain/Messages/HackathonQueues.cs",
       "src/backend/Hackathon.Domain/Messages/IAddNumbersClient.cs",
+      "src/backend/Hackathon.Domain/Messages/IAnalyzeSnapshotClient.cs",
       "src/backend/Hackathon.Domain/Models/.gitkeep",
       "src/backend/Hackathon.Domain/Models/Auth/HashedPassword.cs",
       "src/backend/Hackathon.Domain/Models/Auth/RefreshToken.cs",
@@ -535,6 +352,7 @@
       "src/backend/Hackathon.Infrastructure/ServiceCollectionExtensions.cs",
       "src/backend/Hackathon.Infrastructure/Services/Auth/JwtService.cs",
       "src/backend/Hackathon.Infrastructure/Services/Messaging/RabbitMqAddNumbersClient.cs",
+      "src/backend/Hackathon.Infrastructure/Services/Messaging/RabbitMqAnalyzeSnapshotClient.cs",
       "src/backend/Hackathon.Infrastructure/Services/PasswordHashing/Argon2IdPasswordHashingService.cs",
       "src/backend/Hackathon.Infrastructure/Services/SecretManagement/FileSecretClient.cs",
       "src/backend/Hackathon.Infrastructure/Services/SecretManagement/ISecretClient.cs",
@@ -542,6 +360,7 @@
       "src/backend/Hackathon.ServiceDefaults/Hackathon.ServiceDefaults.csproj",
       "src/frontend/eslint.config.js",
       "src/frontend/index.html",
+      "src/frontend/nginx.conf",
       "src/frontend/package-lock.json",
       "src/frontend/package.json",
       "src/frontend/public/.gitkeep",
@@ -612,9 +431,11 @@
       "src/microservices/microservice/tests/test_health.py",
       "src/microservices/microservice/tests/workers/__init__.py",
       "src/microservices/microservice/tests/workers/conftest.py",
+      "src/microservices/microservice/tests/workers/test_analyze_snapshot_worker.py",
       "src/microservices/microservice/uv.lock",
       "src/microservices/microservice/workers/__init__.py",
       "src/microservices/microservice/workers/add_numbers_worker.py",
+      "src/microservices/microservice/workers/analyze_snapshot_worker.py",
       "tests/backend/Directory.Build.props",
       "tests/backend/Hackathon.Api.Tests/AuthEndpointsTests.cs",
       "tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj",
@@ -648,11 +469,15 @@
     ],
     "folders": [
       ".claude",
+      ".github",
+      ".github/workflows",
+      "docker",
       "dydo",
       "dydo/_assets",
       "dydo/_system",
       "dydo/_system/audit",
       "dydo/_system/audit/2026",
+      "dydo/_system/audit/reports",
       "dydo/_system/templates",
       "dydo/.obsidian",
       "dydo/guides",
@@ -665,6 +490,7 @@
       "dydo/project/tasks",
       "dydo/reference",
       "dydo/understand",
+      "infra",
       "src",
       "src/backend",
       "src/backend/Hackathon.Api",
@@ -867,14 +693,23 @@
         "dydo/understand/architecture.md",
         "dydo/project/decisions/_index.md"
       ],
-      "dydo/agents/adele/workflow.md": [
-        "dydo/agents/adele/modes/interviewer.md",
-        "dydo/agents/adele/modes/planner.md",
-        "dydo/agents/adele/modes/code-writer.md",
-        "dydo/agents/adele/modes/co-thinker.md",
-        "dydo/agents/adele/modes/reviewer.md",
-        "dydo/agents/adele/modes/docs-writer.md",
-        "dydo/agents/adele/modes/tester.md"
+      "dydo/agents/dexter/workflow.md": [
+        "dydo/agents/dexter/modes/interviewer.md",
+        "dydo/agents/dexter/modes/planner.md",
+        "dydo/agents/dexter/modes/code-writer.md",
+        "dydo/agents/dexter/modes/co-thinker.md",
+        "dydo/agents/dexter/modes/reviewer.md",
+        "dydo/agents/dexter/modes/docs-writer.md",
+        "dydo/agents/dexter/modes/tester.md"
+      ],
+      "dydo/agents/brian/workflow.md": [
+        "dydo/agents/brian/modes/interviewer.md",
+        "dydo/agents/brian/modes/planner.md",
+        "dydo/agents/brian/modes/code-writer.md",
+        "dydo/agents/brian/modes/co-thinker.md",
+        "dydo/agents/brian/modes/reviewer.md",
+        "dydo/agents/brian/modes/docs-writer.md",
+        "dydo/agents/brian/modes/tester.md"
       ],
       "dydo/project/tasks/_tasks.md": [
         "dydo/project/changelog/_index.md"
@@ -900,37 +735,72 @@
       "dydo/project/pitfalls/_pitfalls.md": [
         "dydo/project/decisions/_index.md"
       ],
-      "dydo/agents/adele/modes/reviewer.md": [
+      "dydo/agents/dexter/modes/reviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/guides/coding-standards.md"
       ],
-      "dydo/agents/adele/modes/co-thinker.md": [
+      "dydo/agents/dexter/modes/co-thinker.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/project/decisions/_index.md",
-        "dydo/agents/adele/modes/code-writer.md"
+        "dydo/agents/dexter/modes/code-writer.md"
       ],
-      "dydo/agents/adele/modes/code-writer.md": [
+      "dydo/agents/dexter/modes/code-writer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/guides/coding-standards.md"
       ],
-      "dydo/agents/adele/modes/tester.md": [
+      "dydo/agents/dexter/modes/tester.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md"
       ],
-      "dydo/agents/adele/modes/planner.md": [
+      "dydo/agents/dexter/modes/planner.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
-        "dydo/agents/adele/modes/code-writer.md"
+        "dydo/agents/dexter/modes/code-writer.md"
       ],
-      "dydo/agents/adele/modes/interviewer.md": [
+      "dydo/agents/dexter/modes/interviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
-        "dydo/agents/adele/modes/planner.md"
+        "dydo/agents/dexter/modes/planner.md"
       ],
-      "dydo/agents/adele/modes/docs-writer.md": [
+      "dydo/agents/dexter/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/brian/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/brian/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/brian/modes/code-writer.md"
+      ],
+      "dydo/agents/brian/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/brian/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/brian/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/brian/modes/code-writer.md"
+      ],
+      "dydo/agents/brian/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/brian/modes/planner.md"
+      ],
+      "dydo/agents/brian/modes/docs-writer.md": [
         "dydo/understand/about.md",
         "dydo/guides/how-to-use-docs.md",
         "dydo/reference/writing-docs.md"
@@ -947,6 +817,7 @@
         "dydo/project/changelog/2026/2026-02-27/engagement-levels-update.md",
         "dydo/project/changelog/2026/2026-02-27/facial-emotion-detection.md",
         "dydo/project/changelog/2026/2026-02-27/fix-apphost-ports.md",
+        "dydo/project/changelog/2026/2026-02-27/implement-rabbitmq-workers.md",
         "dydo/project/changelog/2026/2026-02-27/setup-troubleshooting.md"
       ]
     }
