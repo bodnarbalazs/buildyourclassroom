@@ -134,6 +134,6 @@
     "claude": true
   },
   "dispatch": {
-    "launchInTab": true
+    "launchInTab": false
   }
 }
