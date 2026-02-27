@@ -3,11 +3,11 @@ using Hackathon.Domain.Messages;
 var builder = DistributedApplication.CreateBuilder(args);
 
 // ── PostgreSQL (PostGIS-enabled image) ───────────────────────────
-// Tag format: "{postgresMajor}-{postgisMajor.minor}". The PG major version
-// must match the version that initialised the persistent data volume.
+// Tag format: "{postgresMajor}-{postgisMajor.minor}-bookworm". The PG major
+// version must match the version that initialised the persistent data volume.
 var postgres = builder.AddPostgres("postgres")
-    .WithImage("postgis/postgis")
-    .WithImageTag("17-3.5")
+    .WithImage("imresamu/postgis")
+    .WithImageTag("17-3.5-bookworm")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("hackathon-postgres-data")
     .WithEndpoint("tcp", e => e.Port = 5432)
