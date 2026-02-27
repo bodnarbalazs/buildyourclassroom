@@ -1,0 +1,14 @@
+.git/
+node_modules/
+**/bin/
+**/obj/
+**/.venv/
+**/__pycache__/
+dydo/
+infra/
+.github/
+.idea/
+.claude/
+tests/
+*.md
+*.sln.DotSettings.user

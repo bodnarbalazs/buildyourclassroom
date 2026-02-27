@@ -2,6 +2,9 @@ using Hackathon.Domain.Messages;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+// ── Kubernetes publish target ────────────────────────────────────
+builder.AddKubernetesEnvironment("k8s");
+
 // ── PostgreSQL (PostGIS-enabled image) ───────────────────────────
 // Tag format: "{postgresMajor}-{postgisMajor.minor}-bookworm". The PG major
 // version must match the version that initialised the persistent data volume.
