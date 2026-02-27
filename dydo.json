@@ -31,7 +31,27 @@
       "Wendy",
       "Xavier",
       "Yara",
-      "Zelda"
+      "Zelda",
+      "Alfred",
+      "Bella",
+      "Carla",
+      "Dylan",
+      "Ethan",
+      "Fiona",
+      "George",
+      "Holly",
+      "Ivan",
+      "Julia",
+      "Kevin",
+      "Luna",
+      "Marcus",
+      "Nadia",
+      "Oscar",
+      "Penny",
+      "Quentin",
+      "Rita",
+      "Steve",
+      "Tina"
     ],
     "assignments": {
       "balazs": [
@@ -61,6 +81,30 @@
         "Xavier",
         "Yara",
         "Zelda"
+      ],
+      "gyuresz": [
+        "Alfred",
+        "Bella",
+        "Carla",
+        "Dylan",
+        "Ethan",
+        "Fiona",
+        "George",
+        "Holly",
+        "Ivan",
+        "Julia"
+      ],
+      "peti": [
+        "Kevin",
+        "Luna",
+        "Marcus",
+        "Nadia",
+        "Oscar",
+        "Penny",
+        "Quentin",
+        "Rita",
+        "Steve",
+        "Tina"
       ]
     }
   },
