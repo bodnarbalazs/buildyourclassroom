@@ -49,7 +49,7 @@ jobs:
           docker push ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }}
 
       - name: Install Aspire CLI
-        run: dotnet tool install -g aspire
+        run: curl -sSL https://aspire.dev/install.sh | bash
 
       - name: Generate Kubernetes manifests
         run: aspire publish --project src/backend/Hackathon.AppHost -o k8s/
