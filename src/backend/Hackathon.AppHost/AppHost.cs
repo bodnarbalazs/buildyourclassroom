@@ -11,7 +11,7 @@ var postgres = builder.AddPostgres("postgres")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("hackathon-postgres-data")
     .WithEndpoint("tcp", e => e.Port = 5432)
-    .WithPgAdmin(c => c.WithEndpoint("http", e => e.Port = 5050));
+    .WithPgAdmin(c => c.WithHostPort(5050));
 var hackathonDb = postgres.AddDatabase("hackathondb");
 
 // ── RabbitMQ ─────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ var microservice = builder.AddUvicornApp("microservice",
         microserviceWorkingDir,
         "api.main:app")
     .WithUv()
-    .WithHttpEndpoint(port: 8000)
+    .WithEndpoint("http", e => e.Port = 8000)
     .WithExternalHttpEndpoints();
 
 // Python worker (RabbitMQ consumer)
