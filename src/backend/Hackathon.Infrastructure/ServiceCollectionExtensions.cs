@@ -5,12 +5,13 @@ using Hackathon.Domain.Messages;
 using Hackathon.Infrastructure.Database;
 using Hackathon.Infrastructure.Database.Repositories;
 using Hackathon.Infrastructure.Services.Auth;
+using Hackathon.Infrastructure.Services.Messaging;
 using Hackathon.Infrastructure.Services.PasswordHashing;
 using Hackathon.Infrastructure.Services.SecretManagement;
-using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
 
 namespace Hackathon.Infrastructure;
 
@@ -20,66 +21,44 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Secret client
         services.AddSingleton<ISecretClient, FileSecretClient>();
-
-        // Password hashing
         services.AddSingleton<IPasswordHashingService, Argon2IdPasswordHashingService>();
-
-        // JWT service
         services.AddScoped<IJwtService, JwtService>();
 
-        // PostgreSQL DbContext
         services.AddDbContext<AppDbContext>(options =>
         {
             var connectionString = configuration.GetConnectionString("hackathondb")
                                    ?? throw new InvalidOperationException(
-                                       "PostgreSQL connection string 'hackathondb' not found.");
+                                       "PostgreSQL connection string not found.");
 
             var dataSourceBuilder = new Npgsql.NpgsqlDataSourceBuilder(connectionString);
             dataSourceBuilder.EnableDynamicJson();
             var dataSource = dataSourceBuilder.Build();
 
-            options.UseNpgsql(dataSource, npgsqlOptions =>
-                   {
-                       npgsqlOptions.EnableRetryOnFailure(
-                           maxRetryCount: 5,
-                           maxRetryDelay: TimeSpan.FromSeconds(30),
-                           errorCodesToAdd: null);
-                   })
+            options.UseNpgsql(dataSource, o => o.EnableRetryOnFailure(5, TimeSpan.FromSeconds(30), null))
                    .UseSnakeCaseNamingConvention();
         });
 
-        // Repositories
         services.AddScoped<IUserRepository, PostgresUserRepository>();
 
-        // MassTransit with RabbitMQ
-        services.AddMassTransit(x =>
+        services.AddSingleton<IConnection>(sp =>
         {
-            x.AddRequestClient<AddNumbersCommand>(
-                new Uri($"queue:{HackathonQueues.AddNumbers}"),
-                timeout: TimeSpan.FromSeconds(30));
-
-            x.UsingRabbitMq((context, cfg) =>
+            var factory = new ConnectionFactory();
+            var cs = configuration.GetConnectionString("messaging");
+            if (!string.IsNullOrEmpty(cs))
+                factory.Uri = new Uri(cs);
+            else
             {
-                var rabbitMqConnectionString = configuration.GetConnectionString("messaging");
-
-                if (!string.IsNullOrEmpty(rabbitMqConnectionString))
-                {
-                    cfg.Host(new Uri(rabbitMqConnectionString));
-                }
-                else
-                {
-                    cfg.Host("localhost", "/", h =>
-                    {
-                        h.Username("guest");
-                        h.Password("guest");
-                    });
-                }
-
-                cfg.ConfigureEndpoints(context);
-            });
+                factory.HostName = "localhost";
+                factory.UserName = "guest";
+                factory.Password = "guest";
+            }
+            return factory.CreateConnectionAsync().GetAwaiter().GetResult();
         });
+
+        services.AddSingleton<IAddNumbersClient>(sp =>
+            RabbitMqAddNumbersClient.CreateAsync(sp.GetRequiredService<IConnection>())
+                .GetAwaiter().GetResult());
 
         return services;
     }
