@@ -6,53 +6,71 @@ must-read: true
 
 # Architecture Overview
 
-> **Fill this in.** This document helps AI agents understand your codebase structure.
-> Keep things brief, provide a birds eye view, an overview of the key technologies used, and how they interact.
-> Link to details which not all agents need to know, example: Knowledge of a UI library which is used in one component is not useful for an agent working on a backend task unrelated to that frontend component. 
+A classroom dynamics platform orchestrated by .NET Aspire. The AppHost wires up all services, infrastructure, and dependencies — run it and everything starts together.
 
 ---
 
 ## Project Structure
 
-<!-- Show your actual folder structure -->
-
 ```
-project/
-├── src/                  # Source code
-├── tests/                # Test files
-├── dydo/                 # Documentation
-└── ...
+src/
+├── backend/
+│   ├── Hackathon.AppHost/       # .NET Aspire orchestrator (start here)
+│   ├── Hackathon.Api/           # ASP.NET Core Web API
+│   ├── Hackathon.Application/   # Business logic / use cases
+│   ├── Hackathon.Domain/        # Domain models and contracts
+│   ├── Hackathon.Infrastructure/# Data access, external integrations
+│   └── Hackathon.ServiceDefaults/# Shared Aspire service configuration
+├── frontend/                    # React 19 + TypeScript SPA (Vite, Tailwind v4)
+└── microservices/
+    └── microservice/            # Python FastAPI service + RabbitMQ workers
 ```
 
 ---
 
 ## Key Components
 
-<!-- List the major components/modules and what they do -->
+### AppHost (Orchestrator)
 
-### Component A
+The .NET Aspire AppHost (`backend/Hackathon.AppHost/`) is the single entry point. It provisions PostgreSQL (with PostGIS), RabbitMQ, the .NET API, the React frontend, and the Python microservice/worker, wiring all references and health checks automatically.
 
-*What this component does and its responsibilities.*
+### .NET API
+
+Clean-architecture backend: Api → Application → Domain, with Infrastructure for persistence. Connects to PostgreSQL and publishes/consumes messages via RabbitMQ.
+
+### React Frontend
+
+React 19 SPA served by Vite on port 3000. Uses React Router, TanStack Query for data fetching, and Tailwind CSS v4 for styling. Tests run with Vitest.
+
+### Python Microservice
+
+FastAPI service (port 8000) managed with `uv`. Includes a RabbitMQ worker process for async task processing. Tests run with pytest.
 
 ---
 
 ## Data Flow
 
-<!-- Describe how data flows through the system -->
-
 ```
-Input → Processing → Output
+Browser → React SPA (3000) → .NET API (HTTPS) → PostgreSQL (PostGIS)
+                                    ↕
+                               RabbitMQ ↔ Python Worker
+                                    ↑
+                         Python FastAPI (8000)
 ```
 
 ---
 
 ## Where to Find Things
 
-<!-- Quick lookup table for common tasks -->
-
 | Looking for... | Location |
 |----------------|----------|
-| *[Type of code]* | `path/` |
+| Service orchestration | `src/backend/Hackathon.AppHost/AppHost.cs` |
+| API endpoints | `src/backend/Hackathon.Api/` |
+| Business logic | `src/backend/Hackathon.Application/` |
+| Domain models / messages | `src/backend/Hackathon.Domain/` |
+| Frontend pages / components | `src/frontend/src/` |
+| Python API routes | `src/microservices/microservice/api/` |
+| Python workers | `src/microservices/microservice/workers/` |
 
 ---
 
@@ -64,5 +82,6 @@ Input → Processing → Output
 
 ## Related
 
+- [About This Project](./about.md) — Project description and goals
 - [Coding Standards](../guides/coding-standards.md) — Code conventions
 - [How to Use These Docs](../guides/how-to-use-docs.md) — Navigating the documentation
