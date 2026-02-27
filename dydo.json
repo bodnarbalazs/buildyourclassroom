@@ -51,7 +51,17 @@
       "Quentin",
       "Rita",
       "Steve",
-      "Tina"
+      "Tina",
+      "Ulrich",
+      "Vera",
+      "Walter",
+      "Xena",
+      "Yuri",
+      "Zara",
+      "Amber",
+      "Blake",
+      "Cora",
+      "Dante"
     ],
     "assignments": {
       "balazs": [
@@ -105,6 +115,18 @@
         "Rita",
         "Steve",
         "Tina"
+      ],
+      "vsza": [
+        "Ulrich",
+        "Vera",
+        "Walter",
+        "Xena",
+        "Yuri",
+        "Zara",
+        "Amber",
+        "Blake",
+        "Cora",
+        "Dante"
       ]
     }
   },
