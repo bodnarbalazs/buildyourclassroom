@@ -12,5 +12,7 @@ Index of reference documentation.
 ## Contents
 
 - [DynaDocs (dydo)](./about-dynadocs.md) - Documentation-driven context and agent orchestration for AI coding assistants.
+- [Coverage Tools](./coverage-tools.md) - Two in-house Python scripts for measuring and enforcing test coverage across all stacks.
+- [Cs2Ts](./cs2ts.md) - A custom .
 - [CLI Commands Reference](./dydo-commands.md) - Complete reference for all `dydo` commands.
 - [Writing Documentation](./writing-docs.md) - Reference for documentation conventions, structure, and validation rules.

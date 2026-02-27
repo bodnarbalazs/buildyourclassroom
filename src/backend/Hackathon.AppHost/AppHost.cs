@@ -10,16 +10,19 @@ var postgres = builder.AddPostgres("postgres")
     .WithImageTag("17-3.5")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("hackathon-postgres-data")
-    .WithPgAdmin();
+    .WithEndpoint("tcp", e => e.Port = 5432)
+    .WithPgAdmin(c => c.WithEndpoint("http", e => e.Port = 5050));
 var hackathonDb = postgres.AddDatabase("hackathondb");
 
 // ── RabbitMQ ─────────────────────────────────────────────────────
 var rabbitmq = builder.AddRabbitMQ("messaging")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithDataVolume("rabbitmq-data")
-    .WithManagementPlugin();
+    .WithEndpoint("tcp", e => e.Port = 5672)
+    .WithManagementPlugin()
+    .WithEndpoint("management", e => e.Port = 15672);
 
-// ──────────────────────────────────────────────────────────────────
+// ────────────────────────────────────ż──────────────────────────────
 // Resolve working directories
 // ──────────────────────────────────────────────────────────────────
 
@@ -41,7 +44,7 @@ var api = builder.AddProject<Projects.Hackathon_Api>("api", launchProfileName: "
 var frontend = builder.AddNpmApp("frontend", frontendWorkingDir, "dev")
     .WithReference(api)
     .WaitFor(api)
-    .WithHttpEndpoint(env: "PORT")
+    .WithHttpEndpoint(port: 3000, env: "PORT")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile();
 
@@ -50,6 +53,7 @@ var microservice = builder.AddUvicornApp("microservice",
         microserviceWorkingDir,
         "api.main:app")
     .WithUv()
+    .WithHttpEndpoint(port: 8000)
     .WithExternalHttpEndpoints();
 
 // Python worker (RabbitMQ consumer)

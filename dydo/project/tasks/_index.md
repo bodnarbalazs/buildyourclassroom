@@ -11,4 +11,5 @@ Index of tasks documentation.
 
 ## Contents
 
-*No documents in this folder yet.*
+- [Task: codebase-overview](./codebase-overview.md) - (No description)
+- [Task: setup-troubleshooting](./setup-troubleshooting.md) - (No description)

@@ -13,3 +13,4 @@ Index of guides documentation.
 
 - [Coding Standards](./coding-standards.md) - Rules and conventions for writing code in this project.
 - [How to Use These Docs](./how-to-use-docs.md) - This documentation is designed to be navigated by AI agents.
+- [Local Setup](./local-setup.md) - Steps to get the project running after cloning.

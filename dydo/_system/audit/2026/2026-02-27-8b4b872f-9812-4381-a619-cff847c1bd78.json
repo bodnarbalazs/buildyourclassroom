@@ -1,0 +1,27 @@
+{
+  "session": "8b4b872f-9812-4381-a619-cff847c1bd78",
+  "human": "balazs",
+  "started": "2026-02-27T13:41:00.737656Z",
+  "git_head": "68d6264",
+  "events": [
+    {
+      "ts": "2026-02-27T13:41:00.737485Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/index.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T13:41:00.948238Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "echo \u0022DYDO_HUMAN=${DYDO_HUMAN:-\u003Cnot set\u003E}\u0022"
+    },
+    {
+      "ts": "2026-02-27T13:42:33.742055Z",
+      "event": "Blocked",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/this_bad.txt",
+      "tool": "write",
+      "reason": "No agent identity"
+    }
+  ]
+}
