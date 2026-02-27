@@ -29,7 +29,8 @@
       "Bash(export DYDO_HUMAN=gyuresz)",
       "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search",
       "Bash(uv sync:*)",
-      "WebFetch(domain:aspire.dev)"
+      "WebFetch(domain:aspire.dev)",
+      "Bash(dydo inbox:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
