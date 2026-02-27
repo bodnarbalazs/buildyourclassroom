@@ -1,0 +1,1065 @@
+{
+  "session": "9a22f3c0-c81b-408e-9c4f-cc80aaf5e24b",
+  "agent": "Kevin",
+  "human": "peti",
+  "started": "2026-02-27T20:33:22.7839542Z",
+  "git_head": "291cc0b",
+  "events": [
+    {
+      "ts": "2026-02-27T20:33:22.7836162Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 acr list --resource-group Team-2 --query \u0022[].{n..."
+    },
+    {
+      "ts": "2026-02-27T20:33:28.8724414Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 acr credential show --name containerregteam2 --..."
+    },
+    {
+      "ts": "2026-02-27T20:33:36.9051303Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 acr update -n containerregteam2 --admin-enabled..."
+    },
+    {
+      "ts": "2026-02-27T20:35:57.6610287Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 aks list --resource-group Team-2 --query \u0022[].{n..."
+    },
+    {
+      "ts": "2026-02-27T20:36:05.0763368Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 aks get-credentials --resource-group Team-2 --n..."
+    },
+    {
+      "ts": "2026-02-27T20:36:20.0108304Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 aks get-credentials --resource-group Team-2 --n..."
+    },
+    {
+      "ts": "2026-02-27T20:59:40.7588783Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/"
+    },
+    {
+      "ts": "2026-02-27T20:59:43.0370552Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/frontend/"
+    },
+    {
+      "ts": "2026-02-27T20:59:45.7799317Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/frontend \u0026\u0026 npm run dev 2\u003E\u00261 \u0026\nec..."
+    },
+    {
+      "ts": "2026-02-27T20:59:51.0498794Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 3 \u0026\u0026 curl -s http://localhost:5173 | head -5 2\u003E\u00261 || curl -s http://localhost:3000 | head -5 2..."
+    },
+    {
+      "ts": "2026-02-27T21:00:02.8382319Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "curl -s -o /dev/null -w \u0022%{http_code}\u0022 http://localhost:5173 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:00:10.4379515Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/frontend \u0026\u0026 npm run dev 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:00:17.5499847Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 4 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bui..."
+    },
+    {
+      "ts": "2026-02-27T21:00:24.4018337Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/frontend \u0026\u0026 npm install 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:00:41.8944925Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/frontend \u0026\u0026 npm run dev 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:00:45.6967451Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 4 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bui..."
+    },
+    {
+      "ts": "2026-02-27T21:01:51.1609668Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/backend/Hackathon.Api/"
+    },
+    {
+      "ts": "2026-02-27T21:01:54.2268393Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/backend/Hackathon.Api \u0026\u0026 dotnet r..."
+    },
+    {
+      "ts": "2026-02-27T21:01:58.8557709Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 8 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bui..."
+    },
+    {
+      "ts": "2026-02-27T21:02:09.5381772Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 10 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:02:23.1988246Z",
+      "event": "Blocked",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\secrets.json",
+      "tool": "read",
+      "reason": "Off-limits: **/secrets.json"
+    },
+    {
+      "ts": "2026-02-27T21:02:25.6300287Z",
+      "event": "Blocked",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\appsettings.Development.json",
+      "tool": "read",
+      "reason": "No agent identity"
+    },
+    {
+      "ts": "2026-02-27T21:02:29.237172Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\index.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:02:34.6310313Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 DYDO_HUMAN=peti dydo agent claim a..."
+    },
+    {
+      "ts": "2026-02-27T21:02:42.3225217Z",
+      "event": "Claim",
+      "agent": "Kevin"
+    },
+    {
+      "ts": "2026-02-27T21:02:44.1751065Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\agents\\Kevin\\workflow.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:02:48.4095676Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 DYDO_HUMAN=peti dydo agent role co..."
+    },
+    {
+      "ts": "2026-02-27T21:02:51.7512801Z",
+      "event": "Role",
+      "role": "code-writer",
+      "task": "run-api"
+    },
+    {
+      "ts": "2026-02-27T21:02:55.0093211Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\appsettings.Development.json",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:03:53.661124Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "docker run -d --name pg -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:03:58.5598768Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "where psql 2\u003E/dev/null || where pg_ctl 2\u003E/dev/null || echo \u0022postgres not found locally\u0022"
+    },
+    {
+      "ts": "2026-02-27T21:05:29.0669362Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "docker run -d --name pg -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:05:48.2972738Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 3 \u0026\u0026 docker ps | grep pg 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:05:56.684211Z",
+      "event": "Blocked",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\appsettings.Development.json",
+      "tool": "edit",
+      "reason": "Must-read files not yet read"
+    },
+    {
+      "ts": "2026-02-27T21:05:58.8632796Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\understand\\about.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:05:59.2892602Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\understand\\architecture.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:05:59.7287569Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\guides\\coding-standards.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:06:00.2262514Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\agents\\Kevin\\modes\\code-writer.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:06:08.5670847Z",
+      "event": "Edit",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\appsettings.Development.json",
+      "tool": "edit"
+    },
+    {
+      "ts": "2026-02-27T21:08:28.4642653Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Infrastructure\\ServiceCollectionExtensions.cs",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:10:21.7457931Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom/src/backend/Hackathon.Api \u0026\u0026 dotnet r..."
+    },
+    {
+      "ts": "2026-02-27T21:10:26.7985484Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 10 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:10:46.0016663Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\backend\\Hackathon.Api\\Program.cs",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:11:42.2200735Z",
+      "event": "Read",
+      "tool": "glob"
+    },
+    {
+      "ts": "2026-02-27T21:11:45.3352948Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\dydo\\guides\\local-setup.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:12:18.4683499Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet run --project src/backend/H..."
+    },
+    {
+      "ts": "2026-02-27T21:12:24.4830836Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 15 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:13:48.6162036Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "pip install uv 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:13:54.2813561Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "where pip 2\u003E/dev/null || where pip3 2\u003E/dev/null || where python 2\u003E/dev/null || echo \u0022not found\u0022"
+    },
+    {
+      "ts": "2026-02-27T21:13:58.5062568Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "python -m pip install uv 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:14:20.2792165Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "winget install Python.Python.3.11 --silent 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:15:32.3609163Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "winget install astral-sh.uv --silent 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:16:19.2940552Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet run --project src/backend/H..."
+    },
+    {
+      "ts": "2026-02-27T21:16:27.3942608Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 15 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:16:47.1616998Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill /F /IM \u0022Hackathon.AppHost.exe\u0022 2\u003E\u00261; taskkill /F /IM \u0022dotnet.exe\u0022 2\u003E\u00261; sleep 2 \u0026\u0026 cd /c/Us..."
+    },
+    {
+      "ts": "2026-02-27T21:16:53.2956124Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 20 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:17:16.2544876Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "netstat -ano | grep 22128 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:18:13.3832367Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill //F //PID 11620 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:19:11.036898Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill //F //PID 11620 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:19:15.6807642Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 2 \u0026\u0026 cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet run --project sr..."
+    },
+    {
+      "ts": "2026-02-27T21:19:20.6131494Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 15 \u0026\u0026 cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-bu..."
+    },
+    {
+      "ts": "2026-02-27T21:21:03.9199863Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cat \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom-buildyourclass..."
+    },
+    {
+      "ts": "2026-02-27T21:21:11.0888964Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet run --project src/backend/H..."
+    },
+    {
+      "ts": "2026-02-27T21:21:17.3712432Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 20 \u0026\u0026 tail -20 \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassro..."
+    },
+    {
+      "ts": "2026-02-27T21:21:43.0199649Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "netstat -ano | grep 22128 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:22:27.9640436Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "curl -s -o /dev/null -w \u0022%{http_code}\u0022 http://localhost:5069 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:22:34.7683467Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "curl -s http://localhost:5069 2\u003E\u00261 | head -20"
+    },
+    {
+      "ts": "2026-02-27T21:22:41.8175222Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\frontend\\src\\main.tsx",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:22:42.1671571Z",
+      "event": "Read",
+      "path": "c:\\Users\\Peti\\Desktop\\buildyourclassroom\\buildyourclassroom\\src\\frontend\\src\\App.tsx",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-27T21:27:31.944092Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 account show --query \u0022{subscriptionId:id, name:..."
+    },
+    {
+      "ts": "2026-02-27T21:29:29.9736902Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "\u0022/c/Program Files/Microsoft SDKs/Azure/CLI2/wbin/az\u0022 group show --name Team-2 --query location -o ts..."
+    },
+    {
+      "ts": "2026-02-27T21:31:25.9902151Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "where uv 2\u003E/dev/null \u0026\u0026 uv --version 2\u003E\u00261 || echo \u0022uv not found on PATH\u0022"
+    },
+    {
+      "ts": "2026-02-27T21:31:33.6663284Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill //F //PID 14920 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:31:41.255543Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 3 \u0026\u0026 cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet run --project sr..."
+    },
+    {
+      "ts": "2026-02-27T21:31:50.396335Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 20 \u0026\u0026 tail -15 \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassro..."
+    },
+    {
+      "ts": "2026-02-27T21:32:16.1578151Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 5 \u0026\u0026 tail -5 \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroom..."
+    },
+    {
+      "ts": "2026-02-27T21:32:27.5835514Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 10 \u0026\u0026 tail -5 \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroo..."
+    },
+    {
+      "ts": "2026-02-27T21:46:48.9087486Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "netstat -ano | grep 22128 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T21:46:54.931072Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill //F //PID 26768 2\u003E\u00261 \u0026\u0026 sleep 3 \u0026\u0026 cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourcla..."
+    },
+    {
+      "ts": "2026-02-27T21:47:02.0737045Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "sleep 20 \u0026\u0026 tail -5 \u0022C:\\Users\\Peti\\AppData\\Local\\Temp\\claude\\c--Users-Peti-Desktop-buildyourclassroo..."
+    }
+  ],
+  "snapshot": {
+    "git_commit": "1085afc28f1eb793e6c583716d88851d0a99683e",
+    "files": [
+      ".claude/settings.local.json",
+      ".gitignore",
+      ".mcp.json",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "dydo.json",
+      "dydo/_assets/dydo-diagram.svg",
+      "dydo/_system/audit/_audit.md",
+      "dydo/_system/audit/2026/2026-02-27-1a9916dd-980f-4d14-a2bd-53de8a4c350d.json",
+      "dydo/_system/audit/2026/2026-02-27-2a40daf4-ac7e-4827-bb5c-b57264ed5232.json",
+      "dydo/_system/audit/2026/2026-02-27-3e29e9b6-71ca-4970-ad01-84b375f85af8.json",
+      "dydo/_system/audit/2026/2026-02-27-521acb61-5a1e-4134-b0ba-7fb998b10e50.json",
+      "dydo/_system/audit/2026/2026-02-27-5632a856-c988-498e-b518-7be9bdda5a4c.json",
+      "dydo/_system/audit/2026/2026-02-27-63e4786f-a549-4c22-88c0-6346efe43453.json",
+      "dydo/_system/audit/2026/2026-02-27-640143f3-13b2-4e6b-98d9-a435781bcac7.json",
+      "dydo/_system/audit/2026/2026-02-27-820b7e62-2f3c-4edc-879e-4d3d8748c2f0.json",
+      "dydo/_system/audit/2026/2026-02-27-865af7c8-f382-45a0-967a-245ef8d50a60.json",
+      "dydo/_system/audit/2026/2026-02-27-87ee989e-0f0c-4d75-8dc4-1882211ea1a3.json",
+      "dydo/_system/audit/2026/2026-02-27-88ebdbeb-9a79-4a8e-98f7-4cf4fac2cd98.json",
+      "dydo/_system/audit/2026/2026-02-27-8b4b872f-9812-4381-a619-cff847c1bd78.json",
+      "dydo/_system/audit/2026/2026-02-27-8c55dccb-daa1-49a5-9811-35606b3a218b.json",
+      "dydo/_system/audit/2026/2026-02-27-a02d8584-ef79-4ae1-9a4e-4ce8507edba6.json",
+      "dydo/_system/audit/2026/2026-02-27-d596002c-6e97-4534-942e-ac7ebaac4d8b.json",
+      "dydo/_system/audit/2026/2026-02-27-e0000572-3bdb-46f0-a289-76fbbf5ac0bf.json",
+      "dydo/_system/audit/2026/2026-02-27-eb789a02-5fc1-4dd0-91e1-866ea7e2af0d.json",
+      "dydo/_system/audit/2026/2026-02-27-f534f9c8-ad75-4c8c-905e-df01ce735fdf.json",
+      "dydo/_system/templates/agent-workflow.template.md",
+      "dydo/_system/templates/mode-co-thinker.template.md",
+      "dydo/_system/templates/mode-code-writer.template.md",
+      "dydo/_system/templates/mode-docs-writer.template.md",
+      "dydo/_system/templates/mode-interviewer.template.md",
+      "dydo/_system/templates/mode-planner.template.md",
+      "dydo/_system/templates/mode-reviewer.template.md",
+      "dydo/_system/templates/mode-tester.template.md",
+      "dydo/.obsidian/app.json",
+      "dydo/.obsidian/appearance.json",
+      "dydo/.obsidian/core-plugins.json",
+      "dydo/.obsidian/workspace.json",
+      "dydo/files-off-limits.md",
+      "dydo/glossary.md",
+      "dydo/guides/_guides.md",
+      "dydo/guides/_index.md",
+      "dydo/guides/coding-standards.md",
+      "dydo/guides/how-to-use-docs.md",
+      "dydo/guides/local-setup.md",
+      "dydo/index.md",
+      "dydo/project/_index.md",
+      "dydo/project/_project.md",
+      "dydo/project/changelog/_changelog.md",
+      "dydo/project/changelog/_index.md",
+      "dydo/project/changelog/2026/_index.md",
+      "dydo/project/changelog/2026/2026-02-27/_index.md",
+      "dydo/project/changelog/2026/2026-02-27/amend-gitignore.md",
+      "dydo/project/changelog/2026/2026-02-27/codebase-overview.md",
+      "dydo/project/changelog/2026/2026-02-27/engagement-levels-update.md",
+      "dydo/project/changelog/2026/2026-02-27/facial-emotion-detection.md",
+      "dydo/project/changelog/2026/2026-02-27/fix-apphost-ports.md",
+      "dydo/project/changelog/2026/2026-02-27/setup-troubleshooting.md",
+      "dydo/project/decisions/_decisions.md",
+      "dydo/project/decisions/_index.md",
+      "dydo/project/decisions/001-cicd-pipeline-architecture.md",
+      "dydo/project/pitfalls/_index.md",
+      "dydo/project/pitfalls/_pitfalls.md",
+      "dydo/project/tasks/_index.md",
+      "dydo/project/tasks/_tasks.md",
+      "dydo/project/tasks/add-new-page.md",
+      "dydo/project/tasks/cicd-pipeline.md",
+      "dydo/project/tasks/create-secrets-json.md",
+      "dydo/project/tasks/customize-architecture.md",
+      "dydo/project/tasks/engagement-levels-update.md",
+      "dydo/project/tasks/explore-project-structure.md",
+      "dydo/project/tasks/facial-emotion-detection.md",
+      "dydo/project/tasks/fix-apphost-ports.md",
+      "dydo/project/tasks/fix-docker-arm64.md",
+      "dydo/project/tasks/fix-microservice-startup.md",
+      "dydo/project/tasks/fix-snapshot-upload-500.md",
+      "dydo/project/tasks/inspect-aspire-logs.md",
+      "dydo/project/tasks/run-app.md",
+      "dydo/reference/_index.md",
+      "dydo/reference/_reference.md",
+      "dydo/reference/about-dynadocs.md",
+      "dydo/reference/coverage-tools.md",
+      "dydo/reference/cs2ts.md",
+      "dydo/reference/dydo-commands.md",
+      "dydo/reference/writing-docs.md",
+      "dydo/understand/_index.md",
+      "dydo/understand/_understand.md",
+      "dydo/understand/about.md",
+      "dydo/understand/architecture.md",
+      "dydo/welcome.md",
+      "Hackathon.slnx",
+      "readme.md",
+      "src/backend/Directory.Build.props",
+      "src/backend/Hackathon.Api/appsettings.Development.json",
+      "src/backend/Hackathon.Api/appsettings.json",
+      "src/backend/Hackathon.Api/Endpoints/AuthEndpoints.cs",
+      "src/backend/Hackathon.Api/Endpoints/MicroserviceEndpoints.cs",
+      "src/backend/Hackathon.Api/Endpoints/TestEndpoints.cs",
+      "src/backend/Hackathon.Api/Hackathon.Api.csproj",
+      "src/backend/Hackathon.Api/Program.cs",
+      "src/backend/Hackathon.Api/Properties/launchSettings.json",
+      "src/backend/Hackathon.AppHost/AppHost.cs",
+      "src/backend/Hackathon.AppHost/appsettings.Development.json",
+      "src/backend/Hackathon.AppHost/appsettings.json",
+      "src/backend/Hackathon.AppHost/Hackathon.AppHost.csproj",
+      "src/backend/Hackathon.AppHost/Properties/launchSettings.json",
+      "src/backend/Hackathon.Application/Auth/Commands/LoginUser/LoginUserCommand.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/LoginUser/LoginUserCommandHandler.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/LoginUser/LoginUserResult.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/Logout/LogoutCommand.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/Logout/LogoutCommandHandler.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RefreshToken/RefreshTokenCommand.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RefreshToken/RefreshTokenCommandHandler.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RefreshToken/RefreshTokenResult.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RegisterUser/RegisterUserCommand.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RegisterUser/RegisterUserCommandHandler.cs",
+      "src/backend/Hackathon.Application/Auth/Commands/RegisterUser/RegisterUserResult.cs",
+      "src/backend/Hackathon.Application/Auth/Interfaces/IJwtService.cs",
+      "src/backend/Hackathon.Application/Auth/Validation/EmailValidation.cs",
+      "src/backend/Hackathon.Application/Auth/Validation/PasswordValidation.cs",
+      "src/backend/Hackathon.Application/Auth/Validation/UsernameValidation.cs",
+      "src/backend/Hackathon.Application/Features/.gitkeep",
+      "src/backend/Hackathon.Application/Hackathon.Application.csproj",
+      "src/backend/Hackathon.Application/ServiceCollectionExtensions.cs",
+      "src/backend/Hackathon.Application/Shared/Interfaces/IPasswordHashingService.cs",
+      "src/backend/Hackathon.Application/Shared/Models/Result.cs",
+      "src/backend/Hackathon.Application/Shared/Repositories/IRepository.cs",
+      "src/backend/Hackathon.Application/Shared/Repositories/IUserRepository.cs",
+      "src/backend/Hackathon.Domain/DTOs/Auth/AuthResponseDto.cs",
+      "src/backend/Hackathon.Domain/DTOs/Auth/LoginUserDto.cs",
+      "src/backend/Hackathon.Domain/DTOs/Auth/RefreshTokenRequestDto.cs",
+      "src/backend/Hackathon.Domain/DTOs/Auth/RegisterUserDto.cs",
+      "src/backend/Hackathon.Domain/DTOs/Auth/UserDto.cs",
+      "src/backend/Hackathon.Domain/Hackathon.Domain.csproj",
+      "src/backend/Hackathon.Domain/Interfaces/.gitkeep",
+      "src/backend/Hackathon.Domain/Messages/AddNumbersCommand.cs",
+      "src/backend/Hackathon.Domain/Messages/AddNumbersResult.cs",
+      "src/backend/Hackathon.Domain/Messages/HackathonQueues.cs",
+      "src/backend/Hackathon.Domain/Messages/IAddNumbersClient.cs",
+      "src/backend/Hackathon.Domain/Models/.gitkeep",
+      "src/backend/Hackathon.Domain/Models/Auth/HashedPassword.cs",
+      "src/backend/Hackathon.Domain/Models/Auth/RefreshToken.cs",
+      "src/backend/Hackathon.Domain/Models/Auth/User.cs",
+      "src/backend/Hackathon.Domain/Models/Common/ConvertToTsAttribute.cs",
+      "src/backend/Hackathon.Infrastructure/Database/.gitkeep",
+      "src/backend/Hackathon.Infrastructure/Database/AppDbContext.cs",
+      "src/backend/Hackathon.Infrastructure/Database/AppDbContextFactory.cs",
+      "src/backend/Hackathon.Infrastructure/Database/Migrations/20260223121410_Initial.cs",
+      "src/backend/Hackathon.Infrastructure/Database/Migrations/20260223121410_Initial.Designer.cs",
+      "src/backend/Hackathon.Infrastructure/Database/Migrations/AppDbContextModelSnapshot.cs",
+      "src/backend/Hackathon.Infrastructure/Database/Repositories/EfRepository.cs",
+      "src/backend/Hackathon.Infrastructure/Database/Repositories/PostgresUserRepository.cs",
+      "src/backend/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj",
+      "src/backend/Hackathon.Infrastructure/ServiceCollectionExtensions.cs",
+      "src/backend/Hackathon.Infrastructure/Services/Auth/JwtService.cs",
+      "src/backend/Hackathon.Infrastructure/Services/Messaging/RabbitMqAddNumbersClient.cs",
+      "src/backend/Hackathon.Infrastructure/Services/PasswordHashing/Argon2IdPasswordHashingService.cs",
+      "src/backend/Hackathon.Infrastructure/Services/SecretManagement/FileSecretClient.cs",
+      "src/backend/Hackathon.Infrastructure/Services/SecretManagement/ISecretClient.cs",
+      "src/backend/Hackathon.ServiceDefaults/Extensions.cs",
+      "src/backend/Hackathon.ServiceDefaults/Hackathon.ServiceDefaults.csproj",
+      "src/frontend/eslint.config.js",
+      "src/frontend/index.html",
+      "src/frontend/package-lock.json",
+      "src/frontend/package.json",
+      "src/frontend/public/.gitkeep",
+      "src/frontend/public/vite.svg",
+      "src/frontend/src/api/.gitkeep",
+      "src/frontend/src/api/apiClient.test.ts",
+      "src/frontend/src/api/apiClient.ts",
+      "src/frontend/src/api/unauthorizedBus.test.ts",
+      "src/frontend/src/api/unauthorizedBus.ts",
+      "src/frontend/src/App.css",
+      "src/frontend/src/App.test.tsx",
+      "src/frontend/src/App.tsx",
+      "src/frontend/src/components/.gitkeep",
+      "src/frontend/src/components/auth/LoginModal.tsx",
+      "src/frontend/src/components/auth/RegisterForm.tsx",
+      "src/frontend/src/components/auth/UnauthorizedModalHost.tsx",
+      "src/frontend/src/components/layout/Navbar.tsx",
+      "src/frontend/src/contexts/AuthContext.tsx",
+      "src/frontend/src/contexts/authState.ts",
+      "src/frontend/src/generated/.gitkeep",
+      "src/frontend/src/generated/DTOs/Auth/AuthResponseDto.ts",
+      "src/frontend/src/generated/DTOs/Auth/LoginUserDto.ts",
+      "src/frontend/src/generated/DTOs/Auth/RefreshTokenRequestDto.ts",
+      "src/frontend/src/generated/DTOs/Auth/RegisterUserDto.ts",
+      "src/frontend/src/generated/DTOs/Auth/UserDto.ts",
+      "src/frontend/src/hooks/.gitkeep",
+      "src/frontend/src/hooks/useAuth.ts",
+      "src/frontend/src/hooks/useAuthMutations.test.tsx",
+      "src/frontend/src/hooks/useAuthMutations.ts",
+      "src/frontend/src/index.css",
+      "src/frontend/src/main.tsx",
+      "src/frontend/src/pages/.gitkeep",
+      "src/frontend/src/pages/ApiTest.tsx",
+      "src/frontend/src/pages/ClassroomBuilder.tsx",
+      "src/frontend/src/pages/Home.tsx",
+      "src/frontend/src/test/setup.ts",
+      "src/frontend/src/types/.gitkeep",
+      "src/frontend/src/vite-env.d.ts",
+      "src/frontend/tsconfig.app.json",
+      "src/frontend/tsconfig.json",
+      "src/frontend/tsconfig.node.json",
+      "src/frontend/vite.config.ts",
+      "src/frontend/vitest.config.ts",
+      "src/microservices/microservice/.python-version",
+      "src/microservices/microservice/api/__init__.py",
+      "src/microservices/microservice/api/main.py",
+      "src/microservices/microservice/api/models/__init__.py",
+      "src/microservices/microservice/api/models/.gitkeep",
+      "src/microservices/microservice/api/models/emotion_orm.py",
+      "src/microservices/microservice/api/models/emotion_schemas.py",
+      "src/microservices/microservice/api/routes/__init__.py",
+      "src/microservices/microservice/api/routes/emotion.py",
+      "src/microservices/microservice/api/routes/health.py",
+      "src/microservices/microservice/pyproject.toml",
+      "src/microservices/microservice/run.py",
+      "src/microservices/microservice/services/__init__.py",
+      "src/microservices/microservice/services/.gitkeep",
+      "src/microservices/microservice/services/emotion_analyzer.py",
+      "src/microservices/microservice/services/emotion_repository.py",
+      "src/microservices/microservice/shared/__init__.py",
+      "src/microservices/microservice/shared/.gitkeep",
+      "src/microservices/microservice/shared/database.py",
+      "src/microservices/microservice/tests/__init__.py",
+      "src/microservices/microservice/tests/conftest.py",
+      "src/microservices/microservice/tests/test_database.py",
+      "src/microservices/microservice/tests/test_emotion_analyzer.py",
+      "src/microservices/microservice/tests/test_emotion_routes.py",
+      "src/microservices/microservice/tests/test_health.py",
+      "src/microservices/microservice/tests/workers/__init__.py",
+      "src/microservices/microservice/tests/workers/conftest.py",
+      "src/microservices/microservice/uv.lock",
+      "src/microservices/microservice/workers/__init__.py",
+      "src/microservices/microservice/workers/add_numbers_worker.py",
+      "tests/backend/Directory.Build.props",
+      "tests/backend/Hackathon.Api.Tests/AuthEndpointsTests.cs",
+      "tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj",
+      "tests/backend/Hackathon.Api.Tests/MicroserviceEndpointsTests.cs",
+      "tests/backend/Hackathon.Api.Tests/ServiceDefaultsExtensionsTests.cs",
+      "tests/backend/Hackathon.Api.Tests/TestEndpointsTests.cs",
+      "tests/backend/Hackathon.Application.Tests/EmailValidationTests.cs",
+      "tests/backend/Hackathon.Application.Tests/Hackathon.Application.Tests.csproj",
+      "tests/backend/Hackathon.Application.Tests/LoginUserCommandHandlerTests.cs",
+      "tests/backend/Hackathon.Application.Tests/LogoutCommandHandlerTests.cs",
+      "tests/backend/Hackathon.Application.Tests/PasswordValidationTests.cs",
+      "tests/backend/Hackathon.Application.Tests/RefreshTokenCommandHandlerTests.cs",
+      "tests/backend/Hackathon.Application.Tests/RegisterUserCommandHandlerTests.cs",
+      "tests/backend/Hackathon.Application.Tests/ResultTests.cs",
+      "tests/backend/Hackathon.Application.Tests/ServiceCollectionExtensionsTests.cs",
+      "tests/backend/Hackathon.Application.Tests/UsernameValidationTests.cs",
+      "tests/backend/Hackathon.Architecture.Tests/ArchitectureTests.cs",
+      "tests/backend/Hackathon.Architecture.Tests/Hackathon.Architecture.Tests.csproj",
+      "tests/backend/Hackathon.Domain.Tests/Hackathon.Domain.Tests.csproj",
+      "tests/backend/Hackathon.Domain.Tests/HashedPasswordTests.cs",
+      "tests/backend/Hackathon.Domain.Tests/RefreshTokenTests.cs",
+      "tests/backend/Hackathon.Domain.Tests/UserTests.cs",
+      "tests/backend/Hackathon.Infrastructure.Tests/Hackathon.Infrastructure.Tests.csproj",
+      "tests/backend/Hackathon.Infrastructure.Tests/InfrastructureTests.cs",
+      "tests/backend/Hackathon.IntegrationTests/Hackathon.IntegrationTests.csproj",
+      "tests/backend/Hackathon.IntegrationTests/IntegrationTests.cs",
+      "tests/coverage/coverage.runsettings",
+      "tests/coverage/gap_check.py",
+      "tests/coverage/report.py",
+      "tests/coverage/tier_registry.json"
+    ],
+    "folders": [
+      ".claude",
+      "dydo",
+      "dydo/_assets",
+      "dydo/_system",
+      "dydo/_system/audit",
+      "dydo/_system/audit/2026",
+      "dydo/_system/templates",
+      "dydo/.obsidian",
+      "dydo/guides",
+      "dydo/project",
+      "dydo/project/changelog",
+      "dydo/project/changelog/2026",
+      "dydo/project/changelog/2026/2026-02-27",
+      "dydo/project/decisions",
+      "dydo/project/pitfalls",
+      "dydo/project/tasks",
+      "dydo/reference",
+      "dydo/understand",
+      "src",
+      "src/backend",
+      "src/backend/Hackathon.Api",
+      "src/backend/Hackathon.Api/Endpoints",
+      "src/backend/Hackathon.Api/Properties",
+      "src/backend/Hackathon.AppHost",
+      "src/backend/Hackathon.AppHost/Properties",
+      "src/backend/Hackathon.Application",
+      "src/backend/Hackathon.Application/Auth",
+      "src/backend/Hackathon.Application/Auth/Commands",
+      "src/backend/Hackathon.Application/Auth/Commands/LoginUser",
+      "src/backend/Hackathon.Application/Auth/Commands/Logout",
+      "src/backend/Hackathon.Application/Auth/Commands/RefreshToken",
+      "src/backend/Hackathon.Application/Auth/Commands/RegisterUser",
+      "src/backend/Hackathon.Application/Auth/Interfaces",
+      "src/backend/Hackathon.Application/Auth/Validation",
+      "src/backend/Hackathon.Application/Features",
+      "src/backend/Hackathon.Application/Shared",
+      "src/backend/Hackathon.Application/Shared/Interfaces",
+      "src/backend/Hackathon.Application/Shared/Models",
+      "src/backend/Hackathon.Application/Shared/Repositories",
+      "src/backend/Hackathon.Domain",
+      "src/backend/Hackathon.Domain/DTOs",
+      "src/backend/Hackathon.Domain/DTOs/Auth",
+      "src/backend/Hackathon.Domain/Interfaces",
+      "src/backend/Hackathon.Domain/Messages",
+      "src/backend/Hackathon.Domain/Models",
+      "src/backend/Hackathon.Domain/Models/Auth",
+      "src/backend/Hackathon.Domain/Models/Common",
+      "src/backend/Hackathon.Infrastructure",
+      "src/backend/Hackathon.Infrastructure/Database",
+      "src/backend/Hackathon.Infrastructure/Database/Migrations",
+      "src/backend/Hackathon.Infrastructure/Database/Repositories",
+      "src/backend/Hackathon.Infrastructure/Services",
+      "src/backend/Hackathon.Infrastructure/Services/Auth",
+      "src/backend/Hackathon.Infrastructure/Services/Messaging",
+      "src/backend/Hackathon.Infrastructure/Services/PasswordHashing",
+      "src/backend/Hackathon.Infrastructure/Services/SecretManagement",
+      "src/backend/Hackathon.ServiceDefaults",
+      "src/frontend",
+      "src/frontend/public",
+      "src/frontend/src",
+      "src/frontend/src/api",
+      "src/frontend/src/components",
+      "src/frontend/src/components/auth",
+      "src/frontend/src/components/layout",
+      "src/frontend/src/contexts",
+      "src/frontend/src/generated",
+      "src/frontend/src/generated/DTOs",
+      "src/frontend/src/generated/DTOs/Auth",
+      "src/frontend/src/hooks",
+      "src/frontend/src/pages",
+      "src/frontend/src/test",
+      "src/frontend/src/types",
+      "src/microservices",
+      "src/microservices/microservice",
+      "src/microservices/microservice/api",
+      "src/microservices/microservice/api/models",
+      "src/microservices/microservice/api/routes",
+      "src/microservices/microservice/services",
+      "src/microservices/microservice/shared",
+      "src/microservices/microservice/tests",
+      "src/microservices/microservice/tests/workers",
+      "src/microservices/microservice/workers",
+      "tests",
+      "tests/backend",
+      "tests/backend/Hackathon.Api.Tests",
+      "tests/backend/Hackathon.Application.Tests",
+      "tests/backend/Hackathon.Architecture.Tests",
+      "tests/backend/Hackathon.Domain.Tests",
+      "tests/backend/Hackathon.Infrastructure.Tests",
+      "tests/backend/Hackathon.IntegrationTests",
+      "tests/coverage"
+    ],
+    "doc_links": {
+      "dydo/welcome.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md",
+        "dydo/glossary.md",
+        "dydo/understand/_index.md",
+        "dydo/guides/_index.md",
+        "dydo/reference/_index.md",
+        "dydo/project/_index.md",
+        "dydo/reference/about-dynadocs.md",
+        "dydo/index.md"
+      ],
+      "dydo/guides/coding-standards.md": [
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/guides/how-to-use-docs.md": [
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md",
+        "dydo/reference/dydo-commands.md"
+      ],
+      "dydo/guides/local-setup.md": [
+        "dydo/guides/coding-standards.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/guides/_guides.md": [
+        "dydo/reference/about-dynadocs.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md",
+        "dydo/understand/_index.md",
+        "dydo/reference/_index.md",
+        "dydo/project/_index.md"
+      ],
+      "dydo/guides/_index.md": [
+        "dydo/guides/coding-standards.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/guides/local-setup.md"
+      ],
+      "dydo/project/_index.md": [
+        "dydo/project/changelog/_index.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/project/pitfalls/_index.md",
+        "dydo/project/tasks/_index.md"
+      ],
+      "dydo/project/_project.md": [
+        "dydo/reference/about-dynadocs.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md",
+        "dydo/understand/_index.md",
+        "dydo/guides/_index.md",
+        "dydo/reference/_index.md"
+      ],
+      "dydo/reference/cs2ts.md": [
+        "dydo/glossary.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/reference/writing-docs.md": [
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/dydo-commands.md"
+      ],
+      "dydo/reference/_index.md": [
+        "dydo/reference/about-dynadocs.md",
+        "dydo/reference/coverage-tools.md",
+        "dydo/reference/cs2ts.md",
+        "dydo/reference/dydo-commands.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/reference/_reference.md": [
+        "dydo/reference/about-dynadocs.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md",
+        "dydo/understand/_index.md",
+        "dydo/guides/_index.md",
+        "dydo/project/_index.md"
+      ],
+      "dydo/understand/about.md": [
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/understand/architecture.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/coding-standards.md",
+        "dydo/guides/how-to-use-docs.md"
+      ],
+      "dydo/understand/_index.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/understand/_understand.md": [
+        "dydo/reference/about-dynadocs.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md",
+        "dydo/guides/_index.md",
+        "dydo/reference/_index.md",
+        "dydo/project/_index.md"
+      ],
+      "dydo/agents/kevin/workflow.md": [
+        "dydo/agents/kevin/modes/interviewer.md",
+        "dydo/agents/kevin/modes/planner.md",
+        "dydo/agents/kevin/modes/code-writer.md",
+        "dydo/agents/kevin/modes/co-thinker.md",
+        "dydo/agents/kevin/modes/reviewer.md",
+        "dydo/agents/kevin/modes/docs-writer.md",
+        "dydo/agents/kevin/modes/tester.md"
+      ],
+      "dydo/project/changelog/_changelog.md": [
+        "dydo/project/tasks/_index.md",
+        "dydo/project/decisions/_index.md"
+      ],
+      "dydo/project/changelog/_index.md": [
+        "dydo/project/changelog/2026/_index.md"
+      ],
+      "dydo/project/decisions/_decisions.md": [
+        "dydo/project/pitfalls/_index.md"
+      ],
+      "dydo/project/pitfalls/_pitfalls.md": [
+        "dydo/project/decisions/_index.md"
+      ],
+      "dydo/project/tasks/_index.md": [
+        "dydo/project/tasks/create-secrets-json.md",
+        "dydo/project/tasks/engagement-levels-update.md",
+        "dydo/project/tasks/facial-emotion-detection.md",
+        "dydo/project/tasks/fix-docker-arm64.md",
+        "dydo/project/tasks/inspect-aspire-logs.md",
+        "dydo/project/tasks/run-app.md"
+      ],
+      "dydo/project/tasks/_tasks.md": [
+        "dydo/project/changelog/_index.md"
+      ],
+      "dydo/_system/templates/mode-co-thinker.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md"
+      ],
+      "dydo/_system/templates/mode-code-writer.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/_system/templates/mode-docs-writer.template.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/_system/templates/mode-interviewer.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/_system/templates/mode-planner.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/_system/templates/mode-reviewer.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/_system/templates/mode-tester.template.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/kevin/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/kevin/modes/code-writer.md"
+      ],
+      "dydo/agents/kevin/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/kevin/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/kevin/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/kevin/modes/planner.md"
+      ],
+      "dydo/agents/kevin/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/kevin/modes/code-writer.md"
+      ],
+      "dydo/agents/kevin/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/kevin/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/project/changelog/2026/_index.md": [
+        "dydo/project/changelog/2026/2026-02-27/_index.md"
+      ],
+      "dydo/project/changelog/2026/2026-02-27/engagement-levels-update.md": [
+        "dydo/project/changelog/2026/2026-02-27/facial-emotion-detection.md"
+      ],
+      "dydo/project/changelog/2026/2026-02-27/_index.md": [
+        "dydo/project/changelog/2026/2026-02-27/amend-gitignore.md",
+        "dydo/project/changelog/2026/2026-02-27/codebase-overview.md",
+        "dydo/project/changelog/2026/2026-02-27/engagement-levels-update.md",
+        "dydo/project/changelog/2026/2026-02-27/facial-emotion-detection.md",
+        "dydo/project/changelog/2026/2026-02-27/fix-apphost-ports.md",
+        "dydo/project/changelog/2026/2026-02-27/setup-troubleshooting.md"
+      ]
+    }
+  }
+}
