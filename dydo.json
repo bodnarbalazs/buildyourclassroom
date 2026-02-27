@@ -41,7 +41,17 @@
       "George",
       "Holly",
       "Ivan",
-      "Julia"
+      "Julia",
+      "Kevin",
+      "Luna",
+      "Marcus",
+      "Nadia",
+      "Oscar",
+      "Penny",
+      "Quentin",
+      "Rita",
+      "Steve",
+      "Tina"
     ],
     "assignments": {
       "balazs": [
@@ -83,6 +93,18 @@
         "Holly",
         "Ivan",
         "Julia"
+      ],
+      "peti": [
+        "Kevin",
+        "Luna",
+        "Marcus",
+        "Nadia",
+        "Oscar",
+        "Penny",
+        "Quentin",
+        "Rita",
+        "Steve",
+        "Tina"
       ]
     }
   },
