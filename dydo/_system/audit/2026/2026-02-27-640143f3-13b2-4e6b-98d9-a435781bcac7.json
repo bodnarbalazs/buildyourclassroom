@@ -167,6 +167,12 @@
       "event": "Bash",
       "tool": "bash",
       "cmd": "sleep 10"
+    },
+    {
+      "ts": "2026-02-27T19:35:36.637618Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "lsof -ti :22128 2\u003E/dev/null | xargs kill 2\u003E/dev/null; lsof -ti :17128 2\u003E/dev/null | xargs kill 2\u003E/de..."
     }
   ]
 }

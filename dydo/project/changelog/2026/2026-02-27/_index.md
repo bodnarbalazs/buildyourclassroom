@@ -13,5 +13,8 @@ Index of 2026-02-27 documentation.
 
 - [Amend Gitignore](./amend-gitignore.md)
 - [Codebase Overview](./codebase-overview.md)
+- [Engagement Levels Update](./engagement-levels-update.md)
+- [Facial Emotion Detection](./facial-emotion-detection.md)
 - [Fix Apphost Ports](./fix-apphost-ports.md)
+- [Implement Rabbitmq Workers](./implement-rabbitmq-workers.md)
 - [Setup Troubleshooting](./setup-troubleshooting.md)

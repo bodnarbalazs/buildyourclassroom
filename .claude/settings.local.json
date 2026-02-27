@@ -26,9 +26,16 @@
       "Bash(python tests/coverage/gap_check.py:*)",
       "mcp__plugin_context7_context7__query-docs",
       "mcp__plugin_context7_context7__resolve-library-id",
-      "Bash(export DYDO_HUMAN=gyuresz)"
+      "Bash(export DYDO_HUMAN=gyuresz)",
+      "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search",
+      "Bash(uv sync:*)",
+      "WebFetch(domain:aspire.dev)"
     ]
   },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "aspire"
+  ],
   "hooks": {
     "PreToolUse": [
       {
