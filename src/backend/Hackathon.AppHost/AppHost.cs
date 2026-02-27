@@ -33,6 +33,8 @@ var frontendWorkingDir = Path.GetFullPath(
     Path.Combine(builder.AppHostDirectory, "../../frontend"));
 var microserviceWorkingDir = Path.GetFullPath(
     Path.Combine(builder.AppHostDirectory, "../../microservices/microservice"));
+var dockerDir = Path.GetFullPath(
+    Path.Combine(builder.AppHostDirectory, "../../../docker"));
 
 // ──────────────────────────────────────────────────────────────────
 // Core Services
@@ -51,21 +53,19 @@ var frontend = builder.AddNpmApp("frontend", frontendWorkingDir, "dev")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile();
 
-// Python microservice (FastAPI)
-var microservice = builder.AddUvicornApp("microservice",
+// Python microservice (FastAPI) — runs in Docker (TF requires Linux)
+var microservice = builder.AddDockerfile("microservice",
         microserviceWorkingDir,
-        "api.main:app")
-    .WithUv()
+        Path.Combine(dockerDir, "microservice.Dockerfile"))
     .WithReference(hackathonDb)
     .WaitFor(postgres)
-    .WithEndpoint("http", e => e.Port = 8000)
+    .WithHttpEndpoint(targetPort: 8000)
     .WithExternalHttpEndpoints();
 
-// Python workers (RabbitMQ consumers)
-var addNumbersWorker = builder.AddPythonApp("add-numbers-worker",
+// Python workers (RabbitMQ consumers) — run in Docker (TF requires Linux)
+var addNumbersWorker = builder.AddDockerfile("add-numbers-worker",
         microserviceWorkingDir,
-        "workers/add_numbers_worker.py")
-    .WithUv()
+        Path.Combine(dockerDir, "worker.Dockerfile"))
     .WithReference(rabbitmq)
     .WaitFor(rabbitmq)
     .WithEnvironment("RABBITMQ_HOST", rabbitmq.Resource.PrimaryEndpoint.Property(EndpointProperty.Host))
@@ -74,10 +74,11 @@ var addNumbersWorker = builder.AddPythonApp("add-numbers-worker",
     .WithEnvironment("RABBITMQ_PASSWORD", rabbitmq.Resource.PasswordParameter!)
     .WithEnvironment("WORKER_QUEUE", HackathonQueues.AddNumbers);
 
-var analyzeSnapshotWorker = builder.AddPythonApp("analyze-snapshot-worker",
+var analyzeSnapshotWorker = builder.AddDockerfile("analyze-snapshot-worker",
         microserviceWorkingDir,
-        "workers/analyze_snapshot_worker.py")
-    .WithUv()
+        Path.Combine(dockerDir, "worker.Dockerfile"))
+    .WithEntrypoint("uv")
+    .WithArgs("run", "python", "workers/analyze_snapshot_worker.py")
     .WithReference(rabbitmq)
     .WaitFor(rabbitmq)
     .WithReference(hackathonDb)
