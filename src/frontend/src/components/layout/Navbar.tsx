@@ -15,6 +15,9 @@ export default function Navbar() {
       <Link to="/api-test" className="text-gray-600 hover:text-gray-900">
         API Test
       </Link>
+      <Link to="/classroom-builder" className="text-gray-600 hover:text-gray-900">
+        Classroom Builder
+      </Link>
       <div className="ml-auto flex items-center gap-4">
         {isAuthenticated ? (
           <>

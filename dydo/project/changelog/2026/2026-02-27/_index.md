@@ -11,7 +11,9 @@ Index of 2026-02-27 documentation.
 
 ## Contents
 
-- [Amend Gitignore](./amend-gitignore.md)
-- [Codebase Overview](./codebase-overview.md)
-- [Fix Apphost Ports](./fix-apphost-ports.md)
-- [Setup Troubleshooting](./setup-troubleshooting.md)
+- [Task: amend-gitignore](./amend-gitignore.md) - (No description)
+- [Task: codebase-overview](./codebase-overview.md) - (No description)
+- [Replace engagement levels with learning-quality model](./engagement-levels-update.md) - Engagement scoring now uses five pedagogically meaningful levels instead of generic high/medium/low.
+- [Add facial emotion detection to Python microservice](./facial-emotion-detection.md) - Real-time student engagement measurement via webcam snapshot analysis.
+- [Task: fix-apphost-ports](./fix-apphost-ports.md) - (No description)
+- [Task: setup-troubleshooting](./setup-troubleshooting.md) - (No description)
