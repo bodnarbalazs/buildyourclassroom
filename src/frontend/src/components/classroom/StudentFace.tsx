@@ -1,55 +1,63 @@
+import React from "react";
 import type { Emotion } from "../../types/simulation";
 
-// South Park-style flat cartoon face. Eyes and mouth shape encode the emotion.
+import eyeNatural   from "../../assets/faces/Eye_Natural.svg";
+import eyeHappy     from "../../assets/faces/Eye_Happy.svg";
+import eyeAngry     from "../../assets/faces/Eye_Angry.svg";
+import browNeutral  from "../../assets/faces/Eyebrows_Neutral.svg";
+import browConfused from "../../assets/faces/Eyebrows_Confused.svg";
+import browSad      from "../../assets/faces/Eyebrows_Sad.svg";
+import mouthNeutral from "../../assets/faces/Mouth_neutral.svg";
+import mouthSmile   from "../../assets/faces/Mouth_Smile.svg";
+import mouthBig     from "../../assets/faces/Mouth_BigSmile.svg";
+import mouthSad     from "../../assets/faces/Mouth_Sad.svg";
+import hair0 from "../../assets/faces/Hair_man1.svg";
+import hair1 from "../../assets/faces/Hair_man2.svg";
+import hair2 from "../../assets/faces/Hair_Man3.svg";
+import hair3 from "../../assets/faces/Hair_man4.svg";
+import hair4 from "../../assets/faces/Hair_woman1.svg";
+import hair5 from "../../assets/faces/Hair_woman2.svg";
+import hair6 from "../../assets/faces/Hair_woman3.svg";
+import hair7 from "../../assets/faces/Hair_woman4.svg";
+import headBase from "../../assets/faces/Head.svg";
+
+const HAIRS = [hair0, hair1, hair2, hair3, hair4, hair5, hair6, hair7];
+
+export const EMOTION_COLORS: Record<Emotion, string> = {
+  neutral:  "#94a3b8",
+  focused:  "#4ade80",
+  bored:    "#fb923c",
+  confused: "#c084fc",
+  excited:  "#facc15",
+  sleepy:   "#7dd3fc",
+};
+
+const PARTS = {
+  neutral:  { eye: eyeNatural,  brow: browNeutral,  mouth: mouthNeutral },
+  focused:  { eye: eyeNatural,  brow: browNeutral,  mouth: mouthSmile   },
+  bored:    { eye: eyeNatural,  brow: browSad,      mouth: mouthSad     },
+  confused: { eye: eyeNatural,  brow: browConfused, mouth: mouthNeutral },
+  excited:  { eye: eyeHappy,    brow: browNeutral,  mouth: mouthBig     },
+  sleepy:   { eye: eyeAngry,    brow: browSad,      mouth: mouthNeutral },
+};
+
 interface Props {
   emotion: Emotion;
-  size?: number;
+  studentId?: number;
+  className?: string;
 }
 
-const SKIN = "#FDDBB4";
-const INK = "#333";
-
-function Eyes({ emotion }: { emotion: Emotion }) {
-  if (emotion === "sleepy" || emotion === "bored") {
-    return (
-      <>
-        <path d="M9 13 Q11 11 13 13" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        <path d="M19 13 Q21 11 23 13" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-      </>
-    );
-  }
-  const r = emotion === "excited" || emotion === "confused" ? 2.5 : 2;
-  return (
-    <>
-      <circle cx="11" cy="13" r={r} fill={INK} />
-      <circle cx="21" cy="13" r={r} fill={INK} />
-    </>
-  );
-}
-
-function Mouth({ emotion }: { emotion: Emotion }) {
-  switch (emotion) {
-    case "focused":
-      return <path d="M12 21 L20 21" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-    case "excited":
-      return <path d="M10 19 Q16 25 22 19" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-    case "bored":
-      return <path d="M11 22 Q16 19 21 22" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-    case "confused":
-      return <path d="M11 21 Q14 18 16 21 Q18 24 21 21" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-    case "sleepy":
-      return <path d="M13 22 Q16 24 19 22" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-    default:
-      return <path d="M12 21 Q16 23 20 21" stroke={INK} strokeWidth="1.5" fill="none" strokeLinecap="round" />;
-  }
-}
-
-export default function StudentFace({ emotion, size = 32 }: Props) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="16" cy="16" r="14" fill={SKIN} stroke={INK} strokeWidth="1.5" />
-      <Eyes emotion={emotion} />
-      <Mouth emotion={emotion} />
-    </svg>
+export default function StudentFace({ emotion, studentId = 0, className }: Props) {
+  const hair = HAIRS[studentId % HAIRS.length];
+  const { eye, brow, mouth } = PARTS[emotion];
+  const d = "385";
+  return React.createElement(
+    "svg",
+    { className, viewBox: "55 50 280 280", xmlns: "http://www.w3.org/2000/svg" },
+    React.createElement("image", { href: headBase, x: "0", y: "0", width: d, height: d }),
+    React.createElement("image", { href: hair,  x: "0", y: "0", width: d, height: d }),
+    React.createElement("image", { href: brow,  x: "0", y: "0", width: d, height: d }),
+    React.createElement("image", { href: eye,   x: "0", y: "0", width: d, height: d }),
+    React.createElement("image", { href: mouth, x: "0", y: "0", width: d, height: d })
   );
 }

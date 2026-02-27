@@ -1,5 +1,5 @@
 import type { Emotion, SimulationState, StudentState } from "../../types/simulation";
-import StudentFace from "./StudentFace";
+import StudentFace, { EMOTION_COLORS } from "./StudentFace";
 import ThoughtBubble from "./ThoughtBubble";
 
 // 3 cols x 5 rows = 15 desks, 2 per desk = 30 students.
@@ -10,30 +10,47 @@ const IDLE_EMOTIONS: Emotion[] = [
   "sleepy",   "bored",    "focused", "excited",  "neutral",  "confused",
   "excited",  "confused", "sleepy",  "neutral",  "focused",  "bored",
 ];
-// IDs: row r, col c: left = r*6+c*2, right = r*6+c*2+1
 
 interface Props {
   simulation: SimulationState;
 }
 
-function Desk({ left, right }: { left: StudentState; right: StudentState }) {
+function StudentSeat({ student }: { student: StudentState }) {
+  const ringColor = EMOTION_COLORS[student.emotion];
   return (
-    <div className="flex flex-col items-stretch">
+    <div className="relative flex flex-col items-center">
+      {student.thought && <ThoughtBubble text={student.thought} />}
       <div
-        className="relative flex items-end justify-around px-2 pt-2 pb-1 bg-amber-200 border-2 border-amber-700 rounded-t"
-        style={{ boxShadow: "inset 0 -2px 0 #b45309" }}
+        className="rounded-full p-1"
+        style={{
+          background: `linear-gradient(135deg, ${ringColor}, ${ringColor}66)`,
+          boxShadow: `0 0 8px 1px ${ringColor}40`,
+        }}
       >
-        <div className="relative flex flex-col items-center">
-          {left.thought && <ThoughtBubble text={left.thought} />}
-          <StudentFace emotion={left.emotion} size={34} />
-        </div>
-        <div className="w-5 h-3 rounded-sm bg-sky-200 border border-sky-400 opacity-70 mb-1" />
-        <div className="relative flex flex-col items-center">
-          {right.thought && <ThoughtBubble text={right.thought} />}
-          <StudentFace emotion={right.emotion} size={34} />
+        <div className="rounded-full bg-[#faf5ee] p-[2px]">
+          <StudentFace emotion={student.emotion} studentId={student.id} className="w-full h-auto" />
         </div>
       </div>
-      <div className="h-3 bg-amber-700 rounded-b border-x-2 border-b-2 border-amber-800" />
+    </div>
+  );
+}
+
+function Desk({ left, right }: { left: StudentState; right: StudentState }) {
+  return (
+    <div className="flex flex-col items-stretch gap-1.5">
+      {/* Students sitting behind the desk */}
+      <div className="grid grid-cols-2 gap-3 px-1">
+        <StudentSeat student={left} />
+        <StudentSeat student={right} />
+      </div>
+      {/* Desk surface (top-down view) */}
+      <div
+        className="rounded-lg border border-amber-700/30 h-6"
+        style={{
+          background: "linear-gradient(180deg, #d4a574 0%, #c08a52 50%, #b07a42 100%)",
+          boxShadow: "0 2px 6px rgba(100,60,10,0.25), inset 0 1px 0 rgba(255,255,255,0.2)",
+        }}
+      />
     </div>
   );
 }
@@ -44,40 +61,65 @@ export default function ClassroomView({ simulation }: Props) {
   );
 
   return (
-    <div className="w-full rounded-xl border-2 border-amber-800 overflow-hidden">
-      <div className="bg-amber-900 px-8 pt-5 pb-3">
+    <div className="w-full rounded-xl border-2 border-stone-400/60 overflow-hidden shadow-lg">
+      {/* Wall with blackboard */}
+      <div
+        className="px-6 pt-5 pb-4"
+        style={{
+          background: "linear-gradient(180deg, #6b6560 0%, #8c8580 60%, #9e9690 100%)",
+          borderBottom: "3px solid #78716c",
+        }}
+      >
         <div
-          className="bg-green-800 border-4 border-amber-600 rounded flex items-center justify-center mx-auto"
-          style={{ height: 72, maxWidth: 560 }}
+          className="rounded border-[5px] border-amber-900/80 flex items-center justify-center mx-auto py-5"
+          style={{
+            maxWidth: 380,
+            background: "linear-gradient(145deg, #1a5c2e 0%, #14532d 40%, #1e4a30 100%)",
+            boxShadow: "inset 0 2px 12px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2)",
+          }}
         >
-          <span className="text-white/60 font-mono text-sm tracking-widest select-none">
-            — Today’s Lesson —
+          <span className="text-green-300/40 font-mono text-xs tracking-[0.25em] select-none">
+            TODAY'S LESSON
           </span>
         </div>
       </div>
-      <div className="px-6 pb-8 pt-4 bg-amber-50" style={{ perspective: 700 }}>
-        <div style={{ transform: "rotateX(10deg)", transformOrigin: "top center" }}>
-          <div className="flex justify-center mb-6">
-            <div
-              className="bg-amber-300 border-2 border-amber-700 rounded px-10 py-1.5 text-xs font-semibold text-amber-900 tracking-widest uppercase"
-              style={{ boxShadow: "0 5px 0 #b45309" }}
-            >
-              Teacher
+
+      {/* Classroom floor area */}
+      <div
+        className="px-6 pb-8 pt-5"
+        style={{
+          background: `
+            repeating-conic-gradient(#efe3d4 0% 25%, #e8dbc9 0% 50%) 0 0 / 48px 48px
+          `,
+        }}
+      >
+        {/* Teacher's desk */}
+        <div className="flex justify-center mb-6">
+          <div
+            className="rounded-lg px-10 py-2.5 text-xs font-bold tracking-[0.2em] uppercase border border-amber-800/40"
+            style={{
+              background: "linear-gradient(180deg, #c49058 0%, #a67540 100%)",
+              boxShadow: "0 3px 8px rgba(100,55,10,0.3), inset 0 1px 0 rgba(255,255,255,0.15)",
+              color: "#4a2c12",
+            }}
+          >
+            Teacher
+          </div>
+        </div>
+
+        {/* Student desks grid — fills available width */}
+        <div className="flex flex-col gap-4 max-w-xl mx-auto">
+          {Array.from({ length: 5 }, (_, row) => (
+            <div key={row} className="grid grid-cols-3 gap-4">
+              {Array.from({ length: 3 }, (_, col) => (
+                <Desk
+                  key={col}
+                  left={all[row * 6 + col * 2]}
+                  right={all[row * 6 + col * 2 + 1]}
+                />
+              ))}
             </div>
-          </div>
-          <div className="flex flex-col gap-5">
-            {Array.from({ length: 5 }, (_, row) => (
-              <div key={row} className="grid grid-cols-3 gap-4">
-                {Array.from({ length: 3 }, (_, col) => (
-                  <Desk
-                    key={col}
-                    left={all[row * 6 + col * 2]}
-                    right={all[row * 6 + col * 2 + 1]}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </div>
