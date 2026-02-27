@@ -31,7 +31,17 @@
       "Wendy",
       "Xavier",
       "Yara",
-      "Zelda"
+      "Zelda",
+      "Alfred",
+      "Bella",
+      "Carla",
+      "Dylan",
+      "Ethan",
+      "Fiona",
+      "George",
+      "Holly",
+      "Ivan",
+      "Julia"
     ],
     "assignments": {
       "balazs": [
@@ -61,6 +71,18 @@
         "Xavier",
         "Yara",
         "Zelda"
+      ],
+      "gyuresz": [
+        "Alfred",
+        "Bella",
+        "Carla",
+        "Dylan",
+        "Ethan",
+        "Fiona",
+        "George",
+        "Holly",
+        "Ivan",
+        "Julia"
       ]
     }
   },
