@@ -53,6 +53,8 @@ var microservice = builder.AddUvicornApp("microservice",
         microserviceWorkingDir,
         "api.main:app")
     .WithUv()
+    .WithReference(hackathonDb)
+    .WaitFor(postgres)
     .WithEndpoint("http", e => e.Port = 8000)
     .WithExternalHttpEndpoints();
 

@@ -11,5 +11,9 @@ Index of tasks documentation.
 
 ## Contents
 
-- [Task: codebase-overview](./codebase-overview.md) - (No description)
-- [Task: setup-troubleshooting](./setup-troubleshooting.md) - (No description)
+- [Task: create-secrets-json](./create-secrets-json.md) - (No description)
+- [Task: engagement-levels-update](./engagement-levels-update.md) - Document the engagement-level model change from generic high/medium/low to pedagogically meaningful levels (engaged/passive/confused/anxious/disrup...
+- [Task: facial-emotion-detection](./facial-emotion-detection.md) - Add real-time student engagement measurement to the Python microservice via facial emotion analysis.
+- [Task: fix-docker-arm64](./fix-docker-arm64.md) - (No description)
+- [Task: inspect-aspire-logs](./inspect-aspire-logs.md) - (No description)
+- [Task: run-app](./run-app.md) - (No description)
