@@ -60,6 +60,10 @@ public static class ServiceCollectionExtensions
             RabbitMqAddNumbersClient.CreateAsync(sp.GetRequiredService<IConnection>())
                 .GetAwaiter().GetResult());
 
+        services.AddSingleton<IAnalyzeSnapshotClient>(sp =>
+            RabbitMqAnalyzeSnapshotClient.CreateAsync(sp.GetRequiredService<IConnection>())
+                .GetAwaiter().GetResult());
+
         return services;
     }
 }

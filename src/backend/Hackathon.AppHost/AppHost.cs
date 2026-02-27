@@ -58,8 +58,8 @@ var microservice = builder.AddUvicornApp("microservice",
     .WithEndpoint("http", e => e.Port = 8000)
     .WithExternalHttpEndpoints();
 
-// Python worker (RabbitMQ consumer)
-var worker = builder.AddPythonApp("worker",
+// Python workers (RabbitMQ consumers)
+var addNumbersWorker = builder.AddPythonApp("add-numbers-worker",
         microserviceWorkingDir,
         "workers/add_numbers_worker.py")
     .WithUv()
@@ -70,5 +70,19 @@ var worker = builder.AddPythonApp("worker",
     .WithEnvironment("RABBITMQ_USER", "guest")
     .WithEnvironment("RABBITMQ_PASSWORD", rabbitmq.Resource.PasswordParameter!)
     .WithEnvironment("WORKER_QUEUE", HackathonQueues.AddNumbers);
+
+var analyzeSnapshotWorker = builder.AddPythonApp("analyze-snapshot-worker",
+        microserviceWorkingDir,
+        "workers/analyze_snapshot_worker.py")
+    .WithUv()
+    .WithReference(rabbitmq)
+    .WaitFor(rabbitmq)
+    .WithReference(hackathonDb)
+    .WaitFor(postgres)
+    .WithEnvironment("RABBITMQ_HOST", rabbitmq.Resource.PrimaryEndpoint.Property(EndpointProperty.Host))
+    .WithEnvironment("RABBITMQ_PORT", rabbitmq.Resource.PrimaryEndpoint.Property(EndpointProperty.Port))
+    .WithEnvironment("RABBITMQ_USER", "guest")
+    .WithEnvironment("RABBITMQ_PASSWORD", rabbitmq.Resource.PasswordParameter!)
+    .WithEnvironment("WORKER_QUEUE", HackathonQueues.AnalyzeSnapshot);
 
 builder.Build().Run();
