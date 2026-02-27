@@ -54,12 +54,21 @@ jobs:
       - name: Generate Kubernetes manifests
         run: aspire publish --project src/backend/Hackathon.AppHost -o k8s/
 
-      - name: Apply manifests
-        run: kubectl apply -f k8s/
+      - name: Deploy with Helm
+        run: |
+          helm upgrade --install buildyourclassroom ./k8s \
+            --set secrets.postgres.password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.messaging.password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.api.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.api.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.microservice.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.add-numbers-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.analyze-snapshot-worker.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.analyze-snapshot-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }}
 
       - name: Verify rollout
         run: |
-          kubectl rollout status deployment/api --timeout=120s
-          kubectl rollout status deployment/frontend --timeout=120s
-          kubectl rollout status deployment/microservice --timeout=120s
-          kubectl rollout status deployment/worker --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-api --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-frontend --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-microservice --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-worker --timeout=120s
