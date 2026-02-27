@@ -3,6 +3,7 @@ type: decision
 status: accepted
 date: 2026-02-27
 area: infrastructure
+updated: 2026-02-28
 ---
 
 # 001 — CI/CD Pipeline Architecture
@@ -13,13 +14,15 @@ We need a deployment pipeline for a polyglot Aspire app (6 services) targeting A
 
 ## Decision
 
-### Infrastructure: Terraform (minimal)
+### Infrastructure: Manual (Azure CLI / Portal)
 
-Create AKS + ACR with ~80 lines of Terraform. Enables `terraform destroy` for clean teardown and reproducible setup. No portal clicking.
+AKS cluster and ACR are provisioned manually via Azure CLI or Portal. No IaC tooling — the hackathon timeline doesn't justify it.
 
 - 1x B2ms node (2 vCPU, 8GB RAM) — ~$0.08/hr
 - ACR Basic tier
 - Estimated total cost: ~$2-3 for the hackathon
+
+> **Note (2026-02-28):** The original plan called for Terraform (`infra/` directory). In practice it was never applied — the cluster was set up manually, and neither `deploy.sh` nor `.github/workflows/deploy.yml` reference Terraform. The `infra/` directory was removed to avoid misleading agents and developers.
 
 ### Kubernetes manifests: aspirate (with fallback)
 
@@ -44,8 +47,7 @@ Postgres and RabbitMQ run as containers inside AKS, matching the local dev topol
 
 ## Alternatives Considered
 
-- **Terraform for everything** — Too heavy. App deploys don't belong in Terraform.
-- **No Terraform (portal/CLI only)** — Can't reliably destroy and recreate. Risk of leaked credits.
+- **Terraform for infrastructure** — Originally planned, files were written but never applied. Removed as dead code (2026-02-28).
 - **`azd` for deployment** — Good Aspire integration but opinionated. Less control when debugging at 2am.
 - **Azure Container Apps instead of AKS** — Awkward for stateful containers (Postgres, RabbitMQ).
 - **Managed databases** — $3-5/day extra, unnecessary for a hackathon.
