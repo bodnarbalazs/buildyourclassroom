@@ -3,28 +3,29 @@ set -euo pipefail
 
 VERSION="${1:?Usage: ./deploy.sh <version-tag> (e.g. v1.0.0)}"
 
-# Read ACR login server from env or terraform output
-ACR_LOGIN_SERVER="${ACR_LOGIN_SERVER:-$(cd infra && terraform output -raw acr_login_server)}"
+ACR_REGISTRY="${ACR_REGISTRY:?Set ACR_REGISTRY env var}"
+ACR_USERNAME="${ACR_USERNAME:?Set ACR_USERNAME env var}"
+ACR_PASSWORD="${ACR_PASSWORD:?Set ACR_PASSWORD env var}"
 
-echo "==> Deploying ${VERSION} to ${ACR_LOGIN_SERVER}"
+echo "==> Deploying ${VERSION} to ${ACR_REGISTRY}"
 
 # Build images
 echo "==> Building Docker images..."
-docker build -t "${ACR_LOGIN_SERVER}/api:${VERSION}"          -f docker/api.Dockerfile .
-docker build -t "${ACR_LOGIN_SERVER}/frontend:${VERSION}"     -f docker/frontend.Dockerfile .
-docker build -t "${ACR_LOGIN_SERVER}/microservice:${VERSION}" -f docker/microservice.Dockerfile src/microservices/microservice
-docker build -t "${ACR_LOGIN_SERVER}/worker:${VERSION}"       -f docker/worker.Dockerfile src/microservices/microservice
+docker build -t "${ACR_REGISTRY}/api:${VERSION}"          -f docker/api.Dockerfile .
+docker build -t "${ACR_REGISTRY}/frontend:${VERSION}"     -f docker/frontend.Dockerfile .
+docker build -t "${ACR_REGISTRY}/microservice:${VERSION}" -f docker/microservice.Dockerfile src/microservices/microservice
+docker build -t "${ACR_REGISTRY}/worker:${VERSION}"       -f docker/worker.Dockerfile src/microservices/microservice
 
 # Authenticate to ACR
 echo "==> Logging in to ACR..."
-az acr login --name "${ACR_LOGIN_SERVER}"
+docker login "${ACR_REGISTRY}" -u "${ACR_USERNAME}" -p "${ACR_PASSWORD}"
 
 # Push images
 echo "==> Pushing images to ACR..."
-docker push "${ACR_LOGIN_SERVER}/api:${VERSION}"
-docker push "${ACR_LOGIN_SERVER}/frontend:${VERSION}"
-docker push "${ACR_LOGIN_SERVER}/microservice:${VERSION}"
-docker push "${ACR_LOGIN_SERVER}/worker:${VERSION}"
+docker push "${ACR_REGISTRY}/api:${VERSION}"
+docker push "${ACR_REGISTRY}/frontend:${VERSION}"
+docker push "${ACR_REGISTRY}/microservice:${VERSION}"
+docker push "${ACR_REGISTRY}/worker:${VERSION}"
 
 # Generate k8s manifests via Aspire publisher
 echo "==> Generating Kubernetes manifests..."
