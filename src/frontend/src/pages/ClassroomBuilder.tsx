@@ -6,7 +6,7 @@ import ClassroomView from "../components/classroom/ClassroomView";
 import LessonPlanInput from "../components/classroom/LessonPlanInput";
 import ResultsPanel from "../components/classroom/ResultsPanel";
 
-const EMOTIONS = ["neutral", "focused", "bored", "confused", "excited", "sleepy"] as const;
+const EMOTIONS = ["engaged", "passive", "anxious", "confused", "disruptive"] as const;
 
 const INITIAL: SimulationState = { status: "idle", students: [], currentMinute: 0 };
 
@@ -42,22 +42,24 @@ export default function ClassroomBuilder() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col gap-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col gap-8">
       <h1 className="text-3xl font-bold text-gray-900"> Classroom Builder </h1>
 
-      {/* 1. Classroom drawing */}
-      <ClassroomView simulation={simulation} />
+      <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 items-start">
+        {/* Classroom graphic */}
+        <ClassroomView simulation={simulation} />
 
-      {/* 2. Lesson plan input */}
-      <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-        <LessonPlanInput
-          onPlanReady={setPlan}
-          onRunSimulation={handleRunSimulation}
-          simulationStatus={simulation.status}
-        />
+        {/* Lesson plan input */}
+        <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <LessonPlanInput
+            onPlanReady={setPlan}
+            onRunSimulation={handleRunSimulation}
+            simulationStatus={simulation.status}
+          />
+        </div>
       </div>
 
-      {/* 3. Results -- only shown once simulation starts */}
+      {/* Results -- full width below */}
       {simulation.status !== "idle" && (
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
           <ResultsPanel simulation={simulation} />

@@ -4,9 +4,6 @@ on:
   push:
     tags: ['v*']
 
-env:
-  ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,26 +16,13 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Setup Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Setup Python 3.13
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Get AKS credentials
-        run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER_NAME }}
-
       - name: Login to ACR
-        run: az acr login --name ${{ secrets.ACR_LOGIN_SERVER }}
+        run: docker login ${{ secrets.ACR_REGISTRY }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
+
+      - name: Setup kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
 
       - name: Extract version tag
         id: version
@@ -46,23 +30,23 @@ jobs:
 
       - name: Build and push API image
         run: |
-          docker build -t $ACR_LOGIN_SERVER/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
-          docker push $ACR_LOGIN_SERVER/api:${{ steps.version.outputs.tag }}
+          docker build -t ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
+          docker push ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }}
 
       - name: Build and push frontend image
         run: |
-          docker build -t $ACR_LOGIN_SERVER/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
-          docker push $ACR_LOGIN_SERVER/frontend:${{ steps.version.outputs.tag }}
+          docker build -t ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
+          docker push ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }}
 
       - name: Build and push microservice image
         run: |
-          docker build -t $ACR_LOGIN_SERVER/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
-          docker push $ACR_LOGIN_SERVER/microservice:${{ steps.version.outputs.tag }}
+          docker build -t ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
+          docker push ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }}
 
       - name: Build and push worker image
         run: |
-          docker build -t $ACR_LOGIN_SERVER/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
-          docker push $ACR_LOGIN_SERVER/worker:${{ steps.version.outputs.tag }}
+          docker build -t ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
+          docker push ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }}
 
       - name: Install Aspire CLI
         run: curl -sSL https://aspire.dev/install.sh | bash
@@ -70,12 +54,23 @@ jobs:
       - name: Generate Kubernetes manifests
         run: aspire publish --project src/backend/Hackathon.AppHost -o k8s/
 
-      - name: Apply manifests
-        run: kubectl apply -f k8s/
+      - name: Deploy with Helm
+        run: |
+          helm template buildyourclassroom ./k8s \
+            --set secrets.postgres.password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.messaging.password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.api.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.api.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.microservice.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.add-numbers-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+            --set secrets.analyze-snapshot-worker.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
+            --set secrets.analyze-snapshot-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+          | sed -E 's/(port|containerPort|targetPort): "([0-9]+)"/\1: \2/g' \
+          | kubectl apply -f -
 
       - name: Verify rollout
         run: |
-          kubectl rollout status deployment/api --timeout=120s
-          kubectl rollout status deployment/frontend --timeout=120s
-          kubectl rollout status deployment/microservice --timeout=120s
-          kubectl rollout status deployment/worker --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-api --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-frontend --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-microservice --timeout=120s
+          kubectl rollout status deployment/buildyourclassroom-worker --timeout=120s

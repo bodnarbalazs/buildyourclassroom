@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "about"
             }
+          },
+          {
+            "id": "38a717e3ea9b81cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "understand/about.md",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for about"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -113,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "understand/about.md",
+                "file": "Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from about"
+              "title": "Outgoing links from Untitled"
             }
           },
           {
@@ -156,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "understand/about.md",
+                "file": "Untitled.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of about"
+              "title": "Outline of Untitled"
             }
           }
         ]
@@ -183,19 +198,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "903dc84851492d4d",
+  "active": "38a717e3ea9b81cf",
   "lastOpenFiles": [
-    "agents/Adele/archive/inbox/6823ed81-cicd-pipeline.md",
-    "project/tasks/fix-snapshot-upload-500.md",
-    "project/tasks/fix-microservice-startup.md",
-    "project/changelog/2026/2026-02-27/implement-rabbitmq-workers.md",
-    "_system/audit/reports/replay.html",
-    "_system/audit/2026/2026-02-27-f534f9c8-ad75-4c8c-905e-df01ce735fdf.json",
-    "_system/audit/2026/2026-02-27-aabe315b-5da6-402d-beba-528a2c92d356.json",
-    "_system/audit/2026/2026-02-27-a02d8584-ef79-4ae1-9a4e-4ce8507edba6.json",
-    "_system/audit/2026/2026-02-27-8919a78e-0107-4edc-acab-973e1d462a0c.json",
-    "_system/audit/2026/2026-02-27-521acb61-5a1e-4134-b0ba-7fb998b10e50.json",
-    "_system/audit/2026/2026-02-27-2a40daf4-ac7e-4827-bb5c-b57264ed5232.json",
+    "project/tasks/terraform-usage-audit.md",
+    "agents/Dexter/modes/tester.md",
+    "agents/Dexter/modes/reviewer.md",
+    "agents/Dexter/modes/planner.md",
+    "agents/Dexter/modes/interviewer.md",
+    "agents/Dexter/modes/docs-writer.md",
+    "agents/Dexter/modes/code-writer.md",
+    "agents/Dexter/modes/co-thinker.md",
+    "agents/Dexter/modes",
+    "_system/audit/2026/2026-02-27-aa4b3ddf-d290-4339-9dc8-b202f9802581.json",
     "agents/Adele/modes/tester.md",
     "agents/Adele/modes/reviewer.md",
     "agents/Adele/modes/planner.md",
@@ -204,22 +218,23 @@
     "agents/Adele/modes/code-writer.md",
     "agents/Adele/modes/co-thinker.md",
     "agents/Adele/modes",
-    "_system/audit/2026/2026-02-27-9fb7f2da-6c91-4c3d-9e3d-3cafbe12c1f1.json",
-    "agents/Charlie/archive/inbox/1ceab65c-cicd-pipeline.md",
-    "agents/Adele/inbox/6823ed81-cicd-pipeline.md",
-    "agents/Charlie/modes/tester.md",
-    "agents/Charlie/modes/reviewer.md",
-    "agents/Charlie/modes/planner.md",
-    "agents/Charlie/modes/interviewer.md",
-    "agents/Charlie/modes/docs-writer.md",
-    "agents/Charlie/modes/code-writer.md",
-    "agents/Charlie/modes/co-thinker.md",
-    "agents/Charlie/modes",
-    "agents/Charlie/inbox/1ceab65c-cicd-pipeline.md",
-    "agents/Adele/archive/20260227-205045/review-cicd-pipeline.md",
-    "agents/Adele/archive/inbox/b4d9ace8-cicd-pipeline.md",
-    "agents/Brian/inbox/c802edb6-cicd-pipeline.md",
-    "agents/Adele/review-cicd-pipeline.md",
-    "guides/coding-standards.md"
+    "agents/Adele/archive/20260227-230019/deploy.yml",
+    "agents/Adele/archive/20260227-230019/deploy.sh",
+    "agents/Adele/archive/20260227-230019",
+    "_system/audit/2026/2026-02-27-63babd4d-2f80-43ad-a58c-1d54ade1287e.json",
+    "_system/audit/2026/2026-02-27-c7a2b5de-0c3f-4244-9a26-780484739338.json",
+    "_system/audit/2026/2026-02-27-9a22f3c0-c81b-408e-9c4f-cc80aaf5e24b.json",
+    "project/tasks/student-face-variety.md",
+    "project/tasks/face-separation.md",
+    "project/tasks/classroom-builder-ui.md",
+    "_system/audit/2026/2026-02-27-fd75873a-a979-404d-b6a9-4ba99047af24.json",
+    "agents/Dexter/archive/inbox/8532b005-cicd-pipeline.md",
+    "agents/Dexter/workflow.md",
+    "agents/Dexter/inbox/8532b005-cicd-pipeline.md",
+    "agents/Dexter/state.md",
+    "understand/about.md",
+    "Untitled.md",
+    "agents/Brian/modes/tester.md",
+    "agents/Brian/modes/reviewer.md"
   ]
 }
