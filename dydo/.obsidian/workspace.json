@@ -185,7 +185,7 @@
   },
   "active": "903dc84851492d4d",
   "lastOpenFiles": [
-    "project/tasks/fix-apphost-ports.md",
+    "project/tasks/customize-architecture.md",
     "agents/Adele/modes/tester.md",
     "agents/Adele/modes/reviewer.md",
     "agents/Adele/modes/planner.md",
@@ -194,6 +194,7 @@
     "agents/Adele/modes/code-writer.md",
     "agents/Adele/modes/co-thinker.md",
     "agents/Adele/modes",
+    "project/tasks/fix-apphost-ports.md",
     "_system/audit/2026/2026-02-27-5632a856-c988-498e-b518-7be9bdda5a4c.json",
     "project/changelog/2026/2026-02-27/codebase-overview.md",
     "project/changelog/2026/2026-02-27/setup-troubleshooting.md",
