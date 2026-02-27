@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Hackathon.Api.Tests" />
+        <InternalsVisibleTo Include="Hackathon.IntegrationTests" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Hackathon.Domain\Hackathon.Domain.csproj" />
+        <ProjectReference Include="..\Hackathon.Application\Hackathon.Application.csproj" />
+        <ProjectReference Include="..\Hackathon.Infrastructure\Hackathon.Infrastructure.csproj" />
+        <ProjectReference Include="..\Hackathon.ServiceDefaults\Hackathon.ServiceDefaults.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.12.46" />
+    </ItemGroup>
+
+</Project>

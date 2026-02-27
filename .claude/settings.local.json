@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build:*)",
+      "Bash(npm run lint)",
+      "Bash(dydo agent claim:*)",
+      "Bash(dydo agent --help:*)",
+      "Bash(dydo whoami:*)",
+      "Bash(dydo agent:*)",
+      "Bash(dydo dispatch:*)",
+      "Bash(dydo --help:*)",
+      "Bash(find:*)",
+      "Bash(dydo task create:*)",
+      "Bash(dydo fix:*)",
+      "Bash(dydo check:*)",
+      "Bash(dydo inbox clear:*)",
+      "Bash(dydo inbox show:*)",
+      "Bash(dydo review:*)",
+      "Bash(dotnet test:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pushd:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(npx vitest run:*)",
+      "Bash(uv run python -m pytest:*)",
+      "Bash(python tests/coverage/gap_check.py:*)",
+      "mcp__plugin_context7_context7__query-docs",
+      "mcp__plugin_context7_context7__resolve-library-id"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|Read|Bash|Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dydo guard"
+          }
+        ]
+      }
+    ]
+  }
+}

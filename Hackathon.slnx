@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/backend/">
+    <Project Path="src/backend/Hackathon.Api/Hackathon.Api.csproj" />
+    <Project Path="src/backend/Hackathon.AppHost/Hackathon.AppHost.csproj" />
+    <Project Path="src/backend/Hackathon.Application/Hackathon.Application.csproj" />
+    <Project Path="src/backend/Hackathon.Domain/Hackathon.Domain.csproj" />
+    <Project Path="src/backend/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj" />
+    <Project Path="src/backend/Hackathon.ServiceDefaults/Hackathon.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/backend/">
+    <Project Path="tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj" />
+    <Project Path="tests/backend/Hackathon.Application.Tests/Hackathon.Application.Tests.csproj" />
+    <Project Path="tests/backend/Hackathon.Architecture.Tests/Hackathon.Architecture.Tests.csproj" />
+    <Project Path="tests/backend/Hackathon.Domain.Tests/Hackathon.Domain.Tests.csproj" />
+    <Project Path="tests/backend/Hackathon.Infrastructure.Tests/Hackathon.Infrastructure.Tests.csproj" />
+    <Project Path="tests/backend/Hackathon.IntegrationTests/Hackathon.IntegrationTests.csproj" />
+  </Folder>
+</Solution>
