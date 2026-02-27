@@ -6,9 +6,7 @@ must-read: true
 
 # About This Project
 
-> **Fill this in.** This is the first thing AI agents read. Make it count.
-
-*[Describe the project in 2-3 sentences]*
+A classroom dynamics platform with two modes. **Simulation mode** is a flight simulator for teachers — a cellular automaton models students as agents with attention, engagement, and emotional states that evolve based on the teacher's actions, seating arrangement, and acoustic environment, letting educators rehearse lessons, test interventions, and receive AI-generated coaching feedback on emergent patterns. **Live mode** uses a camera feed with computer vision to capture real-time attention and engagement data from an actual classroom, providing objective evaluation of teaching effectiveness (e.g. detecting when a teacher successfully re-engages a drifting student) and feeding observed behavioral data back into the simulation engine to make training scenarios more realistic.
 
 ---
 
