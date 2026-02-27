@@ -34,6 +34,11 @@ var frontendWorkingDir = Path.GetFullPath(
 var microserviceWorkingDir = Path.GetFullPath(
     Path.Combine(builder.AppHostDirectory, "../../microservices/microservice"));
 
+// ── Azure OpenAI ───────────────────────────────────────────────────
+var azureOpenAiEndpoint = builder.AddParameter("azure-openai-endpoint");
+var azureOpenAiKey = builder.AddParameter("azure-openai-key", secret: true);
+var azureOpenAiDeployment = builder.AddParameter("azure-openai-deployment");
+
 // ──────────────────────────────────────────────────────────────────
 // Core Services
 // ──────────────────────────────────────────────────────────────────
@@ -59,7 +64,10 @@ var microservice = builder.AddUvicornApp("microservice",
     .WithReference(hackathonDb)
     .WaitFor(postgres)
     .WithEndpoint("http", e => e.Port = 8000)
-    .WithExternalHttpEndpoints();
+    .WithExternalHttpEndpoints()
+    .WithEnvironment("AZURE_OPENAI_ENDPOINT", azureOpenAiEndpoint)
+    .WithEnvironment("AZURE_OPENAI_API_KEY", azureOpenAiKey)
+    .WithEnvironment("AZURE_OPENAI_DEPLOYMENT_NAME", azureOpenAiDeployment);
 
 // Python workers (RabbitMQ consumers)
 var addNumbersWorker = builder.AddPythonApp("add-numbers-worker",

@@ -6,7 +6,7 @@ import ClassroomView from "../components/classroom/ClassroomView";
 import LessonPlanInput from "../components/classroom/LessonPlanInput";
 import ResultsPanel from "../components/classroom/ResultsPanel";
 
-const EMOTIONS = ["neutral", "focused", "bored", "confused", "excited", "sleepy"] as const;
+const EMOTIONS = ["engaged", "passive", "anxious", "confused", "disruptive"] as const;
 
 const INITIAL: SimulationState = { status: "idle", students: [], currentMinute: 0 };
 

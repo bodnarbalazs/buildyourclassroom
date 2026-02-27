@@ -24,21 +24,19 @@ import headBase from "../../assets/faces/Head.svg";
 const HAIRS = [hair0, hair1, hair2, hair3, hair4, hair5, hair6, hair7];
 
 export const EMOTION_COLORS: Record<Emotion, string> = {
-  neutral:  "#94a3b8",
-  focused:  "#4ade80",
-  bored:    "#fb923c",
-  confused: "#c084fc",
-  excited:  "#facc15",
-  sleepy:   "#7dd3fc",
+  engaged:    "#4ade80",
+  passive:    "#94a3b8",
+  anxious:    "#fb923c",
+  confused:   "#c084fc",
+  disruptive: "#f87171",
 };
 
-const PARTS = {
-  neutral:  { eye: eyeNatural,  brow: browNeutral,  mouth: mouthNeutral },
-  focused:  { eye: eyeNatural,  brow: browNeutral,  mouth: mouthSmile   },
-  bored:    { eye: eyeNatural,  brow: browSad,      mouth: mouthSad     },
-  confused: { eye: eyeNatural,  brow: browConfused, mouth: mouthNeutral },
-  excited:  { eye: eyeHappy,    brow: browNeutral,  mouth: mouthBig     },
-  sleepy:   { eye: eyeAngry,    brow: browSad,      mouth: mouthNeutral },
+const PARTS: Record<Emotion, { eye: string; brow: string; mouth: string }> = {
+  engaged:    { eye: eyeHappy,    brow: browNeutral,  mouth: mouthSmile   },
+  passive:    { eye: eyeNatural,  brow: browNeutral,  mouth: mouthNeutral },
+  anxious:    { eye: eyeNatural,  brow: browSad,      mouth: mouthSad     },
+  confused:   { eye: eyeNatural,  brow: browConfused, mouth: mouthNeutral },
+  disruptive: { eye: eyeAngry,    brow: browNeutral,  mouth: mouthBig     },
 };
 
 interface Props {

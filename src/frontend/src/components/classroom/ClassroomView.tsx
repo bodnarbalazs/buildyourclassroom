@@ -4,11 +4,11 @@ import ThoughtBubble from "./ThoughtBubble";
 
 // 3 cols x 5 rows = 15 desks, 2 per desk = 30 students.
 const IDLE_EMOTIONS: Emotion[] = [
-  "neutral",  "focused",  "bored",   "confused", "excited",  "sleepy",
-  "focused",  "neutral",  "excited", "bored",    "sleepy",   "confused",
-  "confused", "excited",  "neutral", "sleepy",   "bored",    "focused",
-  "sleepy",   "bored",    "focused", "excited",  "neutral",  "confused",
-  "excited",  "confused", "sleepy",  "neutral",  "focused",  "bored",
+  "passive",    "engaged",    "confused",   "passive",    "engaged",    "anxious",
+  "engaged",    "passive",    "engaged",    "confused",   "passive",    "engaged",
+  "passive",    "disruptive", "passive",    "engaged",    "anxious",    "engaged",
+  "anxious",    "passive",    "engaged",    "passive",    "passive",    "confused",
+  "engaged",    "passive",    "passive",    "engaged",    "disruptive", "passive",
 ];
 
 interface Props {
@@ -16,20 +16,19 @@ interface Props {
 }
 
 function StudentSeat({ student }: { student: StudentState }) {
-  const ringColor = EMOTION_COLORS[student.emotion];
+  const glowColor = EMOTION_COLORS[student.emotion];
   return (
     <div className="relative flex flex-col items-center">
       {student.thought && <ThoughtBubble text={student.thought} />}
-      <div
-        className="rounded-full p-1"
-        style={{
-          background: `linear-gradient(135deg, ${ringColor}, ${ringColor}66)`,
-          boxShadow: `0 0 8px 1px ${ringColor}40`,
-        }}
-      >
-        <div className="rounded-full bg-[#faf5ee] p-[2px]">
-          <StudentFace emotion={student.emotion} studentId={student.id} className="w-full h-auto" />
-        </div>
+      <div className="relative">
+        <div
+          className="absolute inset-[-15%] rounded-full"
+          style={{
+            background: `radial-gradient(circle at 50% 42%, ${glowColor}cc 0%, ${glowColor}80 35%, ${glowColor}30 55%, transparent 72%)`,
+            filter: "blur(2px)",
+          }}
+        />
+        <StudentFace emotion={student.emotion} studentId={student.id} className="relative w-full h-auto" />
       </div>
     </div>
   );

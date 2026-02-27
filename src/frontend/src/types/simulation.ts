@@ -1,4 +1,4 @@
-export type Emotion = "neutral" | "focused" | "bored" | "confused" | "excited" | "sleepy";
+export type Emotion = "engaged" | "passive" | "anxious" | "confused" | "disruptive";
 
 export interface StudentState {
   id: number; // 0-29
