@@ -1,0 +1,68 @@
+{
+  "session": "521acb61-5a1e-4134-b0ba-7fb998b10e50",
+  "human": "gyuresz",
+  "started": "2026-02-27T19:33:34.302356Z",
+  "git_head": "884f48d",
+  "events": [
+    {
+      "ts": "2026-02-27T19:33:34.302221Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -i aspire | grep -v grep"
+    },
+    {
+      "ts": "2026-02-27T19:33:37.936362Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "pkill -f aspire; pkill -f dcpctrl; pkill -f dcpproc; pkill -f \u0022dcp start-apiserver\u0022; pkill -f \u0022Aspir..."
+    },
+    {
+      "ts": "2026-02-27T19:34:08.332522Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -i aspire | grep -v grep"
+    },
+    {
+      "ts": "2026-02-27T19:34:11.841479Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "pkill -9 -f aspire; echo \u0022Force kill signals sent\u0022"
+    },
+    {
+      "ts": "2026-02-27T19:34:15.532574Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -i aspire | grep -v grep"
+    },
+    {
+      "ts": "2026-02-27T19:35:20.777732Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -i dotnet | grep -v grep"
+    },
+    {
+      "ts": "2026-02-27T19:35:25.974021Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "kill 73728 73726; pkill -f \u0022MSBuild.dll.*nodemode\u0022; echo \u0022Kill signals sent\u0022"
+    },
+    {
+      "ts": "2026-02-27T19:35:31.181319Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -E \u0022(Hackathon|MSBuild.*nodemode)\u0022 | grep -v grep"
+    },
+    {
+      "ts": "2026-02-27T19:35:35.114725Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "kill -9 73746 73728 73726 2\u003E/dev/null; echo \u0022Force kill sent\u0022"
+    },
+    {
+      "ts": "2026-02-27T19:35:39.792073Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ps aux | grep -E \u0022(Hackathon|aspire|dcp)\u0022 | grep -v grep"
+    }
+  ]
+}

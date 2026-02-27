@@ -114,7 +114,7 @@ class EmotionAnalyzer:
         faces: list[FaceAnalysis] = []
         for i, face_data in enumerate(results):
             region = face_data.get("region", {})
-            emotions = face_data.get("emotion", {})
+            emotions = {k: float(v) for k, v in face_data.get("emotion", {}).items()}
             dominant = face_data.get("dominant_emotion", "neutral")
             level, score = compute_engagement(emotions)
 

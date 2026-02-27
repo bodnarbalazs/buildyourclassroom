@@ -7,16 +7,16 @@ from sqlalchemy import text
 from api.models.emotion_orm import SCHEMA, Base
 from api.routes.emotion import router as emotion_router
 from api.routes.health import router as health_router
-from shared.database import engine, init_db
+import shared.database as db
 
 logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    db.init_db()
 
-    async with engine.begin() as conn:
+    async with db.engine.begin() as conn:
         await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
         await conn.run_sync(Base.metadata.create_all)
 
