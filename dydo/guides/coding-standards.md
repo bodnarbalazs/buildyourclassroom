@@ -254,7 +254,7 @@ Write comments for **why**, never for **what**. If code needs a comment explaini
 ```
 
 ---
-
+FYI: It's 2026, so if you want to search for up to date docs don't use 2025
 ### Use of sub agents
 
 Only use any sub-agent tool you have for discoveries, never let them write code. If you want to delegate code-writing always use `dydo dispatch`, never sub-agents.
