@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Hackathon.Api.Endpoints;
+using Hackathon.Api.Hubs;
 using Hackathon.Application;
 using Hackathon.Infrastructure;
 using Hackathon.Infrastructure.Database;
@@ -32,6 +33,10 @@ builder.Services.AddHttpClient("microservice", client =>
     client.BaseAddress = new Uri("http://microservice");
     client.Timeout = TimeSpan.FromMinutes(2);
 });
+
+// SignalR
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<LiveFeedState>();
 
 // Authorization & HttpContextAccessor
 builder.Services.AddAuthorization();
@@ -110,6 +115,8 @@ app.MapAuthEndpoints();
 app.MapMicroserviceEndpoints();
 app.MapSessionEndpoints();
 app.MapAgendaEndpoints();
+
+app.MapHub<LiveFeedHub>("/hub/livefeed");
 
 // Auto-migrate with retry (PostGIS image can be slow to initialise)
 // if (app.Environment.IsDevelopment())

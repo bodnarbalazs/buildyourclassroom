@@ -7,6 +7,8 @@ import ApiTest from "./pages/ApiTest";
 import ClassroomBuilder from "./pages/ClassroomBuilder";
 import TestGenerator from "./pages/TestGenerator";
 import ClassEvaluation from "./pages/ClassEvaluation";
+import LiveFeedCamera from "./pages/LiveFeedCamera";
+import LiveFeedDisplay from "./pages/LiveFeedDisplay";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/classroom-builder" element={<ClassroomBuilder />} />
             <Route path="/test-generator" element={<TestGenerator />} />
             <Route path="/class-evaluation" element={<ClassEvaluation />} />
+            <Route path="/livefeed/camera" element={<LiveFeedCamera />} />
+            <Route path="/livefeed/display" element={<LiveFeedDisplay />} />
           </Routes>
           <UnauthorizedModalHost />
         </div>
