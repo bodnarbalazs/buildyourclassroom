@@ -32,12 +32,15 @@ public static class AssessmentEndpoints
             file.ContentType ?? "application/octet-stream");
         content.Add(fileContent, "file", file.FileName ?? "upload");
 
-        if (form.TryGetValue("subject", out var subject))
-            content.Add(new StringContent(subject!), "subject");
-        if (form.TryGetValue("target_audience", out var audience))
-            content.Add(new StringContent(audience!), "target_audience");
-        if (form.TryGetValue("additional_instructions", out var instructions))
-            content.Add(new StringContent(instructions!), "additional_instructions");
+        foreach (var field in new[] { "test_type", "difficulty", "num_questions", "language",
+                                       "subject", "target_audience", "additional_instructions" })
+        {
+            if (form.TryGetValue(field, out var value))
+                content.Add(new StringContent(value!), field);
+        }
+
+        foreach (var qt in form["question_types"])
+            content.Add(new StringContent(qt!), "question_types");
 
         var response = await client.PostAsync("/api/v1/generate-assessments", content);
         return await ForwardResponse(response);

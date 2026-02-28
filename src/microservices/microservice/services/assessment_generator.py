@@ -10,96 +10,116 @@ from openai import AsyncAzureOpenAI
 from pydantic import ValidationError
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from api.models.assessment import AssessmentBundle
+from api.models.assessment import AssessmentResult
+from api.models.assessment.difficulty import Difficulty
+from api.models.assessment.language import Language
+from api.models.assessment.question_type import QuestionType
+from api.models.assessment.test_type import TestType
 
 logger = structlog.get_logger()
 
 DEFAULT_TOKEN_THRESHOLD = 60_000
 
-SYSTEM_PROMPT = """\
-You are an expert educator and assessment designer with deep expertise in pedagogy, \
-Bloom's taxonomy, and formative/summative assessment design.
-
-## HARD CONSTRAINT
-
-Every question, answer, option, explanation, and rubric criterion you generate MUST be \
-derived EXCLUSIVELY from information explicitly present in the provided lesson transcript. \
-You MUST NOT introduce outside knowledge, external facts, examples, or assumptions beyond \
-what was discussed in the transcript. If the transcript covers limited material, produce \
-fewer questions rather than padding with invented content.
-
-## Your Task
-
-Analyze the lesson transcript and generate an AssessmentBundle containing:
-1. A brief transcript_summary (3–5 sentences capturing main topics and flow)
-2. A Quiz (formative, 5–10 questions)
-3. A Practice Test (self-study, 15–25 questions, sectioned by topic)
-4. An Exam (summative, 25–40 questions, sectioned, with points and rubrics)
-
-## Quiz Specification
-
-- 5–10 questions total
-- Question types: multiple_choice (4 options, 1 correct), true_false, fill_in_the_blank
-- Mix question types — do not make all questions the same type
-- Each question: question_type, question_text, options (if multiple_choice), \
-correct_answer (str for mc/fill, bool for t/f), explanation, difficulty (easy/medium/hard)
-- assessment_type: "quiz"
-
-## Practice Test Specification
-
-- 15–25 questions total, organized into sections by topic/theme
-- Question types: multiple_choice, true_false, short_answer, fill_in_the_blank, matching
-- Each section: section_title, questions list
-- Each question is an object with:
-  - base: the question object (with question_type discriminator)
-  - topic_tag: which lesson topic it tests
-  - bloom_level: remember, understand, apply, or analyze
-- assessment_type: "practice_test"
-
-## Exam Specification
-
-- 25–40 questions total, organized into sections
-- Question types: multiple_choice, true_false, short_answer, fill_in_the_blank, \
-matching, essay
-- Each question is an object with:
-  - base: the question object (with question_type discriminator)
-  - topic_tag, bloom_level, points (integer >= 1)
-- Essay questions must include grading_rubric (list of evaluation criteria) in the base
-- Include total_points (sum of all question points) and time_limit_minutes (recommended)
-- Weight toward higher-order thinking (apply, analyze) and harder difficulty
-- assessment_type: "exam"
-
-## Matching Questions
-
-For matching type questions, include a "pairs" field (list of {left, right} objects) \
-and set correct_answer to a description of the correct pairings.
-
-## Distribution Rules
-
-- Distribute questions across topics proportionally to how much time/depth each topic \
-received in the lesson
-- Write explanation fields that reference specific points from the lesson \
-(e.g., "As discussed when covering Newton's second law...")
-- Vary difficulty levels within each assessment
-
-## AssessmentMetadata (shared by quiz, practice_test, exam)
-
-Each assessment includes: title (str), subject (str), generated_from (str — lesson \
-title or filename), assessment_type (literal), total_questions (int), \
-created_at (ISO 8601 datetime string)
-
-## Output
-
-Return a single JSON object with this exact structure:
-{
-  "transcript_summary": "...",
-  "quiz": { ...Quiz with metadata and flat questions list... },
-  "practice_test": { ...PracticeTest with metadata and sections... },
-  "exam": { ...Exam with metadata, sections, total_points, time_limit_minutes... }
+# Maps test_type to the output model structure the LLM should produce
+_TEST_TYPE_MODEL = {
+    TestType.QUICK_QUIZ: "quiz",
+    TestType.CHAPTER_TEST: "practice_test",
+    TestType.MIDTERM: "exam",
+    TestType.FINAL_EXAM: "exam",
 }
 
-Output ONLY valid JSON. No markdown, no code fences, no commentary outside the JSON.\
-"""
+_QUESTION_TYPE_SPECS = {
+    QuestionType.MULTIPLE_CHOICE: (
+        "- multiple-choice: options (list of exactly 4 strings), "
+        "correct_answer (string matching one option)"
+    ),
+    QuestionType.TRUE_FALSE: "- true-false: correct_answer (boolean)",
+    QuestionType.SHORT_ANSWER: "- short-answer: correct_answer (string)",
+    QuestionType.ESSAY: (
+        "- essay: correct_answer (model answer string), "
+        "grading_rubric (list of evaluation criteria strings, min 1)"
+    ),
+}
+
+
+def _build_system_prompt(
+    test_type: TestType,
+    difficulty: Difficulty,
+    num_questions: int,
+    question_types: list[QuestionType],
+    language: Language,
+) -> str:
+    qt_list = ", ".join(qt.value for qt in question_types)
+    model = _TEST_TYPE_MODEL[test_type]
+
+    parts = [
+        "You are an expert educator and assessment designer with deep expertise in pedagogy, "
+        "Bloom's taxonomy, and formative/summative assessment design.\n\n"
+        "## HARD CONSTRAINT\n\n"
+        "Every question, answer, option, explanation, and rubric criterion you generate MUST be "
+        "derived EXCLUSIVELY from information explicitly present in the provided lesson transcript. "
+        "You MUST NOT introduce outside knowledge, external facts, examples, or assumptions beyond "
+        "what was discussed in the transcript. If the transcript covers limited material, produce "
+        "fewer questions rather than padding with invented content.\n\n"
+        "## Your Task\n\n"
+        f"Generate a single {test_type.value} assessment from the lesson transcript.\n\n"
+        "## Parameters\n\n"
+        f"- Assessment type: {test_type.value}\n"
+        f"- Difficulty: {difficulty.value}\n"
+        f"- Number of questions: {num_questions}\n"
+        f"- Allowed question types: {qt_list}\n"
+        f"- Language: {language.value} (all content MUST be in this language)\n\n"
+        "## Question Type Specifications\n\n"
+        "Every question includes: question_type, question_text, explanation, difficulty.\n\n",
+    ]
+
+    for qt in question_types:
+        parts.append(_QUESTION_TYPE_SPECS[qt] + "\n")
+
+    parts.append("\n## Output Structure\n\n")
+
+    if model == "quiz":
+        parts.append(
+            "The assessment object has metadata fields "
+            "(title, subject, generated_from, assessment_type, total_questions, created_at) "
+            'and a flat "questions" list of question objects.\n\n'
+            f'assessment_type must be "{test_type.value}".\n'
+        )
+    elif model == "practice_test":
+        parts.append(
+            "The assessment object has metadata fields "
+            "(title, subject, generated_from, assessment_type, total_questions, created_at) "
+            'and "sections" (list of section objects).\n'
+            "Each section: section_title (string), questions (list of question wrappers).\n"
+            "Each wrapper: base (the question object), topic_tag (string), "
+            'bloom_level ("remember", "understand", "apply", or "analyze").\n\n'
+            f'assessment_type must be "{test_type.value}".\n'
+        )
+    else:
+        parts.append(
+            "The assessment object has metadata fields "
+            "(title, subject, generated_from, assessment_type, total_questions, created_at), "
+            '"sections" (list of section objects), '
+            '"total_points" (integer, sum of all points), '
+            '"time_limit_minutes" (integer).\n'
+            "Each section: section_title (string), questions (list of question wrappers).\n"
+            "Each wrapper: base (the question object), topic_tag (string), "
+            'bloom_level ("remember", "understand", "apply", or "analyze"), '
+            "points (integer >= 1).\n\n"
+            f'assessment_type must be "{test_type.value}".\n'
+        )
+
+    parts.append(
+        "\n## Distribution Rules\n\n"
+        "- Distribute questions across topics proportionally to transcript coverage\n"
+        "- Write explanations that reference specific transcript content\n"
+        "- Mix question types from the allowed list\n\n"
+        "## Output Format\n\n"
+        'Return a single JSON object: {"transcript_summary": "...", "assessment": {...}}.\n'
+        "Output ONLY valid JSON. No markdown, no code fences, no commentary."
+    )
+
+    return "".join(parts)
 
 
 def _build_user_prompt(
@@ -107,8 +127,10 @@ def _build_user_prompt(
     subject: str | None,
     target_audience: str | None,
     additional_instructions: str | None,
+    generated_from: str,
 ) -> str:
-    parts = ["Generate assessments from the following lesson transcript.\n"]
+    parts = ["Generate an assessment from the following lesson transcript.\n"]
+    parts.append(f"Source: {generated_from}")
     if subject:
         parts.append(f"Subject: {subject}")
     if target_audience:
@@ -192,11 +214,19 @@ class AssessmentGenerator:
     async def generate(
         self,
         transcript: str,
+        test_type: TestType = TestType.CHAPTER_TEST,
+        difficulty: Difficulty = Difficulty.MEDIUM,
+        num_questions: int = 10,
+        question_types: list[QuestionType] | None = None,
+        language: Language = Language.ENGLISH,
         subject: str | None = None,
         target_audience: str | None = None,
         additional_instructions: str | None = None,
         generated_from: str = "lesson",
-    ) -> AssessmentBundle:
+    ) -> AssessmentResult:
+        if question_types is None:
+            question_types = [QuestionType.MULTIPLE_CHOICE]
+
         log = logger.bind(generated_from=generated_from)
         start = time.monotonic()
 
@@ -216,11 +246,15 @@ class AssessmentGenerator:
                 summary_tokens=self._count_tokens(effective_transcript),
             )
 
+        system_prompt = _build_system_prompt(
+            test_type, difficulty, num_questions, question_types, language
+        )
         user_prompt = _build_user_prompt(
-            effective_transcript, subject, target_audience, additional_instructions
+            effective_transcript, subject, target_audience,
+            additional_instructions, generated_from,
         )
         messages: list[dict] = [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ]
 
@@ -228,11 +262,10 @@ class AssessmentGenerator:
 
         try:
             data = json.loads(raw)
-            bundle = AssessmentBundle.model_validate(data)
+            result = AssessmentResult.model_validate(data)
         except (json.JSONDecodeError, ValidationError) as first_err:
             log.warning("first_parse_failed", error=str(first_err))
 
-            # Retry with corrective prompt
             messages.append({"role": "assistant", "content": raw})
             messages.append({
                 "role": "user",
@@ -246,13 +279,13 @@ class AssessmentGenerator:
             raw_retry = await self._call_llm(messages)
             try:
                 data = json.loads(raw_retry)
-                bundle = AssessmentBundle.model_validate(data)
+                result = AssessmentResult.model_validate(data)
             except (json.JSONDecodeError, ValidationError) as second_err:
                 log.error("second_parse_failed", error=str(second_err))
                 raise AssessmentGenerationError(
-                    f"LLM failed to produce valid assessments after retry: {second_err}"
+                    f"LLM failed to produce valid assessment after retry: {second_err}"
                 ) from second_err
 
         duration = time.monotonic() - start
         log.info("assessment_generation_completed", duration_s=round(duration, 2))
-        return bundle
+        return result

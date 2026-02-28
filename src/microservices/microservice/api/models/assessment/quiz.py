@@ -5,12 +5,13 @@ from typing import Annotated
 from pydantic import Field
 
 from api.models.assessment.assessment_metadata import AssessmentMetadata
-from api.models.assessment.fill_in_the_blank_question import FillInTheBlankQuestion
+from api.models.assessment.essay_question import EssayQuestion
 from api.models.assessment.multiple_choice_question import MultipleChoiceQuestion
+from api.models.assessment.short_answer_question import ShortAnswerQuestion
 from api.models.assessment.true_false_question import TrueFalseQuestion
 
 QuizQuestion = Annotated[
-    MultipleChoiceQuestion | TrueFalseQuestion | FillInTheBlankQuestion,
+    MultipleChoiceQuestion | TrueFalseQuestion | ShortAnswerQuestion | EssayQuestion,
     Field(discriminator="question_type"),
 ]
 

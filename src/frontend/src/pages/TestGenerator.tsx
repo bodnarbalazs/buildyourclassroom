@@ -9,9 +9,9 @@ type QuestionType = "multiple-choice" | "true-false" | "short-answer" | "essay";
 const ACCEPTED_FILE_TYPES = ".txt,.pdf,.doc,.docx,.mp3,.wav,.mp4,.webm,.ogg";
 
 const TEST_TYPES: { value: TestType; label: string; description: string }[] = [
-  { value: "quick-quiz", label: "Quick Quiz", description: "5–10 min, few questions" },
-  { value: "chapter-test", label: "Chapter Test", description: "20–30 min, one topic" },
-  { value: "midterm", label: "Midterm Exam", description: "45–60 min, broad coverage" },
+  { value: "quick-quiz", label: "Quick Quiz", description: "5\u201310 min, few questions" },
+  { value: "chapter-test", label: "Chapter Test", description: "20\u201330 min, one topic" },
+  { value: "midterm", label: "Midterm Exam", description: "45\u201360 min, broad coverage" },
   { value: "final-exam", label: "Final Exam", description: "90+ min, comprehensive" },
 ];
 
@@ -23,9 +23,9 @@ const QUESTION_TYPES: { value: QuestionType; label: string }[] = [
 ];
 
 function fileIcon(file: File): string {
-  if (file.type.startsWith("video/")) return "🎥";
-  if (file.type.startsWith("audio/")) return "🎧";
-  return "📄";
+  if (file.type.startsWith("video/")) return "\uD83C\uDFA5";
+  if (file.type.startsWith("audio/")) return "\uD83C\uDFA7";
+  return "\uD83D\uDCC4";
 }
 
 function formatSize(bytes: number): string {
@@ -45,8 +45,13 @@ export default function TestGenerator() {
     new Set(["multiple-choice"]),
   );
   const [language, setLanguage] = useState("English");
+  const [subject, setSubject] = useState("");
+  const [targetAudience, setTargetAudience] = useState("");
   const [additionalInstructions, setAdditionalInstructions] = useState("");
-  const [generated, setGenerated] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<Record<string, unknown> | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -77,10 +82,46 @@ export default function TestGenerator() {
     if (dropped) setFile(dropped);
   }
 
-  function handleGenerate(e: React.FormEvent) {
+  async function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: POST to backend API for AI-powered generation
-    setGenerated(true);
+    if (!file || selectedQuestionTypes.size === 0) return;
+
+    setLoading(true);
+    setError(null);
+    setResult(null);
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("test_type", testType);
+    formData.append("difficulty", difficulty);
+    formData.append("num_questions", questionCount.toString());
+    for (const qt of selectedQuestionTypes) {
+      formData.append("question_types", qt);
+    }
+    formData.append("language", language);
+    if (subject) formData.append("subject", subject);
+    if (targetAudience) formData.append("target_audience", targetAudience);
+    if (additionalInstructions) formData.append("additional_instructions", additionalInstructions);
+
+    try {
+      const res = await fetch("/api/assessment/generate", {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.detail ?? `Request failed (${res.status})`);
+      }
+
+      const data = await res.json();
+      setResult(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const inputClass =
@@ -244,6 +285,34 @@ export default function TestGenerator() {
           </select>
         </label>
 
+        {/* ── Subject ── */}
+        <label className="flex flex-col gap-1">
+          <span className="text-sm font-medium text-gray-700">
+            Subject <span className="font-normal text-gray-400">(optional)</span>
+          </span>
+          <input
+            type="text"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            placeholder="e.g. Biology, World History, Linear Algebra"
+            className={`${inputClass} w-64`}
+          />
+        </label>
+
+        {/* ── Target Audience ── */}
+        <label className="flex flex-col gap-1">
+          <span className="text-sm font-medium text-gray-700">
+            Target Audience <span className="font-normal text-gray-400">(optional)</span>
+          </span>
+          <input
+            type="text"
+            value={targetAudience}
+            onChange={(e) => setTargetAudience(e.target.value)}
+            placeholder="e.g. 10th grade, university freshmen"
+            className={`${inputClass} w-64`}
+          />
+        </label>
+
         {/* ── Additional Instructions ── */}
         <label className="flex flex-col gap-1">
           <span className="text-sm font-medium text-gray-700">
@@ -261,22 +330,43 @@ export default function TestGenerator() {
         {/* ── Submit ── */}
         <button
           type="submit"
-          disabled={!file || selectedQuestionTypes.size === 0}
+          disabled={!file || selectedQuestionTypes.size === 0 || loading}
           className="self-start rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Generate Test
+          {loading ? "Generating…" : "Generate Test"}
         </button>
       </form>
 
-      {/* ── Placeholder Results ── */}
-      {generated && (
+      {/* ── Loading ── */}
+      {loading && (
+        <div className="rounded-xl border border-blue-200 bg-blue-50 p-6 max-w-2xl">
+          <p className="text-blue-700 text-sm">
+            Generating your assessment. This may take a minute for audio/video files…
+          </p>
+        </div>
+      )}
+
+      {/* ── Error ── */}
+      {error && (
+        <div className="rounded-xl border border-red-200 bg-red-50 p-6 max-w-2xl">
+          <h2 className="text-lg font-semibold text-red-900 mb-2">Generation Failed</h2>
+          <p className="text-red-700 text-sm">{error}</p>
+        </div>
+      )}
+
+      {/* ── Results ── */}
+      {result && (
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 max-w-2xl">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Generated Test</h2>
-          <p className="text-gray-500 text-sm">
-            Test generation will be connected to the backend API. Parameters: {questionCount}{" "}
-            {difficulty} {testType} question(s) using &ldquo;{file?.name}&rdquo; (
-            {[...selectedQuestionTypes].join(", ")}), language: {language}.
-          </p>
+          {result.transcript_summary && (
+            <div className="mb-4">
+              <h3 className="text-sm font-medium text-gray-700 mb-1">Transcript Summary</h3>
+              <p className="text-gray-600 text-sm">{result.transcript_summary as string}</p>
+            </div>
+          )}
+          <pre className="bg-white border border-gray-200 rounded-lg p-4 text-xs overflow-auto max-h-96">
+            {JSON.stringify(result.assessment, null, 2)}
+          </pre>
         </div>
       )}
     </div>
