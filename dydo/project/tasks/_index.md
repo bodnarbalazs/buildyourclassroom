@@ -11,9 +11,28 @@ Index of tasks documentation.
 
 ## Contents
 
+- [Task: add-new-page](./add-new-page.md) - (No description)
+- [Task: cicd-pipeline](./cicd-pipeline.md) - (No description)
+- [Task: class-evaluation-page](./class-evaluation-page.md) - (No description)
+- [Task: classroom-builder-ui](./classroom-builder-ui.md) - (No description)
+- [Task: classroom-redesign](./classroom-redesign.md) - (No description)
 - [Task: create-secrets-json](./create-secrets-json.md) - (No description)
+- [Task: customize-architecture](./customize-architecture.md) - (No description)
 - [Task: engagement-levels-update](./engagement-levels-update.md) - Document the engagement-level model change from generic high/medium/low to pedagogically meaningful levels (engaged/passive/confused/anxious/disrup...
+- [Task: explore-project-structure](./explore-project-structure.md) - (No description)
+- [Task: face-separation](./face-separation.md) - (No description)
 - [Task: facial-emotion-detection](./facial-emotion-detection.md) - Add real-time student engagement measurement to the Python microservice via facial emotion analysis.
+- [Task: fix-api-duplicate-ports](./fix-api-duplicate-ports.md) - (No description)
+- [Task: fix-api-service-duplicate-ports](./fix-api-service-duplicate-ports.md) - (No description)
+- [Task: fix-apphost-ports](./fix-apphost-ports.md) - (No description)
 - [Task: fix-docker-arm64](./fix-docker-arm64.md) - (No description)
+- [Task: fix-microservice-startup](./fix-microservice-startup.md) - (No description)
+- [Task: fix-snapshot-upload-500](./fix-snapshot-upload-500.md) - (No description)
 - [Task: inspect-aspire-logs](./inspect-aspire-logs.md) - (No description)
+- [Task: lesson-agenda-generator](./lesson-agenda-generator.md) - (No description)
+- [Task: remove-student-circle](./remove-student-circle.md) - (No description)
 - [Task: run-app](./run-app.md) - (No description)
+- [Task: student-face-variety](./student-face-variety.md) - (No description)
+- [Task: student-face-zoom](./student-face-zoom.md) - (No description)
+- [Task: terraform-usage-audit](./terraform-usage-audit.md) - (No description)
+- [Task: test-generator-page](./test-generator-page.md) - (No description)
