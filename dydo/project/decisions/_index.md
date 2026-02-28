@@ -11,4 +11,4 @@ Index of decisions documentation.
 
 ## Contents
 
-*No documents in this folder yet.*
+- [001 — CI/CD Pipeline Architecture](./001-cicd-pipeline-architecture.md)

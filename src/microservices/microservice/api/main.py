@@ -6,6 +6,7 @@ from sqlalchemy import text
 
 from api.models.emotion_orm import SCHEMA, Base
 from api.routes.agenda import router as agenda_router
+from api.routes.assessment import router as assessment_router
 from api.routes.emotion import router as emotion_router
 from api.routes.health import router as health_router
 import shared.database as db
@@ -35,3 +36,4 @@ app = FastAPI(title="Hackathon Microservice", lifespan=lifespan)
 app.include_router(health_router)
 app.include_router(emotion_router, prefix="/emotion", tags=["Emotion Detection"])
 app.include_router(agenda_router, prefix="/api/v1", tags=["Lesson Agenda"])
+app.include_router(assessment_router, prefix="/api/v1", tags=["Lesson Assessment"])

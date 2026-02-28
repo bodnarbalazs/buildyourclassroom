@@ -19,6 +19,9 @@ dependencies = [
     "openai>=1.14.0",
     "tenacity>=8.2.0",
     "structlog>=24.1.0",
+    "pydub>=0.25.1",
+    "audioop-lts>=0.2.1; python_version>='3.13'",
+    "tiktoken>=0.7.0",
 ]
 
 [dependency-groups]
