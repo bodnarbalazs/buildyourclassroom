@@ -200,7 +200,6 @@
   },
   "active": "38a717e3ea9b81cf",
   "lastOpenFiles": [
-    "agents/Emma/archive/inbox/6294e370-fix-testgen-build.md",
     "agents/Emma/modes/tester.md",
     "agents/Emma/modes/reviewer.md",
     "agents/Emma/modes/planner.md",
@@ -209,17 +208,18 @@
     "agents/Emma/modes/code-writer.md",
     "agents/Emma/modes/co-thinker.md",
     "agents/Emma/modes",
-    "_system/audit/2026/2026-02-28-a80d22e6-633f-4663-b06f-538d8a91316e.json",
-    "agents/Emma/inbox/6294e370-fix-testgen-build.md",
-    "project/tasks/fix-testgen-build.md",
     "agents/Dexter/modes/tester.md",
     "agents/Dexter/modes/reviewer.md",
     "agents/Dexter/modes/planner.md",
-    "agents/Dexter/modes/docs-writer.md",
     "agents/Dexter/modes/interviewer.md",
+    "agents/Dexter/modes/docs-writer.md",
     "agents/Dexter/modes/code-writer.md",
     "agents/Dexter/modes/co-thinker.md",
     "agents/Dexter/modes",
+    "agents/Emma/archive/inbox/6294e370-fix-testgen-build.md",
+    "_system/audit/2026/2026-02-28-a80d22e6-633f-4663-b06f-538d8a91316e.json",
+    "agents/Emma/inbox/6294e370-fix-testgen-build.md",
+    "project/tasks/fix-testgen-build.md",
     "agents/Emma/archive/inbox/86bc6450-livefeed.md",
     "agents/Emma/archive/inbox",
     "agents/Emma/archive",
@@ -234,7 +234,6 @@
     "project/tasks/wire-assessment-endpoints.md",
     "project/tasks/align-assessment-models.md",
     "project/changelog/2026/2026-02-28/fe-responsiveness-issues.md",
-    "_system/audit/2026/2026-02-28-fa12eb5e-bd75-44a6-8e0d-20b354ede3c1.json",
-    "agents/Dexter/archive/inbox/6050a83b-livefeed.md"
+    "_system/audit/2026/2026-02-28-fa12eb5e-bd75-44a6-8e0d-20b354ede3c1.json"
   ]
 }
