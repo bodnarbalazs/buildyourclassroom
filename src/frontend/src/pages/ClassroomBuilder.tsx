@@ -1,23 +1,88 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { notifyUnauthorized } from "../api/unauthorizedBus";
-import type { LessonPlan, SimulationState } from "../types/simulation";
+import { apiFetch } from "../api/apiClient";
+import type { LessonPlan, SimulationResponse, SimulationState, TickSnapshot } from "../types/simulation";
 import ClassroomView from "../components/classroom/ClassroomView";
 import LessonPlanInput from "../components/classroom/LessonPlanInput";
 import ResultsPanel from "../components/classroom/ResultsPanel";
 
-const EMOTIONS = ["engaged", "passive", "anxious", "confused", "disruptive"] as const;
+const TICK_INTERVAL_MS = 400;
 
 const INITIAL: SimulationState = { status: "idle", students: [], currentMinute: 0 };
 
 export default function ClassroomBuilder() {
   const { isAuthenticated } = useAuth();
-  const [_plan, setPlan] = useState<LessonPlan | null >(null);
-  const [simulation, setSimulation] = useState<SimulationState >(INITIAL);
+  const [plan, setPlan] = useState<LessonPlan | null>(null);
+  const [simulation, setSimulation] = useState<SimulationState>(INITIAL);
+  const ticksRef = useRef<TickSnapshot[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>>(null);
 
   useEffect(() => {
     if (!isAuthenticated) notifyUnauthorized();
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  const animateTicks = useCallback((ticks: TickSnapshot[]) => {
+    ticksRef.current = ticks;
+    let idx = 0;
+
+    // Show initial state immediately
+    const first = ticks[0];
+    setSimulation({
+      status: "running",
+      currentMinute: first.cycle,
+      students: first.students.map((s) => ({ id: s.id, emotion: s.emotion, engagement: s.engagement })),
+    });
+
+    timerRef.current = setInterval(() => {
+      idx++;
+      if (idx >= ticksRef.current.length) {
+        if (timerRef.current) clearInterval(timerRef.current);
+        setSimulation((prev) => ({ ...prev, status: "done" }));
+        return;
+      }
+      const tick = ticksRef.current[idx];
+      setSimulation({
+        status: "running",
+        currentMinute: tick.cycle,
+        students: tick.students.map((s) => ({ id: s.id, emotion: s.emotion, engagement: s.engagement })),
+      });
+    }, TICK_INTERVAL_MS);
+  }, []);
+
+  async function handleRunSimulation() {
+    if (!plan) return;
+
+    setSimulation({ status: "running", students: [], currentMinute: 0 });
+
+    try {
+      const res = await apiFetch("/api/simulation/run", {
+        method: "POST",
+        body: JSON.stringify({
+          ca_schedule: plan.caSchedule,
+          rows: 5,
+          cols: 6,
+          cycles: 45,
+        }),
+      });
+
+      if (!res.ok) {
+        setSimulation(INITIAL);
+        return;
+      }
+
+      const data: SimulationResponse = await res.json();
+      animateTicks(data.ticks);
+    } catch {
+      setSimulation(INITIAL);
+    }
+  }
 
   if (!isAuthenticated) {
     return (
@@ -25,20 +90,6 @@ export default function ClassroomBuilder() {
         <p className="text-gray-500"> Please log in to access the Classroom Builder. </p>
       </div>
     );
-  }
-
-  function handleRunSimulation() {
-    // TODO: POST plan to API and open WebSocket/SSE stream
-    // Mock: seed 30 students with random emotions to show the classroom alive
-    setSimulation({
-      status: "running",
-      currentMinute: 0,
-      students: Array.from({ length: 30 }, (_, i) => ({
-        id: i,
-        emotion: EMOTIONS[Math.floor(Math.random() * EMOTIONS.length)],
-        thought: i === 3 ? "Hmm..." : i === 12 ? "I get it!" : undefined,
-      })),
-    });
   }
 
   return (

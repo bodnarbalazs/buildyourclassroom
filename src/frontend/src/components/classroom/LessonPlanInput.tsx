@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { LessonPlan, LessonSegment } from "../../types/simulation";
+import { apiFetch } from "../../api/apiClient";
+import type { LessonPlan, LessonSegment, ScheduleEvent } from "../../types/simulation";
 
 interface Props {
   onPlanReady: (plan: LessonPlan) => void;
@@ -7,15 +8,16 @@ interface Props {
   simulationStatus: "idle" | "running" | "done";
 }
 
-// Placeholder structure -- will be replaced with LLM API call
-function mockStructure(_text: string): LessonSegment[] {
-  return [
-    { startMinute: 0, endMinute: 5, title: "Introduction", description: "Warm-up and review" },
-    { startMinute: 5, endMinute: 20, title: "New Material", description: "Direct instruction" },
-    { startMinute: 20, endMinute: 35, title: "Practice", description: "Student exercises" },
-    { startMinute: 35, endMinute: 42, title: "Group Discussion", description: "Pair review" },
-    { startMinute: 42, endMinute: 45, title: "Wrap-up", description: "Summary and homework" },
-  ];
+interface AgendaSection {
+  title: string;
+  description: string;
+  start_minute: number;
+  duration_minutes: number;
+}
+
+interface AgendaResponse {
+  sections: AgendaSection[];
+  ca_schedule: ScheduleEvent[];
 }
 
 function fmt(min: number) {
@@ -24,19 +26,52 @@ function fmt(min: number) {
 
 export default function LessonPlanInput({ onPlanReady, onRunSimulation, simulationStatus }: Props) {
   const [text, setText] = useState("");
-  const [plan, setPlan] = useState<LessonPlan | null >(null);
+  const [plan, setPlan] = useState<LessonPlan | null>(null);
   const [structuring, setStructuring] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleStructure() {
     if (!text.trim()) return;
     setStructuring(true);
-    // TODO: replace with real LLM API call
-    await new Promise<void >((r) => setTimeout(r, 800));
-    const segments = mockStructure(text);
-    const newPlan: LessonPlan = { rawText: text, segments };
-    setPlan(newPlan);
-    onPlanReady(newPlan);
-    setStructuring(false);
+    setError(null);
+
+    try {
+      const res = await apiFetch("/api/agenda/generate", {
+        method: "POST",
+        body: JSON.stringify({
+          subject: "General",
+          topic: text.trim(),
+          target_audience: "Students",
+          duration_minutes: 45,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: "Failed to generate agenda" }));
+        throw new Error(err.detail ?? `Server error (${res.status})`);
+      }
+
+      const data: AgendaResponse = await res.json();
+
+      const segments: LessonSegment[] = data.sections.map((s) => ({
+        startMinute: s.start_minute,
+        endMinute: s.start_minute + s.duration_minutes,
+        title: s.title,
+        description: s.description,
+      }));
+
+      const newPlan: LessonPlan = {
+        rawText: text,
+        segments,
+        caSchedule: data.ca_schedule,
+      };
+      setPlan(newPlan);
+      onPlanReady(newPlan);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Unknown error");
+    } finally {
+      setStructuring(false);
+    }
   }
 
   return (
@@ -60,6 +95,10 @@ export default function LessonPlanInput({ onPlanReady, onRunSimulation, simulati
         {structuring ? "Structuring…" : "Structure with AI"}
       </button>
 
+      {error && (
+        <p className="text-sm text-red-600">{error}</p>
+      )}
+
       {plan && (
         <div className="rounded-lg border border-gray-200 bg-white overflow-hidden">
           <div className="px-4 py-2 bg-gray-50 border-b border-gray-200 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -71,7 +110,7 @@ export default function LessonPlanInput({ onPlanReady, onRunSimulation, simulati
                 <span className="mt-0.5 shrink-0 rounded bg-amber-100 px-2 py-0.5 text-xs font-mono text-amber-800">
                   {fmt(seg.startMinute)} – {fmt(seg.endMinute)}
                 </span>
-                <div >
+                <div>
                   <p className="text-sm font-semibold text-gray-800">{seg.title}</p>
                   <p className="text-xs text-gray-500">{seg.description}</p>
                 </div>
