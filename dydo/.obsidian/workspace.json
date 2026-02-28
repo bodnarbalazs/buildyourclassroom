@@ -200,6 +200,7 @@
   },
   "active": "38a717e3ea9b81cf",
   "lastOpenFiles": [
+    "our-story.md",
     "project/tasks/rollout-fix.md",
     "agents/Charlie/modes/tester.md",
     "agents/Charlie/modes/reviewer.md",
@@ -234,7 +235,6 @@
     "agents/Emma/modes/reviewer.md",
     "agents/Emma/modes/planner.md",
     "agents/Emma/modes/interviewer.md",
-    "agents/Emma/modes/docs-writer.md",
     "agents/Emma/modes"
   ]
 }
