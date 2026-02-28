@@ -38,7 +38,19 @@ export type CollectiveAttention = {
 };
 
 export const STUN_CONFIG: RTCConfiguration = {
-  iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    {
+      urls: "turn:staticauth.openrelay.metered.ca:443",
+      username: "openrelayproject",
+      credential: "openrelayprojectsecret",
+    },
+    {
+      urls: "turn:staticauth.openrelay.metered.ca:443?transport=tcp",
+      username: "openrelayproject",
+      credential: "openrelayprojectsecret",
+    },
+  ],
 };
 
 export const MAX_CAMERAS = 4;

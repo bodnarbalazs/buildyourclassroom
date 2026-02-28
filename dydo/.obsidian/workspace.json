@@ -200,6 +200,8 @@
   },
   "active": "38a717e3ea9b81cf",
   "lastOpenFiles": [
+    "project/tasks/reference-docs-summary-page.md",
+    "_system/audit/2026/2026-02-28-ab81366f-c5cb-4eba-9304-0f747ba5d6e3.json",
     "agents/Emma/modes/tester.md",
     "agents/Emma/modes/reviewer.md",
     "agents/Emma/modes/planner.md",
@@ -233,7 +235,6 @@
     "agents/Emma",
     "project/tasks/wire-assessment-endpoints.md",
     "project/tasks/align-assessment-models.md",
-    "project/changelog/2026/2026-02-28/fe-responsiveness-issues.md",
-    "_system/audit/2026/2026-02-28-fa12eb5e-bd75-44a6-8e0d-20b354ede3c1.json"
+    "project/changelog/2026/2026-02-28/fe-responsiveness-issues.md"
   ]
 }
