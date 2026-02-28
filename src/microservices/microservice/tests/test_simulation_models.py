@@ -63,6 +63,10 @@ class TestSimulateRequest:
         with pytest.raises(ValidationError):
             SimulateRequest(ca_schedule=[], cycles=121)
 
+    def test_max_engagement_upper_bound(self):
+        with pytest.raises(ValidationError):
+            SimulateRequest(ca_schedule=[], max_engagement=6)
+
 
 class TestStudentSnapshot:
     def test_valid(self):

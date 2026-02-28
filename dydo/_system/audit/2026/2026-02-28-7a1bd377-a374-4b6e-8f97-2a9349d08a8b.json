@@ -1397,6 +1397,11 @@
       "event": "Bash",
       "tool": "bash",
       "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api \u0026\u0026 dotnet build --no-res..."
+    },
+    {
+      "ts": "2026-02-28T06:55:53.83711Z",
+      "event": "Release",
+      "agent": "Adele"
     }
   ],
   "snapshot": {

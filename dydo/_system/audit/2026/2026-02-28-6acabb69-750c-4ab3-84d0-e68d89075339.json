@@ -1,241 +1,153 @@
 {
-  "session": "7f537a1d-e3bd-4edd-83c2-d4b2cbd89cb9",
-  "agent": "Charlie",
+  "session": "6acabb69-750c-4ab3-84d0-e68d89075339",
+  "agent": "Frank",
   "human": "balazs",
-  "started": "2026-02-28T04:46:12.360428Z",
-  "git_head": "15fe73f",
+  "started": "2026-02-28T07:01:19.133133Z",
+  "git_head": "8a2e021",
   "events": [
     {
-      "ts": "2026-02-28T04:46:12.358422Z",
-      "event": "Blocked",
-      "tool": "glob",
-      "reason": "No agent identity"
-    },
-    {
-      "ts": "2026-02-28T04:46:15.013609Z",
+      "ts": "2026-02-28T07:01:19.129369Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/index.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:46:18.930882Z",
+      "ts": "2026-02-28T07:01:22.57506Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Frank/workflow.md",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-28T07:01:34.585817Z",
       "event": "Claim",
-      "agent": "Charlie"
+      "agent": "Frank"
     },
     {
-      "ts": "2026-02-28T04:46:21.261358Z",
-      "event": "Blocked",
-      "tool": "glob",
-      "reason": "No role set"
+      "ts": "2026-02-28T07:01:47.104243Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Frank/modes/code-writer.md",
+      "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:46:24.425517Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "ls /Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/modes/"
-    },
-    {
-      "ts": "2026-02-28T04:46:27.630468Z",
+      "ts": "2026-02-28T07:01:48.080086Z",
       "event": "Role",
-      "role": "reviewer"
+      "role": "code-writer",
+      "task": "project-coherence"
     },
     {
-      "ts": "2026-02-28T04:46:29.763435Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-28T04:46:33.718431Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Domain/Hackathon.Domain.csproj",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:46:59.785346Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Domain.Tests/Hackathon.Domain.Tests.csproj",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:48:49.983528Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet build tests/backend/ 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-28T04:48:52.541167Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-28T04:48:56.194655Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-28T04:49:00.533106Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "for proj in tests/backend/*/*.csproj; do echo \u0022=== Building $proj ===\u0022 \u0026\u0026 dotnet build \u0022$proj\u0022 2\u003E\u00261 ..."
-    },
-    {
-      "ts": "2026-02-28T04:49:34.982879Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/MicroserviceEndpointsTests.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:49:35.632738Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:49:41.198693Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:49:48.247662Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:49:51.894374Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:49:57.440534Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api/Endpoints/MicroserviceEndpoints.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:50:03.26527Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:50:04.096242Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:50:07.951772Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Domain/Messages/IAddNumbersClient.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:50:08.363011Z",
-      "event": "Read",
-      "tool": "grep"
-    },
-    {
-      "ts": "2026-02-28T04:50:12.246437Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Domain/Messages/AddNumbersCommand.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:50:12.774924Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Domain/Messages/AddNumbersResult.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:50:24.96349Z",
-      "event": "Blocked",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/MicroserviceEndpointsTests.cs",
-      "tool": "edit",
-      "reason": "Must-read files not yet read"
-    },
-    {
-      "ts": "2026-02-28T04:50:28.163282Z",
+      "ts": "2026-02-28T07:01:51.823249Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/about.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:50:28.655554Z",
+      "ts": "2026-02-28T07:01:52.416265Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/architecture.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:50:29.050962Z",
+      "ts": "2026-02-28T07:01:52.789298Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/guides/coding-standards.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:50:29.264095Z",
+      "ts": "2026-02-28T07:02:03.805837Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/modes/reviewer.md",
+      "tool": "grep"
+    },
+    {
+      "ts": "2026-02-28T07:02:15.757393Z",
+      "event": "Read",
+      "tool": "glob"
+    },
+    {
+      "ts": "2026-02-28T07:02:29.437633Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/api/models/simulation/simulate_request.py",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:50:34.960677Z",
-      "event": "Role",
-      "role": "code-writer"
-    },
-    {
-      "ts": "2026-02-28T04:50:38.766097Z",
+      "ts": "2026-02-28T07:02:33.32217Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Charlie/modes/code-writer.md",
-      "tool": "read"
+      "tool": "glob"
     },
     {
-      "ts": "2026-02-28T04:50:51.07234Z",
+      "ts": "2026-02-28T07:02:39.439353Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/services/classroom_simulation.py",
+      "tool": "grep"
+    },
+    {
+      "ts": "2026-02-28T07:02:46.953749Z",
       "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/MicroserviceEndpointsTests.cs",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/api/models/simulation/simulate_request.py",
       "tool": "edit"
     },
     {
-      "ts": "2026-02-28T04:51:24.749636Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet build tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj 2\u003E\u00261"
+      "ts": "2026-02-28T07:03:17.639268Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests",
+      "tool": "grep"
     },
     {
-      "ts": "2026-02-28T04:51:38.418301Z",
+      "ts": "2026-02-28T07:03:25.137779Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/Hubs/LiveFeedHubTests.cs",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src",
+      "tool": "grep"
+    },
+    {
+      "ts": "2026-02-28T07:03:32.194585Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/tests/test_simulation_models.py",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:51:43.234378Z",
+      "ts": "2026-02-28T07:03:32.557533Z",
+      "event": "Read",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/tests/test_simulation_service.py",
+      "tool": "read"
+    },
+    {
+      "ts": "2026-02-28T07:03:39.256937Z",
       "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/Hubs/LiveFeedHubTests.cs",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice/tests/test_simulation_models.py",
       "tool": "edit"
     },
     {
-      "ts": "2026-02-28T04:51:47.549351Z",
+      "ts": "2026-02-28T07:03:43.7289Z",
       "event": "Bash",
       "tool": "bash",
-      "cmd": "for proj in tests/backend/*/*.csproj; do echo \u0022=== Building $proj ===\u0022 \u0026\u0026 dotnet build \u0022$proj\u0022 2\u003E\u00261 ..."
+      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice \u0026\u0026 uv run pytest te..."
     },
     {
-      "ts": "2026-02-28T04:53:02.34884Z",
+      "ts": "2026-02-28T07:03:49.235969Z",
       "event": "Bash",
       "tool": "bash",
-      "cmd": "for proj in tests/backend/*/*.csproj; do echo \u0022=== Testing $proj ===\u0022 \u0026\u0026 dotnet test \u0022$proj\u0022 --no-bu..."
+      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice \u0026\u0026 uv run --no-sync..."
     },
     {
-      "ts": "2026-02-28T07:13:27.142108Z",
+      "ts": "2026-02-28T07:03:56.550774Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/microservices/microservice \u0026\u0026 uv run --no-sync..."
+    },
+    {
+      "ts": "2026-02-28T07:04:10.933775Z",
       "event": "Release",
-      "agent": "Charlie"
+      "agent": "Frank"
     }
   ],
   "snapshot": {
-    "git_commit": "15fe73fde85e2fd43e278eb3f22aa4e2c12ef9cc",
+    "git_commit": "8a2e02136d9ab013f7362fda3db724d4898f025e",
     "files": [
       ".claude/settings.local.json",
       ".dockerignore",
       ".github/workflows/deploy.yml",
       ".gitignore",
       ".mcp.json",
+      "\u0022Video_ppt/Vide/303/263.xlsx\u0022",
       "AGENTS.md",
       "classroom-idle.png",
       "classroom-running.png",
@@ -247,6 +159,7 @@
       "docker/microservice.Dockerfile",
       "docker/worker.Dockerfile",
       "dydo.json",
+      "dydo/_assets/ClassroomSim.ipynb",
       "dydo/_assets/dydo-diagram.svg",
       "dydo/_system/audit/_audit.md",
       "dydo/_system/audit/2026/2026-02-27-005128a8-35d4-44d4-a234-f96086e5515c.json",
@@ -302,25 +215,41 @@
       "dydo/_system/audit/2026/2026-02-28-00d2e026-ec13-49c2-b925-edb0d650b032.json",
       "dydo/_system/audit/2026/2026-02-28-0551fab3-cee5-45e3-bfb5-5eaf3e6143a1.json",
       "dydo/_system/audit/2026/2026-02-28-22d9fc9d-581d-4bbb-83e0-551163f25315.json",
+      "dydo/_system/audit/2026/2026-02-28-251a60f6-95ae-4883-8f7f-0b74d631ab17.json",
       "dydo/_system/audit/2026/2026-02-28-2c8d8b06-0561-450b-9315-32776404d2ec.json",
       "dydo/_system/audit/2026/2026-02-28-2f937867-af77-43f4-bf94-4662068a151e.json",
+      "dydo/_system/audit/2026/2026-02-28-32c3e797-136a-461e-96d5-212f74da79ef.json",
       "dydo/_system/audit/2026/2026-02-28-4396bcb2-39e1-45d8-9356-d70de75ff966.json",
       "dydo/_system/audit/2026/2026-02-28-4d5e19b8-dca8-467d-9cb8-8e9b33963991.json",
       "dydo/_system/audit/2026/2026-02-28-5062b152-0f7f-4f86-b0fb-ea75346fc401.json",
+      "dydo/_system/audit/2026/2026-02-28-57570114-0636-4fbc-8a2b-427fec0e188d.json",
       "dydo/_system/audit/2026/2026-02-28-584a6be9-ce29-4483-8808-f083c10e15ba.json",
       "dydo/_system/audit/2026/2026-02-28-64020a96-a563-443d-92b1-09a990805df4.json",
       "dydo/_system/audit/2026/2026-02-28-664a54c6-df7c-4bd1-b2f5-c2e16cf48b40.json",
       "dydo/_system/audit/2026/2026-02-28-6d6a393b-26e7-4709-9161-7001b205b474.json",
       "dydo/_system/audit/2026/2026-02-28-77193139-f5d7-4e2c-86e5-7013c912e448.json",
       "dydo/_system/audit/2026/2026-02-28-7a1bd377-a374-4b6e-8f97-2a9349d08a8b.json",
+      "dydo/_system/audit/2026/2026-02-28-7f537a1d-e3bd-4edd-83c2-d4b2cbd89cb9.json",
       "dydo/_system/audit/2026/2026-02-28-8c49573a-05a9-4a55-986c-42c359add051.json",
+      "dydo/_system/audit/2026/2026-02-28-8d82bc29-b50f-41d2-aff8-2b0e0f89a6c1.json",
       "dydo/_system/audit/2026/2026-02-28-91f715c2-ae3c-4360-95a1-1cd977818b52.json",
+      "dydo/_system/audit/2026/2026-02-28-92034e53-9261-489e-9d06-6fcf4ebe12cf.json",
+      "dydo/_system/audit/2026/2026-02-28-9cbb4efb-2cc4-4b94-be77-5fcc7bceaaf9.json",
       "dydo/_system/audit/2026/2026-02-28-a1ea5bcc-66bd-4808-98bc-3096d48a351d.json",
+      "dydo/_system/audit/2026/2026-02-28-a80d22e6-633f-4663-b06f-538d8a91316e.json",
+      "dydo/_system/audit/2026/2026-02-28-ab81366f-c5cb-4eba-9304-0f747ba5d6e3.json",
       "dydo/_system/audit/2026/2026-02-28-ad099a9a-ef24-41b8-8a5a-edec3de96abb.json",
       "dydo/_system/audit/2026/2026-02-28-aef88d49-2bf6-4434-96b5-9a33dc12f889.json",
+      "dydo/_system/audit/2026/2026-02-28-b246164e-139e-40a1-8f23-b4ecf28bd6a1.json",
+      "dydo/_system/audit/2026/2026-02-28-b7b7636c-248e-4e5e-8324-65b92a289062.json",
+      "dydo/_system/audit/2026/2026-02-28-b990de3c-1cce-42c1-906b-5ffdfbd30b59.json",
+      "dydo/_system/audit/2026/2026-02-28-c2b43474-b7b6-457f-a39f-5ea90274566b.json",
       "dydo/_system/audit/2026/2026-02-28-c4991b87-5ddc-490f-8cf4-8949e33bb146.json",
+      "dydo/_system/audit/2026/2026-02-28-cdf8fe08-5cca-4f1d-b890-1b60c7c75df9.json",
+      "dydo/_system/audit/2026/2026-02-28-d3814407-30e4-428f-9776-b55204fed1dd.json",
       "dydo/_system/audit/2026/2026-02-28-d71674bc-14e1-4cd9-a107-ed4eb5f2aac5.json",
       "dydo/_system/audit/2026/2026-02-28-e6b3f4d5-d9f3-44dc-9869-033f4fc73734.json",
+      "dydo/_system/audit/2026/2026-02-28-fa12eb5e-bd75-44a6-8e0d-20b354ede3c1.json",
       "dydo/_system/audit/reports/replay.html",
       "dydo/_system/templates/agent-workflow.template.md",
       "dydo/_system/templates/mode-co-thinker.template.md",
@@ -367,6 +296,7 @@
       "dydo/project/changelog/2026/2026-02-28/explore-project-structure.md",
       "dydo/project/changelog/2026/2026-02-28/face-separation.md",
       "dydo/project/changelog/2026/2026-02-28/facial-emotion-detection.md",
+      "dydo/project/changelog/2026/2026-02-28/fe-responsiveness-issues.md",
       "dydo/project/changelog/2026/2026-02-28/fix-api-duplicate-ports.md",
       "dydo/project/changelog/2026/2026-02-28/fix-apphost-ports.md",
       "dydo/project/changelog/2026/2026-02-28/fix-deploy-pipeline.md",
@@ -393,14 +323,19 @@
       "dydo/project/tasks/_index.md",
       "dydo/project/tasks/_tasks.md",
       "dydo/project/tasks/about-update.md",
+      "dydo/project/tasks/align-assessment-models.md",
       "dydo/project/tasks/fix-agenda-temperature.md",
       "dydo/project/tasks/fix-api-service-duplicate-ports.md",
       "dydo/project/tasks/fix-broken-links.md",
       "dydo/project/tasks/fix-microservice-startup.md",
+      "dydo/project/tasks/fix-testgen-build.md",
+      "dydo/project/tasks/inbox-check.md",
       "dydo/project/tasks/lesson-assessment-generator.md",
       "dydo/project/tasks/livefeed-architecture.md",
       "dydo/project/tasks/livefeed.md",
+      "dydo/project/tasks/match-assessment-models.md",
       "dydo/project/tasks/project-coherence.md",
+      "dydo/project/tasks/reference-docs-summary-page.md",
       "dydo/project/tasks/remove-student-circle.md",
       "dydo/project/tasks/search-agenda-llm.md",
       "dydo/project/tasks/setup-azure-front-door.md",
@@ -408,6 +343,7 @@
       "dydo/project/tasks/stt-env-var.md",
       "dydo/project/tasks/test-generator-enhancement.md",
       "dydo/project/tasks/test-generator-page.md",
+      "dydo/project/tasks/wire-assessment-endpoints.md",
       "dydo/reference/_index.md",
       "dydo/reference/_reference.md",
       "dydo/reference/about-dynadocs.md",
@@ -429,14 +365,18 @@
       "k8s/microservice.yaml",
       "k8s/postgres.yaml",
       "k8s/rabbitmq.yaml",
+      "k8s/tls.crt",
+      "k8s/tls.key",
       "readme.md",
       "src/backend/Directory.Build.props",
       "src/backend/Hackathon.Api/appsettings.Development.json",
       "src/backend/Hackathon.Api/appsettings.json",
       "src/backend/Hackathon.Api/Endpoints/AgendaEndpoints.cs",
+      "src/backend/Hackathon.Api/Endpoints/AssessmentEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/AuthEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/MicroserviceEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/SessionEndpoints.cs",
+      "src/backend/Hackathon.Api/Endpoints/SimulationEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/TestEndpoints.cs",
       "src/backend/Hackathon.Api/Hackathon.Api.csproj",
       "src/backend/Hackathon.Api/Hubs/LiveFeedHub.cs",
@@ -591,6 +531,7 @@
       "src/frontend/src/pages/LiveFeedCamera.test.tsx",
       "src/frontend/src/pages/LiveFeedCamera.tsx",
       "src/frontend/src/pages/LiveFeedDisplay.tsx",
+      "src/frontend/src/pages/Research.tsx",
       "src/frontend/src/pages/TestGenerator.tsx",
       "src/frontend/src/pages/TestGenerator.tsx.bak",
       "src/frontend/src/test/setup.ts",
@@ -620,34 +561,41 @@
       "src/microservices/microservice/api/models/agenda/lesson_element_type.py",
       "src/microservices/microservice/api/models/agenda/targeted_check_element.py",
       "src/microservices/microservice/api/models/assessment/__init__.py",
-      "src/microservices/microservice/api/models/assessment/assessment_bundle.py",
       "src/microservices/microservice/api/models/assessment/assessment_metadata.py",
+      "src/microservices/microservice/api/models/assessment/assessment_result.py",
       "src/microservices/microservice/api/models/assessment/bloom_level.py",
       "src/microservices/microservice/api/models/assessment/difficulty.py",
       "src/microservices/microservice/api/models/assessment/essay_question.py",
       "src/microservices/microservice/api/models/assessment/exam.py",
-      "src/microservices/microservice/api/models/assessment/fill_in_the_blank_question.py",
       "src/microservices/microservice/api/models/assessment/generate_assessment_request.py",
-      "src/microservices/microservice/api/models/assessment/matching_question.py",
+      "src/microservices/microservice/api/models/assessment/language.py",
       "src/microservices/microservice/api/models/assessment/multiple_choice_question.py",
       "src/microservices/microservice/api/models/assessment/practice_test.py",
       "src/microservices/microservice/api/models/assessment/question_type.py",
       "src/microservices/microservice/api/models/assessment/quiz.py",
       "src/microservices/microservice/api/models/assessment/short_answer_question.py",
+      "src/microservices/microservice/api/models/assessment/test_type.py",
       "src/microservices/microservice/api/models/assessment/true_false_question.py",
       "src/microservices/microservice/api/models/emotion_orm.py",
       "src/microservices/microservice/api/models/emotion_schemas.py",
+      "src/microservices/microservice/api/models/simulation/__init__.py",
+      "src/microservices/microservice/api/models/simulation/simulate_request.py",
+      "src/microservices/microservice/api/models/simulation/simulate_response.py",
+      "src/microservices/microservice/api/models/simulation/student_snapshot.py",
+      "src/microservices/microservice/api/models/simulation/tick_snapshot.py",
       "src/microservices/microservice/api/routes/__init__.py",
       "src/microservices/microservice/api/routes/agenda.py",
       "src/microservices/microservice/api/routes/assessment.py",
       "src/microservices/microservice/api/routes/emotion.py",
       "src/microservices/microservice/api/routes/health.py",
+      "src/microservices/microservice/api/routes/simulation.py",
       "src/microservices/microservice/pyproject.toml",
       "src/microservices/microservice/run.py",
       "src/microservices/microservice/services/__init__.py",
       "src/microservices/microservice/services/.gitkeep",
       "src/microservices/microservice/services/agenda_generator.py",
       "src/microservices/microservice/services/assessment_generator.py",
+      "src/microservices/microservice/services/classroom_simulation.py",
       "src/microservices/microservice/services/emotion_analyzer.py",
       "src/microservices/microservice/services/emotion_repository.py",
       "src/microservices/microservice/services/transcription_service.py",
@@ -666,6 +614,9 @@
       "src/microservices/microservice/tests/test_emotion_analyzer.py",
       "src/microservices/microservice/tests/test_emotion_routes.py",
       "src/microservices/microservice/tests/test_health.py",
+      "src/microservices/microservice/tests/test_simulation_models.py",
+      "src/microservices/microservice/tests/test_simulation_routes.py",
+      "src/microservices/microservice/tests/test_simulation_service.py",
       "src/microservices/microservice/tests/workers/__init__.py",
       "src/microservices/microservice/tests/workers/conftest.py",
       "src/microservices/microservice/tests/workers/test_analyze_snapshot_worker.py",
@@ -704,12 +655,16 @@
       "tests/coverage/coverage.runsettings",
       "tests/coverage/gap_check.py",
       "tests/coverage/report.py",
-      "tests/coverage/tier_registry.json"
+      "tests/coverage/tier_registry.json",
+      "Video_ppt/Artificial Intelligence Applied to Design Thesis Defense by Slidesgo.pptx"
     ],
     "folders": [
       ".claude",
       ".github",
       ".github/workflows",
+      "\u0022Video_ppt",
+      "\u0022Video_ppt/Vide",
+      "\u0022Video_ppt/Vide/303",
       "docker",
       "dydo",
       "dydo/_assets",
@@ -797,6 +752,7 @@
       "src/microservices/microservice/api/models",
       "src/microservices/microservice/api/models/agenda",
       "src/microservices/microservice/api/models/assessment",
+      "src/microservices/microservice/api/models/simulation",
       "src/microservices/microservice/api/routes",
       "src/microservices/microservice/services",
       "src/microservices/microservice/shared",
@@ -812,7 +768,8 @@
       "tests/backend/Hackathon.Domain.Tests",
       "tests/backend/Hackathon.Infrastructure.Tests",
       "tests/backend/Hackathon.IntegrationTests",
-      "tests/coverage"
+      "tests/coverage",
+      "Video_ppt"
     ],
     "doc_links": {
       "dydo/welcome.md": [
@@ -949,6 +906,15 @@
         "dydo/understand/architecture.md",
         "dydo/project/decisions/_index.md"
       ],
+      "dydo/agents/grace/workflow.md": [
+        "dydo/agents/grace/modes/interviewer.md",
+        "dydo/agents/grace/modes/planner.md",
+        "dydo/agents/grace/modes/code-writer.md",
+        "dydo/agents/grace/modes/co-thinker.md",
+        "dydo/agents/grace/modes/reviewer.md",
+        "dydo/agents/grace/modes/docs-writer.md",
+        "dydo/agents/grace/modes/tester.md"
+      ],
       "dydo/agents/dexter/workflow.md": [
         "dydo/agents/dexter/modes/interviewer.md",
         "dydo/agents/dexter/modes/planner.md",
@@ -958,6 +924,24 @@
         "dydo/agents/dexter/modes/docs-writer.md",
         "dydo/agents/dexter/modes/tester.md"
       ],
+      "dydo/agents/henry/workflow.md": [
+        "dydo/agents/henry/modes/interviewer.md",
+        "dydo/agents/henry/modes/planner.md",
+        "dydo/agents/henry/modes/code-writer.md",
+        "dydo/agents/henry/modes/co-thinker.md",
+        "dydo/agents/henry/modes/reviewer.md",
+        "dydo/agents/henry/modes/docs-writer.md",
+        "dydo/agents/henry/modes/tester.md"
+      ],
+      "dydo/agents/frank/workflow.md": [
+        "dydo/agents/frank/modes/interviewer.md",
+        "dydo/agents/frank/modes/planner.md",
+        "dydo/agents/frank/modes/code-writer.md",
+        "dydo/agents/frank/modes/co-thinker.md",
+        "dydo/agents/frank/modes/reviewer.md",
+        "dydo/agents/frank/modes/docs-writer.md",
+        "dydo/agents/frank/modes/tester.md"
+      ],
       "dydo/agents/charlie/workflow.md": [
         "dydo/agents/charlie/modes/interviewer.md",
         "dydo/agents/charlie/modes/planner.md",
@@ -966,6 +950,24 @@
         "dydo/agents/charlie/modes/reviewer.md",
         "dydo/agents/charlie/modes/docs-writer.md",
         "dydo/agents/charlie/modes/tester.md"
+      ],
+      "dydo/agents/jack/workflow.md": [
+        "dydo/agents/jack/modes/interviewer.md",
+        "dydo/agents/jack/modes/planner.md",
+        "dydo/agents/jack/modes/code-writer.md",
+        "dydo/agents/jack/modes/co-thinker.md",
+        "dydo/agents/jack/modes/reviewer.md",
+        "dydo/agents/jack/modes/docs-writer.md",
+        "dydo/agents/jack/modes/tester.md"
+      ],
+      "dydo/agents/emma/workflow.md": [
+        "dydo/agents/emma/modes/interviewer.md",
+        "dydo/agents/emma/modes/planner.md",
+        "dydo/agents/emma/modes/code-writer.md",
+        "dydo/agents/emma/modes/co-thinker.md",
+        "dydo/agents/emma/modes/reviewer.md",
+        "dydo/agents/emma/modes/docs-writer.md",
+        "dydo/agents/emma/modes/tester.md"
       ],
       "dydo/agents/brian/workflow.md": [
         "dydo/agents/brian/modes/interviewer.md",
@@ -1016,6 +1018,41 @@
       "dydo/project/pitfalls/_pitfalls.md": [
         "dydo/project/decisions/_index.md"
       ],
+      "dydo/agents/grace/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/grace/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/grace/modes/code-writer.md"
+      ],
+      "dydo/agents/grace/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/grace/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/grace/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/grace/modes/code-writer.md"
+      ],
+      "dydo/agents/grace/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/grace/modes/planner.md"
+      ],
+      "dydo/agents/grace/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
       "dydo/agents/dexter/modes/reviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
@@ -1051,6 +1088,76 @@
         "dydo/guides/how-to-use-docs.md",
         "dydo/reference/writing-docs.md"
       ],
+      "dydo/agents/henry/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/henry/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/henry/modes/code-writer.md"
+      ],
+      "dydo/agents/henry/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/henry/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/henry/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/henry/modes/code-writer.md"
+      ],
+      "dydo/agents/henry/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/henry/modes/planner.md"
+      ],
+      "dydo/agents/henry/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/frank/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/frank/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/frank/modes/code-writer.md"
+      ],
+      "dydo/agents/frank/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/frank/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/frank/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/frank/modes/code-writer.md"
+      ],
+      "dydo/agents/frank/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/frank/modes/planner.md"
+      ],
+      "dydo/agents/frank/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
       "dydo/agents/charlie/modes/reviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
@@ -1082,6 +1189,76 @@
         "dydo/agents/charlie/modes/planner.md"
       ],
       "dydo/agents/charlie/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/jack/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/jack/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/jack/modes/code-writer.md"
+      ],
+      "dydo/agents/jack/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/jack/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/jack/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/jack/modes/code-writer.md"
+      ],
+      "dydo/agents/jack/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/jack/modes/planner.md"
+      ],
+      "dydo/agents/jack/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/emma/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/emma/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/emma/modes/code-writer.md"
+      ],
+      "dydo/agents/emma/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/emma/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/emma/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/emma/modes/code-writer.md"
+      ],
+      "dydo/agents/emma/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/emma/modes/planner.md"
+      ],
+      "dydo/agents/emma/modes/docs-writer.md": [
         "dydo/understand/about.md",
         "dydo/guides/how-to-use-docs.md",
         "dydo/reference/writing-docs.md"

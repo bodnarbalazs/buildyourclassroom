@@ -45,25 +45,18 @@ afterEach(() => {
 });
 
 describe("useLiveFeedHub", () => {
-  it("connects on mount and calls JoinAsDisplay for display role", async () => {
-    renderHook(() => useLiveFeedHub("display"));
+  it("connects on mount without invoking join", async () => {
+    renderHook(() => useLiveFeedHub());
 
     await waitFor(() => {
       expect(mockStart).toHaveBeenCalledOnce();
     });
-    expect(mockInvoke).toHaveBeenCalledWith("JoinAsDisplay");
-  });
-
-  it("calls JoinAsCamera for camera role", async () => {
-    renderHook(() => useLiveFeedHub("camera"));
-
-    await waitFor(() => {
-      expect(mockInvoke).toHaveBeenCalledWith("JoinAsCamera");
-    });
+    // Join is now deferred to consumer hooks
+    expect(mockInvoke).not.toHaveBeenCalled();
   });
 
   it("disconnects on unmount", async () => {
-    const { unmount } = renderHook(() => useLiveFeedHub("display"));
+    const { unmount } = renderHook(() => useLiveFeedHub());
 
     await waitFor(() => expect(mockStart).toHaveBeenCalled());
 
@@ -75,7 +68,7 @@ describe("useLiveFeedHub", () => {
   it("reports error state on connection failure", async () => {
     mockStart.mockRejectedValueOnce(new Error("fail"));
 
-    const { result } = renderHook(() => useLiveFeedHub("display"));
+    const { result } = renderHook(() => useLiveFeedHub());
 
     await waitFor(() => {
       expect(result.current.state).toBe("error");
@@ -83,7 +76,7 @@ describe("useLiveFeedHub", () => {
   });
 
   it("transitions to connected state on success", async () => {
-    const { result } = renderHook(() => useLiveFeedHub("display"));
+    const { result } = renderHook(() => useLiveFeedHub());
 
     await waitFor(() => {
       expect(result.current.state).toBe("connected");

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import logging
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
@@ -9,6 +10,8 @@ import cv2
 import numpy as np
 from deepface import DeepFace
 from PIL import Image
+
+logger = logging.getLogger(__name__)
 
 # How conducive each engagement level is to learning (used as the score)
 LEVEL_QUALITY: dict[str, float] = {
@@ -91,6 +94,9 @@ class EmotionAnalyzer:
 
     _MAX_WORKERS = 4
 
+    def __init__(self) -> None:
+        self._executor = ThreadPoolExecutor(max_workers=self._MAX_WORKERS)
+
     def warm_up(self) -> None:
         """Force model download/load at startup instead of first request."""
         dummy = np.zeros((48, 48, 3), dtype=np.uint8)
@@ -146,6 +152,7 @@ class EmotionAnalyzer:
         try:
             return self._analyze_two_stage(frame, start)
         except Exception:
+            logger.exception("Emotion analysis failed")
             elapsed = (time.perf_counter() - start) * 1000
             return AnalysisResult(faces=[], processing_ms=round(elapsed, 2))
 
@@ -183,17 +190,15 @@ class EmotionAnalyzer:
 
         # Stage 2: analyze each face in parallel
         faces: list[FaceAnalysis] = []
-        workers = min(len(jobs), self._MAX_WORKERS)
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            futures = {
-                pool.submit(self._analyze_single_face, crop, idx, bbox): idx
-                for idx, crop, bbox in jobs
-            }
-            for future in as_completed(futures):
-                try:
-                    faces.append(future.result())
-                except Exception:
-                    pass
+        futures = {
+            self._executor.submit(self._analyze_single_face, crop, idx, bbox): idx
+            for idx, crop, bbox in jobs
+        }
+        for future in as_completed(futures):
+            try:
+                faces.append(future.result())
+            except Exception:
+                logger.warning("Face analysis failed for face %d", futures[future])
 
         faces.sort(key=lambda f: f.face_index)
         elapsed = (time.perf_counter() - start) * 1000
