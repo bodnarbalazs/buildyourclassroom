@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ${ACR_REGISTRY}/frontend:${TAG}
+          image: ${IMAGE_PREFIX}/frontend:${TAG}
           ports:
             - containerPort: 80

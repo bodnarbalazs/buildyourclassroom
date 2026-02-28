@@ -4,15 +4,22 @@ on:
   push:
     tags: ['v*']
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ghcr.io/bodnarbalazs/buildyourclassroom
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Login to ACR
-        run: docker login ${{ secrets.ACR_REGISTRY }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Setup kubeconfig
         run: |
@@ -25,28 +32,28 @@ jobs:
 
       - name: Build and push API image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
-          docker push ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
+          docker push ${{ env.IMAGE_PREFIX }}/api:${{ steps.version.outputs.tag }}
 
       - name: Build and push frontend image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
-          docker push ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
+          docker push ${{ env.IMAGE_PREFIX }}/frontend:${{ steps.version.outputs.tag }}
 
       - name: Build and push microservice image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
-          docker push ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
+          docker push ${{ env.IMAGE_PREFIX }}/microservice:${{ steps.version.outputs.tag }}
 
       - name: Build and push worker image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
-          docker push ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
+          docker push ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }}
 
       - name: Deploy to Kubernetes
         run: |
           export TAG=${{ steps.version.outputs.tag }}
-          export ACR_REGISTRY=${{ secrets.ACR_REGISTRY }}
+          export IMAGE_PREFIX=${{ env.IMAGE_PREFIX }}
           export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
           export RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }}
           # export AZURE_OPENAI_ENDPOINT=${{ secrets.AZURE_OPENAI_ENDPOINT }}
