@@ -5,7 +5,6 @@ import { useLogoutMutation } from "../../hooks/useAuthMutations";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/api-test", label: "API Test" },
   { to: "/classroom-builder", label: "Classroom Builder" },
   { to: "/test-generator", label: "Test Generator" },
   { to: "/class-evaluation", label: "Class Evaluation" },
