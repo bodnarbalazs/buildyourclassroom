@@ -36,9 +36,15 @@ var microserviceWorkingDir = Path.GetFullPath(
 var dockerDir = Path.GetFullPath(
     Path.Combine(builder.AppHostDirectory, "../../../docker"));
 
+// ── Azure OpenAI ───────────────────────────────────────────────────
+var azureOpenAiEndpoint = builder.AddParameter("azure-openai-endpoint");
+var azureOpenAiKey = builder.AddParameter("azure-openai-key", secret: true);
+var azureOpenAiDeployment = builder.AddParameter("azure-openai-deployment");
+
 // ──────────────────────────────────────────────────────────────────
 // Core Services
 // ──────────────────────────────────────────────────────────────────
+
 
 var api = builder.AddProject<Projects.Hackathon_Api>("api", launchProfileName: "https")
     .WithReference(hackathonDb)
@@ -60,7 +66,10 @@ var microservice = builder.AddDockerfile("microservice",
     .WithReference(hackathonDb)
     .WaitFor(postgres)
     .WithHttpEndpoint(targetPort: 8000)
-    .WithExternalHttpEndpoints();
+    .WithExternalHttpEndpoints()
+    .WithEnvironment("AZURE_OPENAI_ENDPOINT", azureOpenAiEndpoint)
+    .WithEnvironment("AZURE_OPENAI_API_KEY", azureOpenAiKey)
+    .WithEnvironment("AZURE_OPENAI_DEPLOYMENT_NAME", azureOpenAiDeployment);
 
 // Python workers (RabbitMQ consumers) — run in Docker (TF requires Linux)
 var addNumbersWorker = builder.AddDockerfile("add-numbers-worker",

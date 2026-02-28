@@ -56,7 +56,7 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install buildyourclassroom ./k8s \
+          helm template buildyourclassroom ./k8s \
             --set secrets.postgres.password=${{ secrets.POSTGRES_PASSWORD }} \
             --set secrets.messaging.password=${{ secrets.RABBITMQ_PASSWORD }} \
             --set secrets.api.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
@@ -64,7 +64,9 @@ jobs:
             --set secrets.microservice.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
             --set secrets.add-numbers-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
             --set secrets.analyze-snapshot-worker.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
-            --set secrets.analyze-snapshot-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }}
+            --set secrets.analyze-snapshot-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
+          | sed -E 's/(port|containerPort|targetPort): "([0-9]+)"/\1: \2/g' \
+          | kubectl apply -f -
 
       - name: Verify rollout
         run: |

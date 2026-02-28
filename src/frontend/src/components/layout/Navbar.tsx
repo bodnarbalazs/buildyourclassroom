@@ -18,6 +18,12 @@ export default function Navbar() {
       <Link to="/classroom-builder" className="text-gray-600 hover:text-gray-900">
         Classroom Builder
       </Link>
+      <Link to="/test-generator" className="text-gray-600 hover:text-gray-900">
+        Test Generator
+      </Link>
+      <Link to="/class-evaluation" className="text-gray-600 hover:text-gray-900">
+        Class Evaluation
+      </Link>
       <div className="ml-auto flex items-center gap-4">
         {isAuthenticated ? (
           <>

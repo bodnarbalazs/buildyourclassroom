@@ -4,13 +4,12 @@ interface Props {
   simulation: SimulationState;
 }
 
-const EMOTION_COLOR: Record<string, string > = {
-  neutral: "bg-gray-400",
-  focused: "bg-green-500",
-  excited: "bg-yellow-400",
-  bored: "bg-orange-400",
-  confused: "bg-blue-400",
-  sleepy: "bg-purple-400",
+const EMOTION_COLOR: Record<string, string> = {
+  engaged: "bg-green-500",
+  passive: "bg-gray-400",
+  anxious: "bg-orange-400",
+  confused: "bg-purple-400",
+  disruptive: "bg-red-400",
 };
 
 // Placeholder panel -- metrics and charts will be added once simulation schema is finalised.
@@ -23,8 +22,8 @@ export default function ResultsPanel({ simulation }: Props) {
   }, {});
 
   const total = simulation.students.length || 30;
-  const engaged = (counts["focused"] ?? 0) + (counts["excited"] ?? 0);
-  const pct = Math.round((engaged / total) * 100);
+  const engagedCount = counts["engaged"] ?? 0;
+  const pct = Math.round((engagedCount / total) * 100);
 
   return (
     <div className="flex flex-col gap-4">
@@ -34,7 +33,7 @@ export default function ResultsPanel({ simulation }: Props) {
         <p className="text-sm font-semibold text-gray-600"> Class Engagement </p>
         <div className="flex items-end gap-2">
           <span className="text-4xl font-bold text-green-600">{pct}%</span>
-          <span className="text-sm text-gray-400 mb-1"> focused or excited </span>
+          <span className="text-sm text-gray-400 mb-1"> engaged </span>
         </div>
         <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
           <div
