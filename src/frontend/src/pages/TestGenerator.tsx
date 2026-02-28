@@ -358,10 +358,10 @@ export default function TestGenerator() {
       {result && (
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 max-w-2xl">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Generated Test</h2>
-          {result.transcript_summary && (
+          {typeof result.transcript_summary === "string" && (
             <div className="mb-4">
               <h3 className="text-sm font-medium text-gray-700 mb-1">Transcript Summary</h3>
-              <p className="text-gray-600 text-sm">{result.transcript_summary as string}</p>
+              <p className="text-gray-600 text-sm">{result.transcript_summary}</p>
             </div>
           )}
           <pre className="bg-white border border-gray-200 rounded-lg p-4 text-xs overflow-auto max-h-96">
