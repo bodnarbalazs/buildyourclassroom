@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice
+spec:
+  selector:
+    app: microservice
+  ports:
+    - port: 8000
+      targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice
+  template:
+    metadata:
+      labels:
+        app: microservice
+    spec:
+      containers:
+        - name: microservice
+          image: ${IMAGE_PREFIX}/microservice:${TAG}
+          ports:
+            - containerPort: 8000
+          env:
+            - name: ConnectionStrings__hackathondb
+              value: "Host=postgres;Port=5432;Database=hackathondb;Username=postgres;Password=${POSTGRES_PASSWORD}"
+            # - name: AZURE_OPENAI_ENDPOINT
+            #   value: "${AZURE_OPENAI_ENDPOINT}"
+            # - name: AZURE_OPENAI_API_KEY
+            #   value: "${AZURE_OPENAI_KEY}"
+            # - name: AZURE_OPENAI_DEPLOYMENT_NAME
+            #   value: "${AZURE_OPENAI_DEPLOYMENT}"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5

@@ -632,6 +632,78 @@
       "event": "Bash",
       "tool": "bash",
       "cmd": "winget install aspire 2\u003E\u00261 || winget search aspire 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:13:13.4398078Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "winget install Microsoft.Aspire --silent 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:13:43.4574661Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "export PATH=\u0022$PATH:/c/Users/Peti/AppData/Local/Microsoft/WinGet/Packages/Microsoft.Aspire_Microsoft...."
+    },
+    {
+      "ts": "2026-02-27T23:14:13.4403755Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "netstat -ano | grep 22128 2\u003E\u00261 | head -1"
+    },
+    {
+      "ts": "2026-02-27T23:14:29.1017799Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "taskkill //F //PID 15292 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:16:44.5233239Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 aspire publish --project src/backe..."
+    },
+    {
+      "ts": "2026-02-27T23:16:52.4489139Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cmd.exe /c \u0022where aspire\u0022 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:17:00.16454Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cmd.exe /c \u0022dotnet tool list -g\u0022 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:17:17.256195Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cmd.exe /c \u0022dotnet tool list -g 2\u003E\u00261\u0022"
+    },
+    {
+      "ts": "2026-02-27T23:17:22.6564701Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet tool list -g 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:17:28.5822265Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /c/Users/Peti/Desktop/buildyourclassroom/buildyourclassroom \u0026\u0026 dotnet tool install -g aspire 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:17:35.0056343Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "dotnet tool install -g Microsoft.Aspire.Cli 2\u003E\u00261"
+    },
+    {
+      "ts": "2026-02-27T23:18:03.2334993Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "dotnet tool install -g Aspire.Cli 2\u003E\u00261"
     }
   ],
   "snapshot": {
