@@ -127,11 +127,12 @@ public static class AuthEndpoints
         if (result.IsFailure)
             return Results.NotFound(result.Error);
 
+        var secure = !string.Equals(httpContext.Request.Scheme, "http", StringComparison.OrdinalIgnoreCase);
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
-            SameSite = environment.IsDevelopment() ? SameSiteMode.None : SameSiteMode.Lax,
+            Secure = secure,
+            SameSite = secure ? SameSiteMode.Lax : SameSiteMode.None,
             Expires = DateTime.UtcNow.AddDays(-1),
             Path = "/"
         };
@@ -164,12 +165,13 @@ public static class AuthEndpoints
     private static void SetAuthCookies(HttpContext httpContext, string accessToken,
         string refreshToken, DateTime refreshExpires, IWebHostEnvironment environment)
     {
-        var sameSite = environment.IsDevelopment() ? SameSiteMode.None : SameSiteMode.Lax;
+        var secure = !string.Equals(httpContext.Request.Scheme, "http", StringComparison.OrdinalIgnoreCase);
+        var sameSite = secure ? SameSiteMode.Lax : SameSiteMode.None;
 
         httpContext.Response.Cookies.Append("accessToken", accessToken, new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
+            Secure = secure,
             SameSite = sameSite,
             Expires = DateTime.UtcNow.AddMinutes(TokenExpiryMinutes),
             Path = "/"
@@ -178,7 +180,7 @@ public static class AuthEndpoints
         httpContext.Response.Cookies.Append("refreshToken", refreshToken, new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
+            Secure = secure,
             SameSite = sameSite,
             Expires = refreshExpires,
             Path = "/"
