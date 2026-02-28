@@ -86,6 +86,4 @@ tests/coverage/
 
 ## Related
 
-- [Testing Strategy](../guides/testing-strategy.md) — Tier definitions and thresholds
-- [Coverage Tooling Decision](../project/decisions/006-coverage-tooling-split.md) — Why two scripts, design rationale
-- [CRAP Score Thresholds](../project/decisions/002-crap-score-tier-thresholds.md) — CRAP formula analysis
+- [Architecture Overview](../understand/architecture.md) — Project structure

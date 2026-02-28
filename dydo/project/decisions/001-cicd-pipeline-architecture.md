@@ -2,11 +2,13 @@
 type: decision
 status: accepted
 date: 2026-02-27
-area: infrastructure
+area: platform
 updated: 2026-02-28
 ---
 
 # 001 — CI/CD Pipeline Architecture
+
+Deploy pipeline for the polyglot Aspire app targeting Azure AKS, optimized for hackathon speed over production-readiness.
 
 ## Context
 
