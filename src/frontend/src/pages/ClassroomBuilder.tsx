@@ -15,6 +15,7 @@ export default function ClassroomBuilder() {
   const { isAuthenticated } = useAuth();
   const [plan, setPlan] = useState<LessonPlan | null>(null);
   const [simulation, setSimulation] = useState<SimulationState>(INITIAL);
+  const [ticks, setTicks] = useState<TickSnapshot[]>([]);
   const ticksRef = useRef<TickSnapshot[]>([]);
   const timerRef = useRef<ReturnType<typeof setInterval>>(null);
 
@@ -78,6 +79,7 @@ export default function ClassroomBuilder() {
       }
 
       const data: SimulationResponse = await res.json();
+      setTicks(data.ticks);
       animateTicks(data.ticks);
     } catch {
       setSimulation(INITIAL);
@@ -113,7 +115,7 @@ export default function ClassroomBuilder() {
       {/* Results -- full width below */}
       {simulation.status !== "idle" && (
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-          <ResultsPanel simulation={simulation} />
+          <ResultsPanel simulation={simulation} ticks={ticks} />
         </div>
       )}
     </div>
