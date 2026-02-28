@@ -62,9 +62,9 @@ jobs:
           export IMAGE_PREFIX=${{ env.IMAGE_PREFIX }}
           export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
           export RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }}
-          # export AZURE_OPENAI_ENDPOINT=${{ secrets.AZURE_OPENAI_ENDPOINT }}
-          # export AZURE_OPENAI_KEY=${{ secrets.AZURE_OPENAI_KEY }}
-          # export AZURE_OPENAI_DEPLOYMENT=${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          export AZURE_OPENAI_ENDPOINT=${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          export AZURE_OPENAI_KEY=${{ secrets.AZURE_OPENAI_KEY }}
+          export AZURE_OPENAI_DEPLOYMENT=${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
           for f in k8s/*.yaml; do envsubst < "$f" | kubectl apply -f -; done
 
       - name: Verify rollout

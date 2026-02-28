@@ -31,12 +31,12 @@ spec:
           env:
             - name: ConnectionStrings__hackathondb
               value: "Host=postgres;Port=5432;Database=hackathondb;Username=postgres;Password=${POSTGRES_PASSWORD}"
-            # - name: AZURE_OPENAI_ENDPOINT
-            #   value: "${AZURE_OPENAI_ENDPOINT}"
-            # - name: AZURE_OPENAI_API_KEY
-            #   value: "${AZURE_OPENAI_KEY}"
-            # - name: AZURE_OPENAI_DEPLOYMENT_NAME
-            #   value: "${AZURE_OPENAI_DEPLOYMENT}"
+            - name: AZURE_OPENAI_ENDPOINT
+              value: "${AZURE_OPENAI_ENDPOINT}"
+            - name: AZURE_OPENAI_API_KEY
+              value: "${AZURE_OPENAI_KEY}"
+            - name: AZURE_OPENAI_DEPLOYMENT_NAME
+              value: "${AZURE_OPENAI_DEPLOYMENT}"
           readinessProbe:
             httpGet:
               path: /health
