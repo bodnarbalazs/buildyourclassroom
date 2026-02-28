@@ -26,6 +26,13 @@ builder.Services.AddOpenApi();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
+// HttpClient for Python microservice (resolved via Aspire service discovery)
+builder.Services.AddHttpClient("microservice", client =>
+{
+    client.BaseAddress = new Uri("http://microservice");
+    client.Timeout = TimeSpan.FromMinutes(2);
+});
+
 // Authorization & HttpContextAccessor
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
@@ -87,11 +94,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.MapOpenApi();
     app.MapScalarApiReference();
-}
+// }
 
 app.UseCors();
 app.UseAuthentication();
@@ -101,10 +108,12 @@ app.MapDefaultEndpoints();
 app.MapTestEndpoints();
 app.MapAuthEndpoints();
 app.MapMicroserviceEndpoints();
+app.MapSessionEndpoints();
+app.MapAgendaEndpoints();
 
 // Auto-migrate with retry (PostGIS image can be slow to initialise)
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
@@ -129,6 +138,6 @@ if (app.Environment.IsDevelopment())
             Thread.Sleep(2000);
         }
     }
-}
+// }
 
 app.Run();

@@ -45,20 +45,6 @@ var azureOpenAiDeployment = builder.AddParameter("azure-openai-deployment");
 // Core Services
 // ──────────────────────────────────────────────────────────────────
 
-
-var api = builder.AddProject<Projects.Hackathon_Api>("api", launchProfileName: "https")
-    .WithReference(hackathonDb)
-    .WaitFor(postgres)
-    .WithReference(rabbitmq)
-    .WaitFor(rabbitmq);
-
-var frontend = builder.AddNpmApp("frontend", frontendWorkingDir, "dev")
-    .WithReference(api)
-    .WaitFor(api)
-    .WithHttpEndpoint(port: 3000, env: "PORT")
-    .WithExternalHttpEndpoints()
-    .PublishAsDockerFile();
-
 // Python microservice (FastAPI) — runs in Docker (TF requires Linux)
 var microservice = builder.AddDockerfile("microservice",
         microserviceWorkingDir,
@@ -70,6 +56,21 @@ var microservice = builder.AddDockerfile("microservice",
     .WithEnvironment("AZURE_OPENAI_ENDPOINT", azureOpenAiEndpoint)
     .WithEnvironment("AZURE_OPENAI_API_KEY", azureOpenAiKey)
     .WithEnvironment("AZURE_OPENAI_DEPLOYMENT_NAME", azureOpenAiDeployment);
+
+var api = builder.AddProject<Projects.Hackathon_Api>("api", launchProfileName: "https")
+    .WithReference(hackathonDb)
+    .WaitFor(postgres)
+    .WithReference(rabbitmq)
+    .WaitFor(rabbitmq)
+    .WithReference(microservice.GetEndpoint("http"))
+    .WaitFor(microservice);
+
+var frontend = builder.AddNpmApp("frontend", frontendWorkingDir, "dev")
+    .WithReference(api)
+    .WaitFor(api)
+    .WithHttpEndpoint(port: 3000, env: "PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
 
 // Python workers (RabbitMQ consumers) — run in Docker (TF requires Linux)
 var addNumbersWorker = builder.AddDockerfile("add-numbers-worker",

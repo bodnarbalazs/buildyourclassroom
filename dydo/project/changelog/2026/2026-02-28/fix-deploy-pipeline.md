@@ -1,12 +1,10 @@
 ---
 area: general
-name: run-app
-status: pending
-created: 2026-02-27T18:03:52.9646179Z
-assigned: Ulrich
+type: changelog
+date: 2026-02-28
 ---
 
-# Task: run-app
+# Task: fix-deploy-pipeline
 
 (No description)
 
@@ -21,3 +19,7 @@ assigned: Ulrich
 ## Review Summary
 
 (Pending)
+
+## Approval
+
+- Approved: 2026-02-28 01:06

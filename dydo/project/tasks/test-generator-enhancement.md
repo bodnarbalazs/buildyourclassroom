@@ -1,12 +1,12 @@
 ---
 area: general
-name: fix-docker-arm64
+name: test-generator-enhancement
 status: pending
-created: 2026-02-27T18:02:37.9033890Z
-assigned: Alfred
+created: 2026-02-28T01:02:00.3375073Z
+assigned: Cora
 ---
 
-# Task: fix-docker-arm64
+# Task: test-generator-enhancement
 
 (No description)
 

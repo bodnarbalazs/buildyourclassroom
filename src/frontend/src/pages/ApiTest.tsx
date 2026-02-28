@@ -44,12 +44,12 @@ export default function ApiTest() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col gap-8">
       <h1 className="text-3xl font-bold text-gray-900">API Test Page</h1>
 
       {/* Auth Section */}
-      <section className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-        <h2 className="text-xl font-semibold">Authentication</h2>
+      <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 flex flex-col gap-4">
+        <h2 className="text-lg font-semibold text-gray-900">Authentication</h2>
         <p className="text-sm text-gray-600">
           {isAuthenticated ? "You are logged in." : "You are not logged in."}
         </p>
@@ -57,19 +57,19 @@ export default function ApiTest() {
       </section>
 
       {/* Test Buttons */}
-      <section className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-        <h2 className="text-xl font-semibold">API Endpoints</h2>
+      <section className="rounded-xl border border-gray-200 bg-gray-50 p-6 flex flex-col gap-4">
+        <h2 className="text-lg font-semibold text-gray-900">API Endpoints</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <button
               onClick={handleTest}
-              className="w-full bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900"
+              className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
             >
               Test
             </button>
             {testResult && (
-              <pre className="bg-gray-50 p-3 rounded text-xs overflow-auto max-h-40">
+              <pre className="rounded-lg bg-white border border-gray-200 p-3 text-xs overflow-auto max-h-40">
                 {testResult}
               </pre>
             )}
@@ -78,12 +78,12 @@ export default function ApiTest() {
           <div className="space-y-2">
             <button
               onClick={handleAuth}
-              className="w-full bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+              className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
             >
               Auth
             </button>
             {authResult && (
-              <pre className="bg-gray-50 p-3 rounded text-xs overflow-auto max-h-40">
+              <pre className="rounded-lg bg-white border border-gray-200 p-3 text-xs overflow-auto max-h-40">
                 {authResult}
               </pre>
             )}
@@ -92,12 +92,12 @@ export default function ApiTest() {
           <div className="space-y-2">
             <button
               onClick={handleMicro}
-              className="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+              className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
             >
               Micro
             </button>
             {microResult && (
-              <pre className="bg-gray-50 p-3 rounded text-xs overflow-auto max-h-40">
+              <pre className="rounded-lg bg-white border border-gray-200 p-3 text-xs overflow-auto max-h-40">
                 {microResult}
               </pre>
             )}

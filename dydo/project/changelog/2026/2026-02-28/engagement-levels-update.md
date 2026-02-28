@@ -1,9 +1,7 @@
 ---
 area: microservices
-name: engagement-levels-update
-status: docs-complete
-created: 2026-02-27T19:26:19.8036340Z
-assigned: Carla
+type: changelog
+date: 2026-02-28
 ---
 
 # Task: engagement-levels-update
@@ -29,3 +27,7 @@ Document the engagement-level model change from generic high/medium/low to pedag
 ## Review Summary
 
 (Pending)
+
+## Approval
+
+- Approved: 2026-02-28 02:04
