@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { notifyUnauthorized } from "../api/unauthorizedBus";
+import type { AssessmentResult } from "./test-generator/types";
+import AssessmentView from "./test-generator/AssessmentView";
 
 type Difficulty = "easy" | "medium" | "hard";
 type TestType = "quick-quiz" | "chapter-test" | "midterm" | "final-exam";
@@ -51,7 +53,7 @@ export default function TestGenerator() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<Record<string, unknown> | null>(null);
+  const [result, setResult] = useState<AssessmentResult | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -356,17 +358,14 @@ export default function TestGenerator() {
 
       {/* ── Results ── */}
       {result && (
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 max-w-2xl">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Generated Test</h2>
-          {typeof result.transcript_summary === "string" && (
+        <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 max-w-4xl">
+          {result.transcript_summary && (
             <div className="mb-4">
               <h3 className="text-sm font-medium text-gray-700 mb-1">Transcript Summary</h3>
               <p className="text-gray-600 text-sm">{result.transcript_summary}</p>
             </div>
           )}
-          <pre className="bg-white border border-gray-200 rounded-lg p-4 text-xs overflow-auto max-h-96">
-            {JSON.stringify(result.assessment, null, 2)}
-          </pre>
+          <AssessmentView assessment={result.assessment} />
         </div>
       )}
     </div>
