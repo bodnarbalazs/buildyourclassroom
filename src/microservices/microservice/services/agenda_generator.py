@@ -86,8 +86,10 @@ rules (string), team_based (bool).
 
 ## IMPORTANT RULES
 
-1. Use a VARIETY of element types. A good lesson mixes lectures with interactive elements, \
-checks, energizers, and support moments. Do not make all sections the same type.
+1. The user's additional instructions take ABSOLUTE PRIORITY over default recommendations. \
+If the user requests specific element types (e.g. "only lectures", "no group activities"), \
+you MUST follow those instructions exactly. When no specific preference is given, default to \
+a balanced mix of element types for good engagement.
 2. start_minute values must be sequential and non-overlapping: each section's start_minute \
 equals the previous section's start_minute + duration_minutes. The first section starts at \
 minute 1.
@@ -114,7 +116,10 @@ def _build_user_prompt(
         f"Total duration: {duration_minutes} minutes\n"
     )
     if additional_instructions:
-        prompt += f"\nAdditional instructions: {additional_instructions}\n"
+        prompt += (
+            f"\n## USER INSTRUCTIONS (MUST FOLLOW)\n"
+            f"{additional_instructions}\n"
+        )
     return prompt
 
 

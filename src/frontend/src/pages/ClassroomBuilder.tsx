@@ -15,6 +15,7 @@ export default function ClassroomBuilder() {
   const { isAuthenticated } = useAuth();
   const [plan, setPlan] = useState<LessonPlan | null>(null);
   const [simulation, setSimulation] = useState<SimulationState>(INITIAL);
+  const [ticks, setTicks] = useState<TickSnapshot[]>([]);
   const ticksRef = useRef<TickSnapshot[]>([]);
   const timerRef = useRef<ReturnType<typeof setInterval>>(null);
 
@@ -59,6 +60,7 @@ export default function ClassroomBuilder() {
   async function handleRunSimulation() {
     if (!plan) return;
 
+    if (timerRef.current) clearInterval(timerRef.current);
     setSimulation({ status: "running", students: [], currentMinute: 0 });
 
     try {
@@ -78,6 +80,7 @@ export default function ClassroomBuilder() {
       }
 
       const data: SimulationResponse = await res.json();
+      setTicks(data.ticks);
       animateTicks(data.ticks);
     } catch {
       setSimulation(INITIAL);
@@ -97,8 +100,16 @@ export default function ClassroomBuilder() {
       <h1 className="text-3xl font-bold text-gray-900"> Classroom Builder </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 items-start">
-        {/* Classroom graphic */}
-        <ClassroomView simulation={simulation} />
+        {/* Classroom graphic + results */}
+        <div className="flex flex-col gap-6">
+          <ClassroomView simulation={simulation} />
+
+          {simulation.status !== "idle" && (
+            <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+              <ResultsPanel simulation={simulation} ticks={ticks} />
+            </div>
+          )}
+        </div>
 
         {/* Lesson plan input */}
         <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
@@ -109,13 +120,6 @@ export default function ClassroomBuilder() {
           />
         </div>
       </div>
-
-      {/* Results -- full width below */}
-      {simulation.status !== "idle" && (
-        <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
-          <ResultsPanel simulation={simulation} />
-        </div>
-      )}
     </div>
   );
 }
