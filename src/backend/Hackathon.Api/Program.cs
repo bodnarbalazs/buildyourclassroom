@@ -94,11 +94,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.MapOpenApi();
     app.MapScalarApiReference();
-}
+// }
 
 app.UseCors();
 app.UseAuthentication();
@@ -112,8 +112,8 @@ app.MapSessionEndpoints();
 app.MapAgendaEndpoints();
 
 // Auto-migrate with retry (PostGIS image can be slow to initialise)
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
@@ -138,6 +138,6 @@ if (app.Environment.IsDevelopment())
             Thread.Sleep(2000);
         }
     }
-}
+// }
 
 app.Run();
