@@ -1385,6 +1385,18 @@
       "event": "Bash",
       "tool": "bash",
       "cmd": "cd /tmp \u0026\u0026 uv run --with numpy --with scipy --with pydantic --with fastapi --with structlog --with h..."
+    },
+    {
+      "ts": "2026-02-28T06:46:00.999776Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend \u0026\u0026 npx tsc --noEmit 2\u003E\u00261 | head -40"
+    },
+    {
+      "ts": "2026-02-28T06:46:06.626987Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api \u0026\u0026 dotnet build --no-res..."
     }
   ],
   "snapshot": {

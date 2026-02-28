@@ -4,6 +4,7 @@ export interface StudentState {
   id: number;
   emotion: Emotion;
   engagement?: number;
+  thought?: string;
 }
 
 export interface LessonSegment {
