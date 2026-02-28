@@ -63,16 +63,15 @@ export default function ClassroomView({ simulation }: Props) {
     <div className="w-full rounded-xl border-2 border-stone-400/60 overflow-hidden shadow-lg">
       {/* Wall with blackboard */}
       <div
-        className="px-6 pt-5 pb-4"
+        className="px-3 md:px-6 pt-5 pb-4"
         style={{
           background: "linear-gradient(180deg, #6b6560 0%, #8c8580 60%, #9e9690 100%)",
           borderBottom: "3px solid #78716c",
         }}
       >
         <div
-          className="rounded border-[5px] border-amber-900/80 flex items-center justify-center mx-auto py-5"
+          className="rounded border-[5px] border-amber-900/80 flex items-center justify-center mx-auto py-5 max-w-[380px] w-full"
           style={{
-            maxWidth: 380,
             background: "linear-gradient(145deg, #1a5c2e 0%, #14532d 40%, #1e4a30 100%)",
             boxShadow: "inset 0 2px 12px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2)",
           }}
@@ -85,7 +84,7 @@ export default function ClassroomView({ simulation }: Props) {
 
       {/* Classroom floor area */}
       <div
-        className="px-6 pb-8 pt-5"
+        className="px-3 md:px-6 pb-8 pt-5 overflow-hidden"
         style={{
           background: `
             repeating-conic-gradient(#efe3d4 0% 25%, #e8dbc9 0% 50%) 0 0 / 48px 48px
@@ -107,9 +106,9 @@ export default function ClassroomView({ simulation }: Props) {
         </div>
 
         {/* Student desks grid — fills available width */}
-        <div className="flex flex-col gap-4 max-w-xl mx-auto">
+        <div className="flex flex-col gap-2 md:gap-4 w-full max-w-xl mx-auto">
           {Array.from({ length: 5 }, (_, row) => (
-            <div key={row} className="grid grid-cols-3 gap-4">
+            <div key={row} className="grid grid-cols-3 gap-2 md:gap-4">
               {Array.from({ length: 3 }, (_, col) => (
                 <Desk
                   key={col}
