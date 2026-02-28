@@ -12,6 +12,7 @@ Index of 2026-02-28 documentation.
 ## Contents
 
 - [Add New Page](./add-new-page.md)
+- [Assessment Pdf Export](./assessment-pdf-export.md)
 - [Cicd Pipeline](./cicd-pipeline.md)
 - [Class Evaluation Page](./class-evaluation-page.md)
 - [Classroom Builder Ui](./classroom-builder-ui.md)
@@ -22,6 +23,7 @@ Index of 2026-02-28 documentation.
 - [Explore Project Structure](./explore-project-structure.md)
 - [Face Separation](./face-separation.md)
 - [Facial Emotion Detection](./facial-emotion-detection.md)
+- [Fe Responsiveness Issues](./fe-responsiveness-issues.md)
 - [Fix Api Duplicate Ports](./fix-api-duplicate-ports.md)
 - [Fix Apphost Ports](./fix-apphost-ports.md)
 - [Fix Deploy Pipeline](./fix-deploy-pipeline.md)
