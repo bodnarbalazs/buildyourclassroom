@@ -22,6 +22,7 @@ dependencies = [
     "pydub>=0.25.1",
     "audioop-lts>=0.2.1; python_version>='3.13'",
     "tiktoken>=0.7.0",
+    "scipy>=1.11.0",
 ]
 
 [dependency-groups]
