@@ -8,7 +8,14 @@ import structlog
 from fastapi import APIRouter, Form, HTTPException, UploadFile
 from openai import OpenAIError
 
-from api.models.assessment import AssessmentBundle, GenerateAssessmentFromTranscriptRequest
+from api.models.assessment import (
+    AssessmentResult,
+    GenerateAssessmentFromTranscriptRequest,
+)
+from api.models.assessment.difficulty import Difficulty
+from api.models.assessment.language import Language
+from api.models.assessment.question_type import QuestionType
+from api.models.assessment.test_type import TestType
 from services.assessment_generator import AssessmentGenerationError, AssessmentGenerator
 from services.transcription_service import (
     SUPPORTED_EXTENSIONS,
@@ -39,13 +46,18 @@ def _get_assessment_generator() -> AssessmentGenerator:
     return _assessment_generator
 
 
-@router.post("/generate-assessments", response_model=AssessmentBundle)
+@router.post("/generate-assessments", response_model=AssessmentResult)
 async def generate_assessments(
     file: UploadFile,
+    test_type: TestType = Form(default=TestType.CHAPTER_TEST),
+    difficulty: Difficulty = Form(default=Difficulty.MEDIUM),
+    num_questions: int = Form(default=10, ge=1, le=100),
+    question_types: list[QuestionType] = Form(default=[QuestionType.MULTIPLE_CHOICE]),
+    language: Language = Form(default=Language.ENGLISH),
     subject: str | None = Form(default=None),
     target_audience: str | None = Form(default=None),
     additional_instructions: str | None = Form(default=None),
-) -> AssessmentBundle:
+) -> AssessmentResult:
     log = logger.bind(filename=file.filename)
 
     # Validate extension
@@ -103,6 +115,11 @@ async def generate_assessments(
         # Stage 2: Assessment generation
         return await _generate_from_transcript(
             transcript=transcript,
+            test_type=test_type,
+            difficulty=difficulty,
+            num_questions=num_questions,
+            question_types=question_types,
+            language=language,
             subject=subject,
             target_audience=target_audience,
             additional_instructions=additional_instructions,
@@ -112,15 +129,20 @@ async def generate_assessments(
         tmp_path.unlink(missing_ok=True)
 
 
-@router.post("/generate-assessments/from-transcript", response_model=AssessmentBundle)
+@router.post("/generate-assessments/from-transcript", response_model=AssessmentResult)
 async def generate_assessments_from_transcript(
     body: GenerateAssessmentFromTranscriptRequest,
-) -> AssessmentBundle:
+) -> AssessmentResult:
     if not body.transcript.strip():
         raise HTTPException(status_code=400, detail="Transcript is empty")
 
     return await _generate_from_transcript(
         transcript=body.transcript,
+        test_type=body.test_type,
+        difficulty=body.difficulty,
+        num_questions=body.num_questions,
+        question_types=body.question_types,
+        language=body.language,
         subject=body.subject,
         target_audience=body.target_audience,
         additional_instructions=body.additional_instructions,
@@ -130,18 +152,28 @@ async def generate_assessments_from_transcript(
 
 async def _generate_from_transcript(
     transcript: str,
+    test_type: TestType,
+    difficulty: Difficulty,
+    num_questions: int,
+    question_types: list[QuestionType],
+    language: Language,
     subject: str | None,
     target_audience: str | None,
     additional_instructions: str | None,
     generated_from: str,
-) -> AssessmentBundle:
+) -> AssessmentResult:
     log = logger.bind(generated_from=generated_from)
     log.info("assessment_generation_started")
 
     try:
         generator = _get_assessment_generator()
-        bundle = await generator.generate(
+        result = await generator.generate(
             transcript=transcript,
+            test_type=test_type,
+            difficulty=difficulty,
+            num_questions=num_questions,
+            question_types=question_types,
+            language=language,
             subject=subject,
             target_audience=target_audience,
             additional_instructions=additional_instructions,
@@ -157,4 +189,4 @@ async def _generate_from_transcript(
         ) from exc
 
     log.info("assessment_generation_completed")
-    return bundle
+    return result
