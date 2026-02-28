@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { renderHook, waitFor, act } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import { useWebRTCSender, useWebRTCReceivers } from "./useWebRTC";
 import type { useLiveFeedHub } from "./useLiveFeedHub";
 
@@ -14,10 +14,6 @@ const mockAddIceCandidate = vi.fn().mockResolvedValue(undefined);
 const mockClose = vi.fn();
 const mockAddTransceiver = vi.fn();
 
-let onConnectionStateChange: (() => void) | null = null;
-let onTrack: ((e: { streams: MediaStream[] }) => void) | null = null;
-let onIceCandidate: ((e: { candidate: unknown }) => void) | null = null;
-
 function createMockPC() {
   const pc = {
     addTrack: mockAddTrack,
@@ -29,15 +25,9 @@ function createMockPC() {
     addTransceiver: mockAddTransceiver,
     close: mockClose,
     connectionState: "new" as RTCPeerConnectionState,
-    set onconnectionstatechange(fn: (() => void) | null) {
-      onConnectionStateChange = fn;
-    },
-    set ontrack(fn: ((e: { streams: MediaStream[] }) => void) | null) {
-      onTrack = fn;
-    },
-    set onicecandidate(fn: ((e: { candidate: unknown }) => void) | null) {
-      onIceCandidate = fn;
-    },
+    onconnectionstatechange: null as (() => void) | null,
+    ontrack: null as ((e: { streams: MediaStream[] }) => void) | null,
+    onicecandidate: null as ((e: { candidate: unknown }) => void) | null,
   };
   return pc;
 }
@@ -49,9 +39,6 @@ beforeEach(() => {
   mockSetLocalDescription.mockResolvedValue(undefined);
   mockSetRemoteDescription.mockResolvedValue(undefined);
   mockAddIceCandidate.mockResolvedValue(undefined);
-  onConnectionStateChange = null;
-  onTrack = null;
-  onIceCandidate = null;
   vi.stubGlobal("RTCPeerConnection", vi.fn(createMockPC));
 });
 

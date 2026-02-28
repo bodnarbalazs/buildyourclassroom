@@ -41,14 +41,16 @@ export function useLiveFeedHub(role: "display" | "camera") {
   }, [role]);
 
   const on = useCallback(
-    (event: string, handler: (...args: unknown[]) => void) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (event: string, handler: (...args: any[]) => void) => {
       connectionRef.current?.on(event, handler);
     },
     [],
   );
 
   const off = useCallback(
-    (event: string, handler: (...args: unknown[]) => void) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (event: string, handler: (...args: any[]) => void) => {
       connectionRef.current?.off(event, handler);
     },
     [],

@@ -1,392 +1,89 @@
 {
-  "session": "8d82bc29-b50f-41d2-aff8-2b0e0f89a6c1",
-  "agent": "Dexter",
+  "session": "92034e53-9261-489e-9d06-6fcf4ebe12cf",
+  "agent": "Emma",
   "human": "balazs",
-  "started": "2026-02-28T04:44:37.068499Z",
-  "git_head": "15fe73f",
+  "started": "2026-02-28T04:59:18.715563Z",
+  "git_head": "eaf00e6",
   "events": [
     {
-      "ts": "2026-02-28T04:44:37.066428Z",
+      "ts": "2026-02-28T04:59:18.713559Z",
       "event": "Read",
       "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/index.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:44:39.999095Z",
+      "ts": "2026-02-28T04:59:22.577979Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/workflow.md",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Emma/workflow.md",
       "tool": "read"
     },
     {
-      "ts": "2026-02-28T04:44:49.737466Z",
-      "event": "Claim",
-      "agent": "Dexter"
-    },
-    {
-      "ts": "2026-02-28T04:44:58.798963Z",
-      "event": "Role",
-      "role": "reviewer",
-      "task": "livefeed"
-    },
-    {
-      "ts": "2026-02-28T04:45:01.690471Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/modes/reviewer.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:05.325255Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/about.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:05.773352Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/understand/architecture.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:06.159682Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/guides/coding-standards.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:18.966395Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/project/tasks/livefeed.md",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:19.513056Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/pages/LiveFeedCamera.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:20.086233Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/pages/LiveFeedCamera.test.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:21.040106Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/Hubs/LiveFeedHubTests.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:27.178583Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-28T04:45:27.72418Z",
-      "event": "Read",
-      "tool": "glob"
-    },
-    {
-      "ts": "2026-02-28T04:45:29.873Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api/Hubs/LiveFeedHub.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:29.965889Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api/Hubs/LiveFeedState.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:30.106515Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useLiveFeedHub.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:30.44062Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:31.331613Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/lib/livefeed-types.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:36.58333Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/pages/LiveFeedDisplay.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:37.448412Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/VideoGrid.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:37.949839Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/CameraFeed.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:38.618888Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/OverlayCanvas.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:39.085319Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/AttentionBar.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:39.64636Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useSnapshotAnalysis.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:44.97114Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/tests/backend/Hackathon.Api.Tests/Hubs/LiveFeedStateTests.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:45.751691Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useLiveFeedHub.test.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:46.442908Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.test.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:46.945906Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useSnapshotAnalysis.test.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:47.719571Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/VideoGrid.test.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:48.285226Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/AttentionBar.test.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:48.824937Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/OverlayCanvas.test.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:53.214506Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/App.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:53.768573Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/vite.config.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:54.665755Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/backend/Hackathon.Api/Program.cs",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:45:59.33201Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend \u0026\u0026 npx vitest run --reporter=verbose ..."
-    },
-    {
-      "ts": "2026-02-28T04:46:04.865734Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet test tests/backend/Hackathon.Api.Tests/ --filter \u0022FullyQualifiedName~Hubs\u0022 --verbosity normal..."
-    },
-    {
-      "ts": "2026-02-28T04:46:09.528928Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom \u0026\u0026 dotnet test tests/backend/Hackathon.Api.Tests/H..."
-    },
-    {
-      "ts": "2026-02-28T04:46:20.344791Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet test tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj --filter \u0022FullyQualifiedNam..."
-    },
-    {
-      "ts": "2026-02-28T04:46:30.733647Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet test tests/backend/Hackathon.Api.Tests/Hackathon.Api.Tests.csproj --filter \u0022FullyQualifiedNam..."
-    },
-    {
-      "ts": "2026-02-28T04:46:44.587843Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "dotnet build src/backend/Hackathon.Api/Hackathon.Api.csproj --verbosity quiet 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-28T04:46:54.293403Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "cd /Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend \u0026\u0026 npx tsc --noEmit 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-28T04:47:30.801689Z",
-      "event": "Release",
-      "agent": "Dexter"
-    },
-    {
-      "ts": "2026-02-28T04:57:10.874363Z",
-      "event": "Claim",
-      "agent": "Dexter"
-    },
-    {
-      "ts": "2026-02-28T04:57:15.669469Z",
-      "event": "Role",
-      "role": "code-writer",
-      "task": "livefeed"
-    },
-    {
-      "ts": "2026-02-28T04:57:22.455474Z",
+      "ts": "2026-02-28T04:59:25.18217Z",
       "event": "Blocked",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useLiveFeedHub.ts",
-      "tool": "edit",
-      "reason": "Must-read files not yet read"
+      "tool": "glob",
+      "reason": "No agent identity"
     },
     {
-      "ts": "2026-02-28T04:57:26.206145Z",
+      "ts": "2026-02-28T04:59:27.787606Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls dydo/agents/"
+    },
+    {
+      "ts": "2026-02-28T04:59:32.928885Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls dydo/agents/Emma/"
+    },
+    {
+      "ts": "2026-02-28T04:59:35.619487Z",
+      "event": "Blocked",
+      "path": "dydo/agents/Emma/state.md",
+      "tool": "bash",
+      "cmd": "cat dydo/agents/Emma/state.md",
+      "reason": "Off-limits: dydo/agents/*/state.md"
+    },
+    {
+      "ts": "2026-02-28T04:59:38.163545Z",
+      "event": "Blocked",
+      "tool": "bash",
+      "cmd": "cd dydo \u0026\u0026 bash dydo agent claim Emma",
+      "reason": "Indirect dydo invocation via bash"
+    },
+    {
+      "ts": "2026-02-28T04:59:40.994025Z",
+      "event": "Claim",
+      "agent": "Emma"
+    },
+    {
+      "ts": "2026-02-28T04:59:44.032903Z",
+      "event": "Blocked",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Emma/state.md",
+      "tool": "read",
+      "reason": "No role set"
+    },
+    {
+      "ts": "2026-02-28T04:59:47.821469Z",
+      "event": "Bash",
+      "tool": "bash",
+      "cmd": "ls dydo/agents/Emma/modes/ 2\u003E/dev/null || ls dydo/agents/Emma/"
+    },
+    {
+      "ts": "2026-02-28T04:59:50.399473Z",
       "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Dexter/modes/code-writer.md",
+      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Emma/modes/code-writer.md",
       "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:57:33.787197Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useLiveFeedHub.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:42.705793Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/VideoGrid.test.tsx",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:43.756817Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useLiveFeedHub.test.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:45.093592Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useSnapshotAnalysis.test.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:46.271491Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.test.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:47.813844Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/pages/LiveFeedDisplay.tsx",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:57:52.227432Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.test.ts",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:58:06.139876Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.test.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:58:11.254928Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/hooks/useWebRTC.test.ts",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:58:18.043591Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "npx tsc -b 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-28T04:58:26.062249Z",
-      "event": "Read",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/VideoGrid.test.tsx",
-      "tool": "read"
-    },
-    {
-      "ts": "2026-02-28T04:58:31.465787Z",
-      "event": "Edit",
-      "path": "/Users/balazsbodnar/Desktop/buildyourclassroom/src/frontend/src/components/livefeed/VideoGrid.test.tsx",
-      "tool": "edit"
-    },
-    {
-      "ts": "2026-02-28T04:58:34.695706Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "npx tsc -b 2\u003E\u00261"
-    },
-    {
-      "ts": "2026-02-28T04:58:42.293616Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "npx vitest run 2\u003E\u00261 | tail -15"
-    },
-    {
-      "ts": "2026-02-28T04:58:51.032992Z",
-      "event": "Bash",
-      "tool": "bash",
-      "cmd": "npm run build 2\u003E\u00261 | tail -10"
-    },
-    {
-      "ts": "2026-02-28T04:59:12.090558Z",
-      "event": "Release",
-      "agent": "Dexter"
     }
   ],
   "snapshot": {
-    "git_commit": "15fe73fde85e2fd43e278eb3f22aa4e2c12ef9cc",
+    "git_commit": "eaf00e6a5a025a05333f04872299cdd0aaafc4b9",
     "files": [
       ".claude/settings.local.json",
       ".dockerignore",
       ".github/workflows/deploy.yml",
       ".gitignore",
       ".mcp.json",
+      "\u0022Video_ppt/Vide/303/263.xlsx\u0022",
       "AGENTS.md",
       "classroom-idle.png",
       "classroom-running.png",
@@ -398,6 +95,7 @@
       "docker/microservice.Dockerfile",
       "docker/worker.Dockerfile",
       "dydo.json",
+      "dydo/_assets/ClassroomSim.ipynb",
       "dydo/_assets/dydo-diagram.svg",
       "dydo/_system/audit/_audit.md",
       "dydo/_system/audit/2026/2026-02-27-005128a8-35d4-44d4-a234-f96086e5515c.json",
@@ -453,8 +151,10 @@
       "dydo/_system/audit/2026/2026-02-28-00d2e026-ec13-49c2-b925-edb0d650b032.json",
       "dydo/_system/audit/2026/2026-02-28-0551fab3-cee5-45e3-bfb5-5eaf3e6143a1.json",
       "dydo/_system/audit/2026/2026-02-28-22d9fc9d-581d-4bbb-83e0-551163f25315.json",
+      "dydo/_system/audit/2026/2026-02-28-251a60f6-95ae-4883-8f7f-0b74d631ab17.json",
       "dydo/_system/audit/2026/2026-02-28-2c8d8b06-0561-450b-9315-32776404d2ec.json",
       "dydo/_system/audit/2026/2026-02-28-2f937867-af77-43f4-bf94-4662068a151e.json",
+      "dydo/_system/audit/2026/2026-02-28-32c3e797-136a-461e-96d5-212f74da79ef.json",
       "dydo/_system/audit/2026/2026-02-28-4396bcb2-39e1-45d8-9356-d70de75ff966.json",
       "dydo/_system/audit/2026/2026-02-28-4d5e19b8-dca8-467d-9cb8-8e9b33963991.json",
       "dydo/_system/audit/2026/2026-02-28-5062b152-0f7f-4f86-b0fb-ea75346fc401.json",
@@ -464,14 +164,22 @@
       "dydo/_system/audit/2026/2026-02-28-6d6a393b-26e7-4709-9161-7001b205b474.json",
       "dydo/_system/audit/2026/2026-02-28-77193139-f5d7-4e2c-86e5-7013c912e448.json",
       "dydo/_system/audit/2026/2026-02-28-7a1bd377-a374-4b6e-8f97-2a9349d08a8b.json",
+      "dydo/_system/audit/2026/2026-02-28-7f537a1d-e3bd-4edd-83c2-d4b2cbd89cb9.json",
       "dydo/_system/audit/2026/2026-02-28-8c49573a-05a9-4a55-986c-42c359add051.json",
+      "dydo/_system/audit/2026/2026-02-28-8d82bc29-b50f-41d2-aff8-2b0e0f89a6c1.json",
       "dydo/_system/audit/2026/2026-02-28-91f715c2-ae3c-4360-95a1-1cd977818b52.json",
+      "dydo/_system/audit/2026/2026-02-28-9cbb4efb-2cc4-4b94-be77-5fcc7bceaaf9.json",
       "dydo/_system/audit/2026/2026-02-28-a1ea5bcc-66bd-4808-98bc-3096d48a351d.json",
       "dydo/_system/audit/2026/2026-02-28-ad099a9a-ef24-41b8-8a5a-edec3de96abb.json",
       "dydo/_system/audit/2026/2026-02-28-aef88d49-2bf6-4434-96b5-9a33dc12f889.json",
+      "dydo/_system/audit/2026/2026-02-28-b246164e-139e-40a1-8f23-b4ecf28bd6a1.json",
+      "dydo/_system/audit/2026/2026-02-28-b7b7636c-248e-4e5e-8324-65b92a289062.json",
       "dydo/_system/audit/2026/2026-02-28-c4991b87-5ddc-490f-8cf4-8949e33bb146.json",
+      "dydo/_system/audit/2026/2026-02-28-cdf8fe08-5cca-4f1d-b890-1b60c7c75df9.json",
+      "dydo/_system/audit/2026/2026-02-28-d3814407-30e4-428f-9776-b55204fed1dd.json",
       "dydo/_system/audit/2026/2026-02-28-d71674bc-14e1-4cd9-a107-ed4eb5f2aac5.json",
       "dydo/_system/audit/2026/2026-02-28-e6b3f4d5-d9f3-44dc-9869-033f4fc73734.json",
+      "dydo/_system/audit/2026/2026-02-28-fa12eb5e-bd75-44a6-8e0d-20b354ede3c1.json",
       "dydo/_system/audit/reports/replay.html",
       "dydo/_system/templates/agent-workflow.template.md",
       "dydo/_system/templates/mode-co-thinker.template.md",
@@ -518,6 +226,7 @@
       "dydo/project/changelog/2026/2026-02-28/explore-project-structure.md",
       "dydo/project/changelog/2026/2026-02-28/face-separation.md",
       "dydo/project/changelog/2026/2026-02-28/facial-emotion-detection.md",
+      "dydo/project/changelog/2026/2026-02-28/fe-responsiveness-issues.md",
       "dydo/project/changelog/2026/2026-02-28/fix-api-duplicate-ports.md",
       "dydo/project/changelog/2026/2026-02-28/fix-apphost-ports.md",
       "dydo/project/changelog/2026/2026-02-28/fix-deploy-pipeline.md",
@@ -544,6 +253,7 @@
       "dydo/project/tasks/_index.md",
       "dydo/project/tasks/_tasks.md",
       "dydo/project/tasks/about-update.md",
+      "dydo/project/tasks/align-assessment-models.md",
       "dydo/project/tasks/fix-agenda-temperature.md",
       "dydo/project/tasks/fix-api-service-duplicate-ports.md",
       "dydo/project/tasks/fix-broken-links.md",
@@ -559,6 +269,7 @@
       "dydo/project/tasks/stt-env-var.md",
       "dydo/project/tasks/test-generator-enhancement.md",
       "dydo/project/tasks/test-generator-page.md",
+      "dydo/project/tasks/wire-assessment-endpoints.md",
       "dydo/reference/_index.md",
       "dydo/reference/_reference.md",
       "dydo/reference/about-dynadocs.md",
@@ -585,6 +296,7 @@
       "src/backend/Hackathon.Api/appsettings.Development.json",
       "src/backend/Hackathon.Api/appsettings.json",
       "src/backend/Hackathon.Api/Endpoints/AgendaEndpoints.cs",
+      "src/backend/Hackathon.Api/Endpoints/AssessmentEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/AuthEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/MicroserviceEndpoints.cs",
       "src/backend/Hackathon.Api/Endpoints/SessionEndpoints.cs",
@@ -773,18 +485,21 @@
       "src/microservices/microservice/api/models/assessment/__init__.py",
       "src/microservices/microservice/api/models/assessment/assessment_bundle.py",
       "src/microservices/microservice/api/models/assessment/assessment_metadata.py",
+      "src/microservices/microservice/api/models/assessment/assessment_result.py",
       "src/microservices/microservice/api/models/assessment/bloom_level.py",
       "src/microservices/microservice/api/models/assessment/difficulty.py",
       "src/microservices/microservice/api/models/assessment/essay_question.py",
       "src/microservices/microservice/api/models/assessment/exam.py",
       "src/microservices/microservice/api/models/assessment/fill_in_the_blank_question.py",
       "src/microservices/microservice/api/models/assessment/generate_assessment_request.py",
+      "src/microservices/microservice/api/models/assessment/language.py",
       "src/microservices/microservice/api/models/assessment/matching_question.py",
       "src/microservices/microservice/api/models/assessment/multiple_choice_question.py",
       "src/microservices/microservice/api/models/assessment/practice_test.py",
       "src/microservices/microservice/api/models/assessment/question_type.py",
       "src/microservices/microservice/api/models/assessment/quiz.py",
       "src/microservices/microservice/api/models/assessment/short_answer_question.py",
+      "src/microservices/microservice/api/models/assessment/test_type.py",
       "src/microservices/microservice/api/models/assessment/true_false_question.py",
       "src/microservices/microservice/api/models/emotion_orm.py",
       "src/microservices/microservice/api/models/emotion_schemas.py",
@@ -855,12 +570,16 @@
       "tests/coverage/coverage.runsettings",
       "tests/coverage/gap_check.py",
       "tests/coverage/report.py",
-      "tests/coverage/tier_registry.json"
+      "tests/coverage/tier_registry.json",
+      "Video_ppt/Artificial Intelligence Applied to Design Thesis Defense by Slidesgo.pptx"
     ],
     "folders": [
       ".claude",
       ".github",
       ".github/workflows",
+      "\u0022Video_ppt",
+      "\u0022Video_ppt/Vide",
+      "\u0022Video_ppt/Vide/303",
       "docker",
       "dydo",
       "dydo/_assets",
@@ -963,7 +682,8 @@
       "tests/backend/Hackathon.Domain.Tests",
       "tests/backend/Hackathon.Infrastructure.Tests",
       "tests/backend/Hackathon.IntegrationTests",
-      "tests/coverage"
+      "tests/coverage",
+      "Video_ppt"
     ],
     "doc_links": {
       "dydo/welcome.md": [
@@ -1100,14 +820,23 @@
         "dydo/understand/architecture.md",
         "dydo/project/decisions/_index.md"
       ],
-      "dydo/agents/dexter/workflow.md": [
-        "dydo/agents/dexter/modes/interviewer.md",
-        "dydo/agents/dexter/modes/planner.md",
-        "dydo/agents/dexter/modes/code-writer.md",
-        "dydo/agents/dexter/modes/co-thinker.md",
-        "dydo/agents/dexter/modes/reviewer.md",
-        "dydo/agents/dexter/modes/docs-writer.md",
-        "dydo/agents/dexter/modes/tester.md"
+      "dydo/agents/charlie/workflow.md": [
+        "dydo/agents/charlie/modes/interviewer.md",
+        "dydo/agents/charlie/modes/planner.md",
+        "dydo/agents/charlie/modes/code-writer.md",
+        "dydo/agents/charlie/modes/co-thinker.md",
+        "dydo/agents/charlie/modes/reviewer.md",
+        "dydo/agents/charlie/modes/docs-writer.md",
+        "dydo/agents/charlie/modes/tester.md"
+      ],
+      "dydo/agents/emma/workflow.md": [
+        "dydo/agents/emma/modes/interviewer.md",
+        "dydo/agents/emma/modes/planner.md",
+        "dydo/agents/emma/modes/code-writer.md",
+        "dydo/agents/emma/modes/co-thinker.md",
+        "dydo/agents/emma/modes/reviewer.md",
+        "dydo/agents/emma/modes/docs-writer.md",
+        "dydo/agents/emma/modes/tester.md"
       ],
       "dydo/agents/brian/workflow.md": [
         "dydo/agents/brian/modes/interviewer.md",
@@ -1158,37 +887,72 @@
       "dydo/project/pitfalls/_pitfalls.md": [
         "dydo/project/decisions/_index.md"
       ],
-      "dydo/agents/dexter/modes/reviewer.md": [
+      "dydo/agents/charlie/modes/reviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/guides/coding-standards.md"
       ],
-      "dydo/agents/dexter/modes/co-thinker.md": [
+      "dydo/agents/charlie/modes/co-thinker.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/project/decisions/_index.md",
-        "dydo/agents/dexter/modes/code-writer.md"
+        "dydo/agents/charlie/modes/code-writer.md"
       ],
-      "dydo/agents/dexter/modes/code-writer.md": [
+      "dydo/agents/charlie/modes/code-writer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
         "dydo/guides/coding-standards.md"
       ],
-      "dydo/agents/dexter/modes/tester.md": [
+      "dydo/agents/charlie/modes/tester.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md"
       ],
-      "dydo/agents/dexter/modes/planner.md": [
+      "dydo/agents/charlie/modes/planner.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
-        "dydo/agents/dexter/modes/code-writer.md"
+        "dydo/agents/charlie/modes/code-writer.md"
       ],
-      "dydo/agents/dexter/modes/interviewer.md": [
+      "dydo/agents/charlie/modes/interviewer.md": [
         "dydo/understand/about.md",
         "dydo/understand/architecture.md",
-        "dydo/agents/dexter/modes/planner.md"
+        "dydo/agents/charlie/modes/planner.md"
       ],
-      "dydo/agents/dexter/modes/docs-writer.md": [
+      "dydo/agents/charlie/modes/docs-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/guides/how-to-use-docs.md",
+        "dydo/reference/writing-docs.md"
+      ],
+      "dydo/agents/emma/modes/reviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/emma/modes/co-thinker.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/project/decisions/_index.md",
+        "dydo/agents/emma/modes/code-writer.md"
+      ],
+      "dydo/agents/emma/modes/code-writer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/guides/coding-standards.md"
+      ],
+      "dydo/agents/emma/modes/tester.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md"
+      ],
+      "dydo/agents/emma/modes/planner.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/emma/modes/code-writer.md"
+      ],
+      "dydo/agents/emma/modes/interviewer.md": [
+        "dydo/understand/about.md",
+        "dydo/understand/architecture.md",
+        "dydo/agents/emma/modes/planner.md"
+      ],
+      "dydo/agents/emma/modes/docs-writer.md": [
         "dydo/understand/about.md",
         "dydo/guides/how-to-use-docs.md",
         "dydo/reference/writing-docs.md"

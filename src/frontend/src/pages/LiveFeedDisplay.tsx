@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react";
-import type { CameraId, CameraAnalysisResult } from "../lib/livefeed-types";
+import type { CameraId } from "../lib/livefeed-types";
 import { useLiveFeedHub } from "../hooks/useLiveFeedHub";
 import { useWebRTCReceivers } from "../hooks/useWebRTC";
 import { useSnapshotAnalysis } from "../hooks/useSnapshotAnalysis";
