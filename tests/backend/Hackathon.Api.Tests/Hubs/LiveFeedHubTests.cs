@@ -22,7 +22,11 @@ public class LiveFeedHubTests : IDisposable
         };
     }
 
-    public void Dispose() => _hub.Dispose();
+    public void Dispose()
+    {
+        _hub.Dispose();
+        GC.SuppressFinalize(this);
+    }
 
     private void SetConnectionId(string id) =>
         _context.Setup(c => c.ConnectionId).Returns(id);

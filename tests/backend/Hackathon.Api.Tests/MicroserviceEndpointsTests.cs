@@ -1,6 +1,5 @@
 using Hackathon.Api.Endpoints;
 using Hackathon.Domain.Messages;
-using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Moq;
@@ -23,16 +22,12 @@ public class MicroserviceEndpointsTests
     [Fact]
     public async Task AddNumbersAsync_ReturnsOk()
     {
-        var mockResponse = new Mock<Response<AddNumbersResult>>();
-        mockResponse.Setup(r => r.Message).Returns(new AddNumbersResult(2));
-
-        var mockClient = new Mock<IRequestClient<AddNumbersCommand>>();
+        var mockClient = new Mock<IAddNumbersClient>();
         mockClient
-            .Setup(c => c.GetResponse<AddNumbersResult>(
+            .Setup(c => c.SendAsync(
                 It.IsAny<AddNumbersCommand>(),
-                It.IsAny<CancellationToken>(),
-                It.IsAny<RequestTimeout>()))
-            .ReturnsAsync(mockResponse.Object);
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new AddNumbersResult(2));
 
         var result = await MicroserviceEndpoints.AddNumbersAsync(mockClient.Object);
 
