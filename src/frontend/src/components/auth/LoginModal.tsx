@@ -43,6 +43,11 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
         <p className="text-sm text-gray-600">
           Your session has expired. Please log in again.
         </p>
+        <div className="rounded-lg bg-blue-50 border border-blue-200 px-3 py-2 text-xs text-blue-800">
+          <p className="font-semibold">Demo credentials:</p>
+          <p>Username: <span className="font-mono">TestUser</span></p>
+          <p>Password: <span className="font-mono">Password12345</span></p>
+        </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
