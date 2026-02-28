@@ -50,6 +50,12 @@ jobs:
           docker build -t ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
           docker push ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }}
 
+      - name: Create API secrets
+        run: |
+          kubectl create secret generic api-secrets \
+            --from-literal=secrets.json='{"JwtSettings":{"SecretKey":"${{ secrets.SECRETS_JWT_KEY }}"},"Hashing":{"Pepper":"${{ secrets.SECRETS_HASHING_PEPPER }}"}}' \
+            --dry-run=client -o yaml | kubectl apply -f -
+
       - name: Deploy to Kubernetes
         run: |
           export TAG=${{ steps.version.outputs.tag }}

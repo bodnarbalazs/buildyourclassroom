@@ -35,6 +35,12 @@ spec:
               value: "amqp://guest:${RABBITMQ_PASSWORD}@messaging:5672"
             - name: ASPNETCORE_URLS
               value: "http://+:8080"
+            - name: Secrets__FilePath
+              value: /etc/secrets/secrets.json
+          volumeMounts:
+            - name: api-secrets
+              mountPath: /etc/secrets
+              readOnly: true
           readinessProbe:
             httpGet:
               path: /health
@@ -47,3 +53,7 @@ spec:
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 10
+      volumes:
+        - name: api-secrets
+          secret:
+            secretName: api-secrets
