@@ -10,6 +10,6 @@ class AssessmentMetadata(BaseModel):
     title: str
     subject: str
     generated_from: str
-    assessment_type: Literal["quiz", "practice_test", "exam"]
+    assessment_type: Literal["quick-quiz", "chapter-test", "midterm", "final-exam"]
     total_questions: int
     created_at: datetime
