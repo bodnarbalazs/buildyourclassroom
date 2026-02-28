@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import {
   HubConnectionBuilder,
   HubConnection,
@@ -8,7 +8,7 @@ import {
 
 export type HubState = "connecting" | "connected" | "disconnected" | "error";
 
-export function useLiveFeedHub(role: "display" | "camera") {
+export function useLiveFeedHub() {
   const [state, setState] = useState<HubState>("connecting");
   const connectionRef = useRef<HubConnection | null>(null);
 
@@ -25,20 +25,17 @@ export function useLiveFeedHub(role: "display" | "camera") {
     connection.onreconnected(() => setState("connected"));
     connection.onclose(() => setState("disconnected"));
 
+    // Join is deferred to consumer hooks (after handler registration)
+    // to avoid a race where server events arrive before handlers exist.
     connection
       .start()
-      .then(() => {
-        setState("connected");
-        return connection.invoke(
-          role === "display" ? "JoinAsDisplay" : "JoinAsCamera",
-        );
-      })
+      .then(() => setState("connected"))
       .catch(() => setState("error"));
 
     return () => {
       connection.stop();
     };
-  }, [role]);
+  }, []);
 
   const on = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,5 +62,8 @@ export function useLiveFeedHub(role: "display" | "camera") {
     [],
   );
 
-  return { connection: connectionRef.current, state, on, off, invoke };
+  return useMemo(
+    () => ({ connection: connectionRef.current, state, on, off, invoke }),
+    [state, on, off, invoke],
+  );
 }

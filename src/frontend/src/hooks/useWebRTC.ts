@@ -99,6 +99,7 @@ export function useWebRTCSender(hub: Hub, localStream: MediaStream | null) {
 
     hub.on("ReceiveOffer", handleOffer);
     hub.on("ReceiveIceCandidate", handleIce);
+    hub.invoke("JoinAsCamera");
 
     return () => {
       hub.off("ReceiveOffer", handleOffer);
@@ -140,6 +141,7 @@ export function useWebRTCReceivers(hub: Hub) {
     remoteDescSetRef.current.delete(cameraId);
     iceCandidateQueuesRef.current.delete(cameraId);
     setCameras((prev) => {
+      prev.get(cameraId)?.stream?.getTracks().forEach((t) => t.stop());
       const next = new Map(prev);
       next.delete(cameraId);
       return next;
@@ -251,6 +253,7 @@ export function useWebRTCReceivers(hub: Hub) {
     hub.on("ReceiveAnswer", handleAnswer);
     hub.on("ReceiveIceCandidate", handleIce);
     hub.on("CameraLeft", handleCameraLeft);
+    hub.invoke("JoinAsDisplay");
 
     return () => {
       hub.off("CameraJoined", handleCameraJoined);
@@ -261,6 +264,10 @@ export function useWebRTCReceivers(hub: Hub) {
       pcsRef.current.clear();
       remoteDescSetRef.current.clear();
       iceCandidateQueuesRef.current.clear();
+      setCameras((prev) => {
+        prev.forEach((cam) => cam.stream?.getTracks().forEach((t) => t.stop()));
+        return new Map();
+      });
     };
   }, [hub, cleanupCamera]);
 

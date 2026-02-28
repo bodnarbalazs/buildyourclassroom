@@ -20,6 +20,8 @@ metadata:
   name: frontend
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: frontend
@@ -28,6 +30,7 @@ spec:
       labels:
         app: frontend
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
         - name: frontend
           image: ${IMAGE_PREFIX}/frontend:${TAG}

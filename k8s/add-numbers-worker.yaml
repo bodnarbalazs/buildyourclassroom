@@ -4,6 +4,8 @@ metadata:
   name: add-numbers-worker
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: add-numbers-worker
@@ -12,6 +14,7 @@ spec:
       labels:
         app: add-numbers-worker
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
         - name: worker
           image: ${IMAGE_PREFIX}/worker:${TAG}

@@ -147,12 +147,77 @@ describe("LiveFeedCamera", () => {
   });
 
   it("shows error on camera permission denied", async () => {
-    mockGetUserMedia.mockRejectedValue(new Error("NotAllowedError"));
+    const err = new DOMException("Permission denied", "NotAllowedError");
+    mockGetUserMedia.mockRejectedValue(err);
 
     render(<LiveFeedCamera />);
 
     await waitFor(() => {
       expect(findText("Camera permission denied")).toBe(true);
+    });
+  });
+
+  it("shows 'No camera found' for NotFoundError", async () => {
+    const err = new DOMException("No device", "NotFoundError");
+    mockGetUserMedia.mockRejectedValue(err);
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("No camera found")).toBe(true);
+    });
+  });
+
+  it("shows 'Camera in use' for NotReadableError", async () => {
+    const err = new DOMException("Hardware error", "NotReadableError");
+    mockGetUserMedia.mockRejectedValue(err);
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("Camera in use")).toBe(true);
+    });
+  });
+
+  it("shows 'Camera error' for unknown errors", async () => {
+    mockGetUserMedia.mockRejectedValue(new Error("unknown"));
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("Camera error")).toBe(true);
+    });
+  });
+
+  it("shows error when WebRTC connection fails", async () => {
+    mockHubState.current = "connected";
+    mockConnectionState.current = "failed";
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("Video connection failed")).toBe(true);
+    });
+  });
+
+  it("shows error when WebRTC disconnects", async () => {
+    mockHubState.current = "connected";
+    mockConnectionState.current = "disconnected";
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("Video connection lost")).toBe(true);
+    });
+  });
+
+  it("shows error when hub enters disconnected state", async () => {
+    mockHubState.current = "disconnected";
+
+    render(<LiveFeedCamera />);
+
+    await waitFor(() => {
+      expect(findText("Connection failed")).toBe(true);
     });
   });
 

@@ -65,6 +65,17 @@ function createMockHub(overrides?: Partial<Hub>): Hub {
 }
 
 describe("useWebRTCSender", () => {
+  it("invokes JoinAsCamera after registering handlers", () => {
+    const hub = createMockHub();
+    const stream = { getTracks: () => [] } as unknown as MediaStream;
+
+    renderHook(() => useWebRTCSender(hub, stream));
+
+    expect(hub.on).toHaveBeenCalledWith("ReceiveOffer", expect.any(Function));
+    expect(hub.on).toHaveBeenCalledWith("ReceiveIceCandidate", expect.any(Function));
+    expect(hub.invoke).toHaveBeenCalledWith("JoinAsCamera");
+  });
+
   it("creates peer connection on ReceiveOffer", async () => {
     const hub = createMockHub();
     const stream = { getTracks: () => [{ kind: "video" }] } as unknown as MediaStream;
@@ -168,6 +179,18 @@ describe("useWebRTCSender", () => {
 });
 
 describe("useWebRTCReceivers", () => {
+  it("invokes JoinAsDisplay after registering handlers", () => {
+    const hub = createMockHub();
+
+    renderHook(() => useWebRTCReceivers(hub));
+
+    expect(hub.on).toHaveBeenCalledWith("CameraJoined", expect.any(Function));
+    expect(hub.on).toHaveBeenCalledWith("ReceiveAnswer", expect.any(Function));
+    expect(hub.on).toHaveBeenCalledWith("ReceiveIceCandidate", expect.any(Function));
+    expect(hub.on).toHaveBeenCalledWith("CameraLeft", expect.any(Function));
+    expect(hub.invoke).toHaveBeenCalledWith("JoinAsDisplay");
+  });
+
   it("creates offer on CameraJoined", async () => {
     const hub = createMockHub();
 

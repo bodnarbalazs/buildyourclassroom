@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
@@ -79,7 +80,7 @@ async def upload_snapshot(
         raise HTTPException(status_code=400, detail="Session already ended")
 
     image_bytes = await file.read()
-    result = _analyzer.analyze_image(image_bytes)
+    result = await asyncio.to_thread(_analyzer.analyze_image, image_bytes)
 
     snapshot = await repo.save_snapshot(
         session_id=session_id,

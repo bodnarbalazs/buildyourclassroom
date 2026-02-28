@@ -8,7 +8,7 @@ export default function LiveFeedCamera() {
   const [cameraStatus, setCameraStatus] = useState<CameraStatus>("connecting");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const hub = useLiveFeedHub("camera");
+  const hub = useLiveFeedHub();
   const { connectionState } = useWebRTCSender(hub, localStream);
 
   // Acquire camera
@@ -44,10 +44,19 @@ export default function LiveFeedCamera() {
             return;
           }
           setLocalStream(stream);
-        } catch {
+        } catch (err) {
           if (!cancelled) {
             setCameraStatus("error");
-            setErrorMsg("Camera permission denied");
+            const name = err instanceof DOMException ? err.name : "";
+            setErrorMsg(
+              name === "NotAllowedError"
+                ? "Camera permission denied"
+                : name === "NotFoundError"
+                  ? "No camera found"
+                  : name === "NotReadableError"
+                    ? "Camera in use"
+                    : "Camera error",
+            );
           }
         }
       }
@@ -101,13 +110,23 @@ export default function LiveFeedCamera() {
 
   // Derive status from hub + WebRTC states
   useEffect(() => {
-    if (hub.state === "error") {
+    if (hub.state === "error" || hub.state === "disconnected") {
       setCameraStatus("error");
       setErrorMsg("Connection failed");
       return;
     }
     if (hub.state === "connecting") {
       setCameraStatus("connecting");
+      return;
+    }
+    if (connectionState === "failed") {
+      setCameraStatus("error");
+      setErrorMsg("Video connection failed");
+      return;
+    }
+    if (connectionState === "disconnected") {
+      setCameraStatus("error");
+      setErrorMsg("Video connection lost");
       return;
     }
     if (hub.state === "connected" && connectionState === "new") {

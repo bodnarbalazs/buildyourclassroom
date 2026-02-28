@@ -39,10 +39,10 @@ export default function OverlayCanvas({
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const scaleX =
-      videoEl.videoWidth > 0 ? canvas.width / videoEl.videoWidth : 1;
-    const scaleY =
-      videoEl.videoHeight > 0 ? canvas.height / videoEl.videoHeight : 1;
+    if (videoEl.videoWidth === 0) return;
+
+    const scaleX = canvas.width / videoEl.videoWidth;
+    const scaleY = canvas.height / videoEl.videoHeight;
 
     for (const face of faces) {
       const color = ENGAGEMENT_COLORS[face.engagement_level];

@@ -13,7 +13,7 @@ export default function LiveFeedDisplay() {
     Map<CameraId, HTMLVideoElement>
   >(new Map());
 
-  const hub = useLiveFeedHub("display");
+  const hub = useLiveFeedHub();
   const { cameras } = useWebRTCReceivers(hub);
   const { results, collectiveAttention } = useSnapshotAnalysis(
     sessionId,
