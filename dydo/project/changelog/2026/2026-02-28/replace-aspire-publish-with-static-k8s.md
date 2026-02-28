@@ -1,9 +1,7 @@
 ---
 area: general
-name: replace-aspire-publish-with-static-k8s
-status: pending
-created: 2026-02-27T23:47:04.5280019Z
-assigned: Luna
+type: changelog
+date: 2026-02-28
 ---
 
 # Task: replace-aspire-publish-with-static-k8s
@@ -21,3 +19,7 @@ assigned: Luna
 ## Review Summary
 
 (Pending)
+
+## Approval
+
+- Approved: 2026-02-28 01:06
