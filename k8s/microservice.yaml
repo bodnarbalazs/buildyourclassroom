@@ -37,6 +37,10 @@ spec:
               value: "${AZURE_OPENAI_KEY}"
             - name: AZURE_OPENAI_DEPLOYMENT_NAME
               value: "${AZURE_OPENAI_DEPLOYMENT}"
+            - name: AZURE_OPENAI_CHAT_DEPLOYMENT_NAME
+              value: "${AZURE_OPENAI_CHAT_DEPLOYMENT}"
+            - name: AZURE_OPENAI_WHISPER_DEPLOYMENT_NAME
+              value: "${AZURE_OPENAI_WHISPER_DEPLOYMENT}"
           readinessProbe:
             httpGet:
               path: /health
