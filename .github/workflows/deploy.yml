@@ -71,8 +71,9 @@ jobs:
 
       - name: Verify rollout
         run: |
-          kubectl rollout status deployment/api --timeout=120s
-          kubectl rollout status deployment/frontend --timeout=120s
-          kubectl rollout status deployment/microservice --timeout=120s
-          kubectl rollout status deployment/add-numbers-worker --timeout=120s
-          kubectl rollout status deployment/analyze-snapshot-worker --timeout=120s
+          kubectl rollout status deployment/api --timeout=120s &
+          kubectl rollout status deployment/frontend --timeout=120s &
+          kubectl rollout status deployment/microservice --timeout=120s &
+          kubectl rollout status deployment/add-numbers-worker --timeout=120s &
+          kubectl rollout status deployment/analyze-snapshot-worker --timeout=120s &
+          wait
