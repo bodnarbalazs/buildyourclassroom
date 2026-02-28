@@ -17,6 +17,8 @@ spec:
           image: ${IMAGE_PREFIX}/worker:${TAG}
           command: ["uv", "run", "python", "workers/analyze_snapshot_worker.py"]
           env:
+            - name: PYTHONPATH
+              value: /app
             - name: RABBITMQ_HOST
               value: messaging
             - name: RABBITMQ_PORT
