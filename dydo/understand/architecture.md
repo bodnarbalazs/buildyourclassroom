@@ -44,7 +44,7 @@ React 19 SPA served by Vite on port 3000. Uses React Router, TanStack Query for 
 
 ### Python Microservice
 
-FastAPI service (port 8000) managed with `uv`. Includes a RabbitMQ worker process for async task processing. Tests run with pytest.
+FastAPI service (port 8000) managed with `uv`. Includes a RabbitMQ worker process for async task processing, a lesson assessment generation pipeline (Whisper transcription + Chat-based assessment generation via Azure OpenAI), and facial emotion detection. Tests run with pytest.
 
 ---
 
@@ -70,6 +70,8 @@ Browser → React SPA (3000) → .NET API (HTTPS) → PostgreSQL (PostGIS)
 | Domain models / messages | `src/backend/Hackathon.Domain/` |
 | Frontend pages / components | `src/frontend/src/` |
 | Python API routes | `src/microservices/microservice/api/` |
+| Assessment models | `src/microservices/microservice/api/models/assessment/` |
+| Assessment & transcription services | `src/microservices/microservice/services/` |
 | Python workers | `src/microservices/microservice/workers/` |
 
 ---

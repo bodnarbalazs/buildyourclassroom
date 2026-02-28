@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyze-snapshot-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analyze-snapshot-worker
+  template:
+    metadata:
+      labels:
+        app: analyze-snapshot-worker
+    spec:
+      containers:
+        - name: worker
+          image: ${IMAGE_PREFIX}/worker:${TAG}
+          command: ["uv", "run", "python", "workers/analyze_snapshot_worker.py"]
+          env:
+            - name: PYTHONPATH
+              value: /app
+            - name: RABBITMQ_HOST
+              value: messaging
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USER
+              value: guest
+            - name: RABBITMQ_PASSWORD
+              value: "${RABBITMQ_PASSWORD}"
+            - name: WORKER_QUEUE
+              value: hackathon.analyze-snapshot
+            - name: ConnectionStrings__hackathondb
+              value: "Host=postgres;Port=5432;Database=hackathondb;Username=postgres;Password=${POSTGRES_PASSWORD}"

@@ -26,6 +26,13 @@ builder.Services.AddOpenApi();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
+// HttpClient for Python microservice (resolved via Aspire service discovery)
+builder.Services.AddHttpClient("microservice", client =>
+{
+    client.BaseAddress = new Uri("http://microservice");
+    client.Timeout = TimeSpan.FromMinutes(2);
+});
+
 // Authorization & HttpContextAccessor
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
@@ -101,6 +108,8 @@ app.MapDefaultEndpoints();
 app.MapTestEndpoints();
 app.MapAuthEndpoints();
 app.MapMicroserviceEndpoints();
+app.MapSessionEndpoints();
+app.MapAgendaEndpoints();
 
 // Auto-migrate with retry (PostGIS image can be slow to initialise)
 if (app.Environment.IsDevelopment())

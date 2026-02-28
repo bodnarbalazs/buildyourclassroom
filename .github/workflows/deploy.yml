@@ -4,20 +4,22 @@ on:
   push:
     tags: ['v*']
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ghcr.io/bodnarbalazs/buildyourclassroom
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup .NET 10
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-
-      - name: Login to ACR
-        run: docker login ${{ secrets.ACR_REGISTRY }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Setup kubeconfig
         run: |
@@ -30,47 +32,45 @@ jobs:
 
       - name: Build and push API image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
-          docker push ${{ secrets.ACR_REGISTRY }}/api:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/api:${{ steps.version.outputs.tag }} -f docker/api.Dockerfile .
+          docker push ${{ env.IMAGE_PREFIX }}/api:${{ steps.version.outputs.tag }}
 
       - name: Build and push frontend image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
-          docker push ${{ secrets.ACR_REGISTRY }}/frontend:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/frontend:${{ steps.version.outputs.tag }} -f docker/frontend.Dockerfile .
+          docker push ${{ env.IMAGE_PREFIX }}/frontend:${{ steps.version.outputs.tag }}
 
       - name: Build and push microservice image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
-          docker push ${{ secrets.ACR_REGISTRY }}/microservice:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/microservice:${{ steps.version.outputs.tag }} -f docker/microservice.Dockerfile src/microservices/microservice
+          docker push ${{ env.IMAGE_PREFIX }}/microservice:${{ steps.version.outputs.tag }}
 
       - name: Build and push worker image
         run: |
-          docker build -t ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
-          docker push ${{ secrets.ACR_REGISTRY }}/worker:${{ steps.version.outputs.tag }}
+          docker build -t ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }} -f docker/worker.Dockerfile src/microservices/microservice
+          docker push ${{ env.IMAGE_PREFIX }}/worker:${{ steps.version.outputs.tag }}
 
-      - name: Install Aspire CLI
-        run: curl -sSL https://aspire.dev/install.sh | bash
-
-      - name: Generate Kubernetes manifests
-        run: aspire publish --project src/backend/Hackathon.AppHost -o k8s/
-
-      - name: Deploy with Helm
+      - name: Create API secrets
         run: |
-          helm template buildyourclassroom ./k8s \
-            --set secrets.postgres.password=${{ secrets.POSTGRES_PASSWORD }} \
-            --set secrets.messaging.password=${{ secrets.RABBITMQ_PASSWORD }} \
-            --set secrets.api.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
-            --set secrets.api.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
-            --set secrets.microservice.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
-            --set secrets.add-numbers-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
-            --set secrets.analyze-snapshot-worker.postgres_password=${{ secrets.POSTGRES_PASSWORD }} \
-            --set secrets.analyze-snapshot-worker.messaging_password=${{ secrets.RABBITMQ_PASSWORD }} \
-          | sed -E 's/(port|containerPort|targetPort): "([0-9]+)"/\1: \2/g' \
-          | kubectl apply -f -
+          kubectl create secret generic api-secrets \
+            --from-literal=secrets.json='{"JwtSettings":{"SecretKey":"${{ secrets.SECRETS_JWT_KEY }}"},"Hashing":{"Pepper":"${{ secrets.SECRETS_HASHING_PEPPER }}"}}' \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Deploy to Kubernetes
+        run: |
+          export TAG=${{ steps.version.outputs.tag }}
+          export IMAGE_PREFIX=${{ env.IMAGE_PREFIX }}
+          export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+          export RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_PASSWORD }}
+          # export AZURE_OPENAI_ENDPOINT=${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          # export AZURE_OPENAI_KEY=${{ secrets.AZURE_OPENAI_KEY }}
+          # export AZURE_OPENAI_DEPLOYMENT=${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          for f in k8s/*.yaml; do envsubst < "$f" | kubectl apply -f -; done
 
       - name: Verify rollout
         run: |
-          kubectl rollout status deployment/buildyourclassroom-api --timeout=120s
-          kubectl rollout status deployment/buildyourclassroom-frontend --timeout=120s
-          kubectl rollout status deployment/buildyourclassroom-microservice --timeout=120s
-          kubectl rollout status deployment/buildyourclassroom-worker --timeout=120s
+          kubectl rollout status deployment/api --timeout=120s
+          kubectl rollout status deployment/frontend --timeout=120s
+          kubectl rollout status deployment/microservice --timeout=120s
+          kubectl rollout status deployment/add-numbers-worker --timeout=120s
+          kubectl rollout status deployment/analyze-snapshot-worker --timeout=120s
