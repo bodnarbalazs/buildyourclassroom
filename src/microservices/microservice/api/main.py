@@ -9,6 +9,7 @@ from api.routes.agenda import router as agenda_router
 from api.routes.assessment import router as assessment_router
 from api.routes.emotion import router as emotion_router
 from api.routes.health import router as health_router
+from api.routes.simulation import router as simulation_router
 import shared.database as db
 
 logger = logging.getLogger(__name__)
@@ -37,3 +38,4 @@ app.include_router(health_router)
 app.include_router(emotion_router, prefix="/emotion", tags=["Emotion Detection"])
 app.include_router(agenda_router, prefix="/api/v1", tags=["Lesson Agenda"])
 app.include_router(assessment_router, prefix="/api/v1", tags=["Lesson Assessment"])
+app.include_router(simulation_router, prefix="/api/v1", tags=["Classroom Simulation"])

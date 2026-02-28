@@ -113,6 +113,58 @@ describe("useWebRTCSender", () => {
     expect(mockCreateAnswer).toHaveBeenCalled();
     expect(hub.invoke).toHaveBeenCalledWith("SendAnswer", "cam-1", "answer-sdp");
   });
+
+  it("buffers offer when localStream is null and processes when stream arrives", async () => {
+    const hub = createMockHub();
+    const stream = { getTracks: () => [{ kind: "video" }] } as unknown as MediaStream;
+
+    const { rerender } = renderHook(
+      ({ s }) => useWebRTCSender(hub, s),
+      { initialProps: { s: null as MediaStream | null } },
+    );
+
+    // Offer arrives before localStream is available
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("ReceiveOffer", "cam-1", "offer-sdp");
+    });
+
+    expect(RTCPeerConnection).not.toHaveBeenCalled();
+
+    // localStream becomes available — buffered offer should be processed
+    await act(async () => {
+      rerender({ s: stream });
+    });
+
+    expect(RTCPeerConnection).toHaveBeenCalled();
+    expect(mockSetRemoteDescription).toHaveBeenCalledWith({
+      type: "offer",
+      sdp: "offer-sdp",
+    });
+    expect(hub.invoke).toHaveBeenCalledWith("SendAnswer", "cam-1", "answer-sdp");
+  });
+
+  it("queues ICE candidates arriving before remote description is set", async () => {
+    const hub = createMockHub();
+    const stream = { getTracks: () => [] } as unknown as MediaStream;
+
+    renderHook(() => useWebRTCSender(hub, stream));
+
+    const candidate = JSON.stringify({ candidate: "c1", sdpMid: "0", sdpMLineIndex: 0 });
+
+    // ICE candidate arrives before any offer
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("ReceiveIceCandidate", "cam-1", candidate);
+    });
+
+    expect(mockAddIceCandidate).not.toHaveBeenCalled();
+
+    // Now offer arrives — queued candidate should be flushed
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("ReceiveOffer", "cam-1", "offer-sdp");
+    });
+
+    expect(mockAddIceCandidate).toHaveBeenCalledWith(JSON.parse(candidate));
+  });
 });
 
 describe("useWebRTCReceivers", () => {
@@ -181,5 +233,31 @@ describe("useWebRTCReceivers", () => {
     expect(mockAddTransceiver).toHaveBeenCalledWith("video", {
       direction: "recvonly",
     });
+  });
+
+  it("queues ICE candidates until answer sets remote description", async () => {
+    const hub = createMockHub();
+
+    renderHook(() => useWebRTCReceivers(hub));
+
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("CameraJoined", "cam-1");
+    });
+
+    const candidate = JSON.stringify({ candidate: "c1", sdpMid: "0", sdpMLineIndex: 0 });
+
+    // ICE candidate arrives before answer
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("ReceiveIceCandidate", "cam-1", candidate);
+    });
+
+    expect(mockAddIceCandidate).not.toHaveBeenCalled();
+
+    // Answer arrives — queued candidate should be flushed
+    await act(async () => {
+      (hub as Hub & { _emit: Function })._emit("ReceiveAnswer", "cam-1", "answer-sdp");
+    });
+
+    expect(mockAddIceCandidate).toHaveBeenCalledWith(JSON.parse(candidate));
   });
 });

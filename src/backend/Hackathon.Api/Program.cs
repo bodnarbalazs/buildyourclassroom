@@ -127,6 +127,7 @@ app.MapMicroserviceEndpoints();
 app.MapSessionEndpoints();
 app.MapAgendaEndpoints();
 app.MapAssessmentEndpoints();
+app.MapSimulationEndpoints();
 
 app.MapHub<LiveFeedHub>("/hub/livefeed");
 
