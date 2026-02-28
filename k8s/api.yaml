@@ -15,6 +15,8 @@ metadata:
   name: api
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: api
@@ -23,6 +25,7 @@ spec:
       labels:
         app: api
     spec:
+      terminationGracePeriodSeconds: 10
       containers:
         - name: api
           image: ${IMAGE_PREFIX}/api:${TAG}
