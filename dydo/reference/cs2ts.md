@@ -40,6 +40,4 @@ This generates TypeScript types into `src/frontend/src/generated/`.
 
 ## Related
 
-- [Glossary](../glossary.md#cs2ts) — Term definition
-- [Handy Commands](../guides/backend/handy-commands.md) — Quick command reference
 - [Architecture Overview](../understand/architecture.md) — How frontend and backend connect

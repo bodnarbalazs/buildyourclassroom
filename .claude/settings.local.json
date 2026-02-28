@@ -30,7 +30,12 @@
       "mcp__claude_ai_Microsoft_Learn__microsoft_docs_search",
       "Bash(uv sync:*)",
       "WebFetch(domain:aspire.dev)",
-      "Bash(dydo inbox:*)"
+      "Bash(dydo inbox:*)",
+      "mcp__claude_ai_Microsoft_Learn__microsoft_code_sample_search",
+      "mcp__claude_ai_Microsoft_Learn__microsoft_docs_fetch",
+      "mcp__aspire__list_resources",
+      "mcp__aspire__list_console_logs",
+      "mcp__aspire__execute_resource_command"
     ]
   },
   "enableAllProjectMcpServers": true,

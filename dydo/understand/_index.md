@@ -11,5 +11,5 @@ Index of understand documentation.
 
 ## Contents
 
-- [About This Project](./about.md) - We're on a hackathon we need to move fast, we only care about the future in principle, not really.
+- [About This Project](./about.md) - We're on a hackathon — we need to move fast.
 - [Architecture Overview](./architecture.md) - A classroom dynamics platform orchestrated by .
