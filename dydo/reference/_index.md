@@ -12,6 +12,7 @@ Index of reference documentation.
 ## Contents
 
 - [DynaDocs (dydo)](./about-dynadocs.md) - Documentation-driven context and agent orchestration for AI coding assistants.
+- [Assessment API Reference](./assessment-api.md) - REST API for generating lesson assessments from audio, video, or text transcripts.
 - [Coverage Tools](./coverage-tools.md) - Two in-house Python scripts for measuring and enforcing test coverage across all stacks.
 - [Cs2Ts](./cs2ts.md) - A custom .
 - [CLI Commands Reference](./dydo-commands.md) - Complete reference for all `dydo` commands.
