@@ -9,6 +9,7 @@ using Hackathon.ServiceDefaults;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Http.Resilience;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,11 +28,21 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
 // HttpClient for Python microservice (resolved via Aspire service discovery)
+// LLM calls (agenda/assessment generation) can exceed the default 30s resilience timeout
+#pragma warning disable EXTEXP0001 // RemoveAllResilienceHandlers is experimental
 builder.Services.AddHttpClient("microservice", client =>
 {
     client.BaseAddress = new Uri("http://microservice");
-    client.Timeout = TimeSpan.FromMinutes(2);
+    client.Timeout = TimeSpan.FromMinutes(3);
+})
+.RemoveAllResilienceHandlers()
+.AddStandardResilienceHandler(options =>
+{
+    options.TotalRequestTimeout.Timeout = TimeSpan.FromMinutes(3);
+    options.AttemptTimeout.Timeout = TimeSpan.FromMinutes(3);
+    options.CircuitBreaker.SamplingDuration = TimeSpan.FromMinutes(6);
 });
+#pragma warning restore EXTEXP0001
 
 // Authorization & HttpContextAccessor
 builder.Services.AddAuthorization();
@@ -110,6 +121,7 @@ app.MapAuthEndpoints();
 app.MapMicroserviceEndpoints();
 app.MapSessionEndpoints();
 app.MapAgendaEndpoints();
+app.MapAssessmentEndpoints();
 
 // Auto-migrate with retry (PostGIS image can be slow to initialise)
 // if (app.Environment.IsDevelopment())

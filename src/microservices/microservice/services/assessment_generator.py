@@ -173,7 +173,6 @@ class AssessmentGenerator:
         kwargs: dict = {
             "model": self._deployment,
             "messages": messages,
-            "temperature": 0.7,
         }
         if json_mode:
             kwargs["response_format"] = {"type": "json_object"}
