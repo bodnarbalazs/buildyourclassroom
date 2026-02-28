@@ -172,7 +172,7 @@ class TranscriptionService:
             kwargs: dict = {
                 "model": self._deployment,
                 "file": f,
-                "response_format": "verbose_json",
+                "response_format": "json",
             }
             if prompt:
                 kwargs["prompt"] = prompt
