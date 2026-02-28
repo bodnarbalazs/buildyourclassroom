@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { to: "/classroom-builder", label: "Classroom Builder" },
   { to: "/test-generator", label: "Test Generator" },
   { to: "/class-evaluation", label: "Class Evaluation" },
+  { to: "/research", label: "Research" },
 ] as const;
 
 export default function Navbar() {
