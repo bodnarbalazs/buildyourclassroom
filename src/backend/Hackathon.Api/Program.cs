@@ -33,7 +33,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 #pragma warning disable EXTEXP0001 // RemoveAllResilienceHandlers is experimental
 builder.Services.AddHttpClient("microservice", client =>
 {
-    client.BaseAddress = new Uri("http://microservice");
+    client.BaseAddress = new Uri("http://microservice:8000");
     client.Timeout = TimeSpan.FromMinutes(3);
 })
 .RemoveAllResilienceHandlers()
