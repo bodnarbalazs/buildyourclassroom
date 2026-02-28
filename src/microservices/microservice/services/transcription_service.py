@@ -26,8 +26,8 @@ class TranscriptionError(Exception):
 
 
 _REQUIRED_ENV_VARS = [
-    "AZURE_OPENAI_WHISPER_ENDPOINT",
-    "AZURE_OPENAI_WHISPER_API_KEY",
+    "AZURE_OPENAI_ENDPOINT",
+    "AZURE_OPENAI_API_KEY",
     "AZURE_OPENAI_WHISPER_DEPLOYMENT_NAME",
 ]
 
@@ -41,9 +41,9 @@ class TranscriptionService:
             )
         # Whisper SDK calls are synchronous — we wrap them with asyncio.to_thread
         self._client = AzureOpenAI(
-            azure_endpoint=os.environ["AZURE_OPENAI_WHISPER_ENDPOINT"],
-            api_key=os.environ["AZURE_OPENAI_WHISPER_API_KEY"],
-            api_version=os.environ.get("AZURE_OPENAI_WHISPER_API_VERSION", "2024-10-21"),
+            azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+            api_key=os.environ["AZURE_OPENAI_API_KEY"],
+            api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-10-21"),
         )
         self._deployment = os.environ["AZURE_OPENAI_WHISPER_DEPLOYMENT_NAME"]
 

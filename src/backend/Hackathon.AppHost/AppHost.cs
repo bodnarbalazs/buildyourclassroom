@@ -41,6 +41,9 @@ var azureOpenAiEndpoint = builder.AddParameter("azure-openai-endpoint");
 var azureOpenAiKey = builder.AddParameter("azure-openai-key", secret: true);
 var azureOpenAiDeployment = builder.AddParameter("azure-openai-deployment");
 
+var azureOpenAiChatDeployment = builder.AddParameter("azure-openai-chat-deployment");
+var azureOpenAiWhisperDeployment = builder.AddParameter("azure-openai-whisper-deployment");
+
 // ──────────────────────────────────────────────────────────────────
 // Core Services
 // ──────────────────────────────────────────────────────────────────
@@ -55,7 +58,9 @@ var microservice = builder.AddDockerfile("microservice",
     .WithExternalHttpEndpoints()
     .WithEnvironment("AZURE_OPENAI_ENDPOINT", azureOpenAiEndpoint)
     .WithEnvironment("AZURE_OPENAI_API_KEY", azureOpenAiKey)
-    .WithEnvironment("AZURE_OPENAI_DEPLOYMENT_NAME", azureOpenAiDeployment);
+    .WithEnvironment("AZURE_OPENAI_DEPLOYMENT_NAME", azureOpenAiDeployment)
+    .WithEnvironment("AZURE_OPENAI_CHAT_DEPLOYMENT_NAME", azureOpenAiChatDeployment)
+    .WithEnvironment("AZURE_OPENAI_WHISPER_DEPLOYMENT_NAME", azureOpenAiWhisperDeployment);
 
 var api = builder.AddProject<Projects.Hackathon_Api>("api", launchProfileName: "https")
     .WithReference(hackathonDb)

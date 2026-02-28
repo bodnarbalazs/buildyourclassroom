@@ -134,8 +134,8 @@ class AssessmentGenerationError(Exception):
 
 
 _REQUIRED_ENV_VARS = [
-    "AZURE_OPENAI_CHAT_ENDPOINT",
-    "AZURE_OPENAI_CHAT_API_KEY",
+    "AZURE_OPENAI_ENDPOINT",
+    "AZURE_OPENAI_API_KEY",
     "AZURE_OPENAI_CHAT_DEPLOYMENT_NAME",
 ]
 
@@ -148,9 +148,9 @@ class AssessmentGenerator:
                 f"Missing required environment variables: {', '.join(missing)}"
             )
         self._client = AsyncAzureOpenAI(
-            azure_endpoint=os.environ["AZURE_OPENAI_CHAT_ENDPOINT"],
-            api_key=os.environ["AZURE_OPENAI_CHAT_API_KEY"],
-            api_version=os.environ.get("AZURE_OPENAI_CHAT_API_VERSION", "2024-10-21"),
+            azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+            api_key=os.environ["AZURE_OPENAI_API_KEY"],
+            api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-10-21"),
         )
         self._deployment = os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"]
         self._token_threshold = int(

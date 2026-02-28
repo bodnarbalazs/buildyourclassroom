@@ -149,7 +149,6 @@ class AgendaGenerator:
             model=self._deployment,
             messages=messages,
             response_format={"type": "json_object"},
-            temperature=0.7,
         )
         content = response.choices[0].message.content
         if content is None:
