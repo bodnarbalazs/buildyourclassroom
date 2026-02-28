@@ -35,7 +35,9 @@
       "mcp__claude_ai_Microsoft_Learn__microsoft_docs_fetch",
       "mcp__aspire__list_resources",
       "mcp__aspire__list_console_logs",
-      "mcp__aspire__execute_resource_command"
+      "mcp__aspire__execute_resource_command",
+      "Bash(kubectl logs:*)",
+      "Bash(kubectl get:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
