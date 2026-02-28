@@ -1,1 +1,0 @@
-mv /Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Brian/deploy.yml /Users/balazsbodnar/Desktop/buildyourclassroom/.github/workflows/deploy.yml; mv /Users/balazsbodnar/Desktop/buildyourclassroom/dydo/agents/Brian/deploy.sh /Users/balazsbodnar/Desktop/buildyourclassroom/deploy.sh

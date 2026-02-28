@@ -65,6 +65,8 @@ jobs:
           export AZURE_OPENAI_ENDPOINT=${{ secrets.AZURE_OPENAI_ENDPOINT }}
           export AZURE_OPENAI_KEY=${{ secrets.AZURE_OPENAI_KEY }}
           export AZURE_OPENAI_DEPLOYMENT=${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          export AZURE_OPENAI_CHAT_DEPLOYMENT=${{ secrets.AZURE_OPENAI_CHAT_DEPLOYMENT_NAME }}
+          export AZURE_OPENAI_WHISPER_DEPLOYMENT=${{ secrets.AZURE_OPENAI_WHISPER_DEPLOYMENT_NAME }}          
           for f in k8s/*.yaml; do envsubst < "$f" | kubectl apply -f -; done
 
       - name: Verify rollout
