@@ -374,12 +374,12 @@ export default function LessonPlanInput({ onPlanReady, onRunSimulation, simulati
         </div>
       )}
 
-      {plan && simulationStatus === "idle" && (
+      {plan && (simulationStatus === "idle" || simulationStatus === "done") && (
         <button
           onClick={onRunSimulation}
           className="self-start rounded-lg bg-green-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-green-700 transition-colors"
         >
-          Run Simulation
+          {simulationStatus === "done" ? "Run Again" : "Run Simulation"}
         </button>
       )}
 
@@ -388,10 +388,6 @@ export default function LessonPlanInput({ onPlanReady, onRunSimulation, simulati
           <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           Simulation running…
         </div>
-      )}
-
-      {simulationStatus === "done" && (
-        <p className="text-sm text-gray-600">Simulation complete</p>
       )}
     </div>
   );

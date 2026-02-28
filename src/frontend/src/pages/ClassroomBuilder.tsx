@@ -60,6 +60,7 @@ export default function ClassroomBuilder() {
   async function handleRunSimulation() {
     if (!plan) return;
 
+    if (timerRef.current) clearInterval(timerRef.current);
     setSimulation({ status: "running", students: [], currentMinute: 0 });
 
     try {
