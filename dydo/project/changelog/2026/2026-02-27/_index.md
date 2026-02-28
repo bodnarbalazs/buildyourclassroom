@@ -11,10 +11,10 @@ Index of 2026-02-27 documentation.
 
 ## Contents
 
-- [Task: amend-gitignore](./amend-gitignore.md) - (No description)
-- [Task: codebase-overview](./codebase-overview.md) - (No description)
-- [Replace engagement levels with learning-quality model](./engagement-levels-update.md) - Engagement scoring now uses five pedagogically meaningful levels instead of generic high/medium/low.
-- [Add facial emotion detection to Python microservice](./facial-emotion-detection.md) - Real-time student engagement measurement via webcam snapshot analysis.
-- [Task: fix-apphost-ports](./fix-apphost-ports.md) - (No description)
-- [Task: implement-rabbitmq-workers](./implement-rabbitmq-workers.md) - (No description)
-- [Task: setup-troubleshooting](./setup-troubleshooting.md) - (No description)
+- [Amend Gitignore](./amend-gitignore.md)
+- [Codebase Overview](./codebase-overview.md)
+- [Engagement Levels Update](./engagement-levels-update.md)
+- [Facial Emotion Detection](./facial-emotion-detection.md)
+- [Fix Apphost Ports](./fix-apphost-ports.md)
+- [Implement Rabbitmq Workers](./implement-rabbitmq-workers.md)
+- [Setup Troubleshooting](./setup-troubleshooting.md)

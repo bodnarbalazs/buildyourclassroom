@@ -16,4 +16,4 @@ QuizQuestion = Annotated[
 
 
 class Quiz(AssessmentMetadata):
-    questions: list[QuizQuestion] = Field(min_length=5, max_length=10)
+    questions: list[QuizQuestion] = Field(min_length=1)
